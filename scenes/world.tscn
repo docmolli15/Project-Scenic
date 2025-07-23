@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cjuo4eyr7eb3r"]
+[gd_scene load_steps=13 format=3 uid="uid://cjuo4eyr7eb3r"]
 
 [ext_resource type="Texture2D" uid="uid://c3nfaqvgj4n21" path="res://art/desert/farground.png" id="1_qfnet"]
 [ext_resource type="Texture2D" uid="uid://dobwtago2hq6q" path="res://art/desert/background.png" id="2_i7141"]
@@ -10,13 +10,9 @@
 [ext_resource type="Script" uid="uid://byxnsqx1splu0" path="res://scripts/utility/tunnel_transition.gd" id="7_w7kh3"]
 [ext_resource type="PackedScene" uid="uid://biaeo50jq4a" path="res://scenes/UI.tscn" id="8_4mrxx"]
 [ext_resource type="Texture2D" uid="uid://cgalsqoroh1vt" path="res://art/tunnelFade.png" id="9_7r4gi"]
-[ext_resource type="Texture2D" uid="uid://bo1quufneo461" path="res://art/extension.png" id="9_e3hyu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e3hyu"]
 size = Vector2(57, 115)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q5onr"]
-size = Vector2(59, 118)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jhx03"]
 size = Vector2(154, 280)
@@ -90,17 +86,11 @@ script = ExtResource("7_w7kh3")
 [node name="entrance" type="ParallaxLayer" parent="TransitionToTunnel"]
 unique_name_in_owner = true
 motion_scale = Vector2(0, 0)
-motion_offset = Vector2(1920, 0)
+motion_offset = Vector2(2000, 0)
 
 [node name="entranceSprite" type="Sprite2D" parent="TransitionToTunnel/entrance"]
 texture_filter = 1
 texture = ExtResource("9_7r4gi")
-centered = false
-
-[node name="extension" type="Sprite2D" parent="TransitionToTunnel/entrance"]
-texture_filter = 1
-position = Vector2(560, 0)
-texture = ExtResource("9_e3hyu")
 centered = false
 
 [node name="enterArea" type="Area2D" parent="TransitionToTunnel"]
@@ -108,34 +98,6 @@ centered = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionToTunnel/enterArea"]
 position = Vector2(35.5, 1015)
 shape = SubResource("RectangleShape2D_e3hyu")
-
-[node name="TransitionFromTunnel" type="ParallaxBackground" parent="."]
-script = ExtResource("7_w7kh3")
-
-[node name="exit" type="ParallaxLayer" parent="TransitionFromTunnel"]
-unique_name_in_owner = true
-scale = Vector2(-1, 1)
-motion_scale = Vector2(0, 0)
-motion_offset = Vector2(3840, 0)
-
-[node name="exitSprite" type="Sprite2D" parent="TransitionFromTunnel/exit"]
-texture_filter = 1
-texture = ExtResource("9_7r4gi")
-centered = false
-
-[node name="extension" type="Sprite2D" parent="TransitionFromTunnel/exit"]
-texture_filter = 1
-position = Vector2(2480, 0)
-rotation = 3.14159
-scale = Vector2(1, -1)
-texture = ExtResource("9_e3hyu")
-centered = false
-
-[node name="exitArea" type="Area2D" parent="TransitionFromTunnel"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionFromTunnel/exitArea"]
-position = Vector2(-36.5, 1016)
-shape = SubResource("RectangleShape2D_q5onr")
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
 position = Vector2(960, 540)
@@ -148,3 +110,8 @@ script = ExtResource("6_e3hyu")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="resetTrigger"]
 position = Vector2(-402, 997)
 shape = SubResource("RectangleShape2D_jhx03")
+
+[connection signal="pressed" from="PlayerUI/CanvasLayer/Enter" to="TransitionToTunnel" method="_on_enter_pressed"]
+[connection signal="pressed" from="PlayerUI/CanvasLayer/Exit" to="TransitionToTunnel" method="_on_exit_pressed"]
+
+[editable path="PlayerUI"]

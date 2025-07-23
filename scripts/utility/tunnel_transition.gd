@@ -1,19 +1,20 @@
 extends ParallaxBackground
 
 @onready var entrance = %entrance
-@onready var exit = %exit
 
-#FUNCTION TO START THE MOVEMENT OF THE TUNNEL ENTRANCE TOWARD THE TRAIN
+
 func _ready() -> void:
 	pass
-	enterTunnel()
 	
-func enterTunnel():
-	#BEGINS BY MATCHING SPEED OF THE TUNNEL ENTRANCE SPRITE WITH THE TRACKS
+#FUNCTION TO START THE MOVEMENT OF THE TUNNEL TOWARD THE TRAIN
+func enterTunnel(frame): #TAKES IN PARAMETER THAT DECIDES BETWEEN ENTRANCE/EXIT
+	#SWITCH THE SPRITE TO 'frame'
+	#MATCH SPEED OF THE TUNNEL SPRITE WITH THE TRACKS
 	entrance.motion_scale = Vector2(0.7, 0.7)
 	#CREATE A TRIGGER THAT FIRES A SIGNAL WHEN THE SPRITE CROSSES THRESHOLD, RESETTING FOR NEXT TIME
 	
-func exitTunnel():
-	#BEGINS BY MATCHING SPEED OF THE TUNNEL EXIT SPRITE WITH THE TRACKS
-	exit.motion_scale = Vector2(0.7, 0.7)
-	#USE TRIGGER TO FIRE SIGNAL WHEN SPRITE CROSSES THRESHOLD, RESETTING FOR NEXT TIME
+func _on_enter_pressed() -> void:
+	enterTunnel(0)
+
+func _on_exit_pressed() -> void:
+	enterTunnel(1)
