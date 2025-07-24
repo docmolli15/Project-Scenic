@@ -42,5 +42,19 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_5en4g")
 text = "X"
 script = ExtResource("1_dj8aq")
 
+[node name="Enter" type="Button" parent="CanvasLayer"]
+offset_left = 1740.0
+offset_top = 922.0
+offset_right = 1819.0
+offset_bottom = 975.0
+text = "ENTER"
+
+[node name="Exit" type="Button" parent="CanvasLayer"]
+offset_left = 1741.0
+offset_top = 987.0
+offset_right = 1820.0
+offset_bottom = 1040.0
+text = "EXIT"
+
 [connection signal="pressed" from="CanvasLayer/Shovel Coal" to="CanvasLayer/Shovel Coal" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/Quit" to="CanvasLayer/Quit" method="_on_pressed"]
