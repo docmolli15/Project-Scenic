@@ -1,25 +1,19 @@
-[gd_scene load_steps=13 format=3 uid="uid://cjuo4eyr7eb3r"]
+[gd_scene load_steps=10 format=3 uid="uid://cjuo4eyr7eb3r"]
 
-[ext_resource type="Texture2D" uid="uid://c3nfaqvgj4n21" path="res://art/desert/farground.png" id="1_qfnet"]
-[ext_resource type="Texture2D" uid="uid://dobwtago2hq6q" path="res://art/desert/background.png" id="2_i7141"]
-[ext_resource type="Texture2D" uid="uid://8iof8eucy5yo" path="res://art/desert/midground.png" id="3_4mrxx"]
+[ext_resource type="Script" uid="uid://cci5wsjv4ifmy" path="res://scripts/environment/frameScript.gd" id="1_e3hyu"]
+[ext_resource type="Texture2D" uid="uid://c3nfaqvgj4n21" path="res://art/landscapes/farground.png" id="1_w7kh3"]
+[ext_resource type="Texture2D" uid="uid://dobwtago2hq6q" path="res://art/landscapes/background.png" id="2_e3hyu"]
+[ext_resource type="Texture2D" uid="uid://8iof8eucy5yo" path="res://art/landscapes/midground.png" id="3_q5onr"]
 [ext_resource type="Texture2D" uid="uid://bwk5ljrotxrr7" path="res://art/track.png" id="4_7r4gi"]
-[ext_resource type="Texture2D" uid="uid://brxs8dud3mr0y" path="res://art/desert/foreground.png" id="5_w7kh3"]
 [ext_resource type="Script" uid="uid://d0sg3rndbdqeo" path="res://scripts/player/player_camera.gd" id="6_e3hyu"]
+[ext_resource type="Texture2D" uid="uid://brxs8dud3mr0y" path="res://art/landscapes/foreground.png" id="6_jhx03"]
 [ext_resource type="PackedScene" uid="uid://cgl0mqgmt2s56" path="res://scenes/player.tscn" id="7_i7141"]
-[ext_resource type="Script" uid="uid://byxnsqx1splu0" path="res://scripts/utility/tunnel_transition.gd" id="7_w7kh3"]
 [ext_resource type="PackedScene" uid="uid://biaeo50jq4a" path="res://scenes/UI.tscn" id="8_4mrxx"]
-[ext_resource type="Texture2D" uid="uid://cgalsqoroh1vt" path="res://art/tunnelFade.png" id="9_7r4gi"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_e3hyu"]
-size = Vector2(57, 115)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jhx03"]
-size = Vector2(154, 280)
 
 [node name="World" type="Node2D"]
 
 [node name="ParallaxFarground" type="ParallaxBackground" parent="."]
+script = ExtResource("1_e3hyu")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxFarground"]
 motion_scale = Vector2(0.02, 0.02)
@@ -28,10 +22,12 @@ motion_mirroring = Vector2(1920, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxFarground/ParallaxLayer"]
 z_as_relative = false
 texture_filter = 1
-texture = ExtResource("1_qfnet")
+texture = ExtResource("1_w7kh3")
 centered = false
+vframes = 7
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("1_e3hyu")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.2, 0.2)
@@ -39,10 +35,12 @@ motion_mirroring = Vector2(1920, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 texture_filter = 1
-texture = ExtResource("2_i7141")
+texture = ExtResource("2_e3hyu")
 centered = false
+vframes = 7
 
 [node name="ParallaxMidground" type="ParallaxBackground" parent="."]
+script = ExtResource("1_e3hyu")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxMidground"]
 motion_scale = Vector2(0.4, 0.4)
@@ -50,8 +48,9 @@ motion_mirroring = Vector2(1920, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxMidground/ParallaxLayer"]
 texture_filter = 1
-texture = ExtResource("3_4mrxx")
+texture = ExtResource("3_q5onr")
 centered = false
+vframes = 7
 
 [node name="ParallaxTracks" type="ParallaxBackground" parent="."]
 
@@ -65,6 +64,7 @@ texture = ExtResource("4_7r4gi")
 centered = false
 
 [node name="ParallaxForeground" type="ParallaxBackground" parent="."]
+script = ExtResource("1_e3hyu")
 
 [node name="train" parent="ParallaxForeground" instance=ExtResource("7_i7141")]
 position = Vector2(960, 1050)
@@ -77,41 +77,12 @@ motion_mirroring = Vector2(1920, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer"]
 texture_filter = 1
-texture = ExtResource("5_w7kh3")
+texture = ExtResource("6_jhx03")
 centered = false
-
-[node name="TransitionToTunnel" type="ParallaxBackground" parent="."]
-script = ExtResource("7_w7kh3")
-
-[node name="entrance" type="ParallaxLayer" parent="TransitionToTunnel"]
-unique_name_in_owner = true
-motion_scale = Vector2(0, 0)
-motion_offset = Vector2(2000, 0)
-
-[node name="entranceSprite" type="Sprite2D" parent="TransitionToTunnel/entrance"]
-texture_filter = 1
-texture = ExtResource("9_7r4gi")
-centered = false
-
-[node name="enterArea" type="Area2D" parent="TransitionToTunnel"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionToTunnel/enterArea"]
-position = Vector2(35.5, 1015)
-shape = SubResource("RectangleShape2D_e3hyu")
+vframes = 7
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
 position = Vector2(960, 540)
 script = ExtResource("6_e3hyu")
 
 [node name="PlayerUI" parent="." instance=ExtResource("8_4mrxx")]
-
-[node name="resetTrigger" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="resetTrigger"]
-position = Vector2(-402, 997)
-shape = SubResource("RectangleShape2D_jhx03")
-
-[connection signal="pressed" from="PlayerUI/CanvasLayer/Enter" to="TransitionToTunnel" method="_on_enter_pressed"]
-[connection signal="pressed" from="PlayerUI/CanvasLayer/Exit" to="TransitionToTunnel" method="_on_exit_pressed"]
-
-[editable path="PlayerUI"]

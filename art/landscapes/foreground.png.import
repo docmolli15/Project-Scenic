@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3nfaqvgj4n21"
-path="res://.godot/imported/farground.png-b57ca1ebdd1eb0e277d9cadef74c8d55.ctex"
+uid="uid://brxs8dud3mr0y"
+path="res://.godot/imported/foreground.png-a3daa0c6349af6ca9cb6b466a9331d96.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/desert/farground.png"
-dest_files=["res://.godot/imported/farground.png-b57ca1ebdd1eb0e277d9cadef74c8d55.ctex"]
+source_file="res://art/landscapes/foreground.png"
+dest_files=["res://.godot/imported/foreground.png-a3daa0c6349af6ca9cb6b466a9331d96.ctex"]
 
 [params]
 

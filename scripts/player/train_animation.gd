@@ -34,5 +34,6 @@ func friction():
 		frictionTimer.start()
 		print(Global.locomotion)
 
+#TIMER FUNCTION THAT KEEPS THE SPEED DROPPING OVER TIME
 func _on_timer_timeout():
 	friction()
