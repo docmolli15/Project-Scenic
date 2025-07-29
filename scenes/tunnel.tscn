@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ybgh7hy0sk50"]
+
+[ext_resource type="Script" uid="uid://dh5w365e4uf46" path="res://scripts/environment/tunnel.gd" id="1_sitcv"]
+[ext_resource type="Texture2D" uid="uid://cgalsqoroh1vt" path="res://art/tunnelFade.png" id="1_yxtfq"]
+
+[node name="tunnel" type="Node2D"]
+script = ExtResource("1_sitcv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+top_level = true
+z_as_relative = false
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(1920, 954)
+texture = ExtResource("1_yxtfq")
+centered = false
