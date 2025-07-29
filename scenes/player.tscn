@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://cgl0mqgmt2s56"]
+[gd_scene load_steps=17 format=3 uid="uid://cgl0mqgmt2s56"]
 
 [ext_resource type="Texture2D" uid="uid://oicxgv2ekuku" path="res://art/player/engine.png" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://d0sg3rndbdqeo" path="res://scripts/player/player_camera.gd" id="1_dqkch"]
 [ext_resource type="Texture2D" uid="uid://bp3cqg2gkru7c" path="res://art/player/smokeSprite.png" id="1_qhqgy"]
 [ext_resource type="Script" uid="uid://dslc2vt3ddgni" path="res://scripts/player/train_animation.gd" id="2_g2els"]
 
@@ -81,11 +82,16 @@ animations = [{
 }]
 
 [node name="train" type="Node2D"]
+script = ExtResource("2_g2els")
+
+[node name="PlayerCamera" type="Camera2D" parent="."]
+position = Vector2(960, 540)
+script = ExtResource("1_dqkch")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
 texture_filter = 1
-position = Vector2(7, -13)
+position = Vector2(967, 1038)
 amount = 25
 texture = ExtResource("1_qhqgy")
 process_material = SubResource("ParticleProcessMaterial_smehm")
@@ -93,13 +99,13 @@ process_material = SubResource("ParticleProcessMaterial_smehm")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 texture_filter = 1
+position = Vector2(960, 1051)
 sprite_frames = SubResource("SpriteFrames_smehm")
 animation = &"locomotion"
 autoplay = "locomotion"
-script = ExtResource("2_g2els")
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
 wait_time = 2.0
 
-[connection signal="timeout" from="Timer" to="AnimatedSprite2D" method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
