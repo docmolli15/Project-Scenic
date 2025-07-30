@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://oicxgv2ekuku" path="res://art/player/engine.png" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://bp3cqg2gkru7c" path="res://art/player/smokeSprite.png" id="1_qhqgy"]
-[ext_resource type="Script" uid="uid://dslc2vt3ddgni" path="res://scripts/player/train_animation.gd" id="2_g2els"]
+[ext_resource type="Script" uid="uid://dslc2vt3ddgni" path="res://deprecated/scripts/player/train_animation.gd" id="2_g2els"]
 
 [sub_resource type="Gradient" id="Gradient_dqkch"]
 offsets = PackedFloat32Array(0, 0.516014, 1)

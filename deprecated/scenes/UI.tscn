@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://biaeo50jq4a"]
 
 [ext_resource type="Texture2D" uid="uid://0vjqo5jaabd4" path="res://art/UI/coalIcon.png" id="1_5en4g"]
-[ext_resource type="Script" uid="uid://d5rbuve4536c" path="res://scripts/utility/exit.gd" id="1_dj8aq"]
-[ext_resource type="Script" uid="uid://eiteasc26n63" path="res://scripts/player/shovel_coal.gd" id="1_ro3t7"]
-[ext_resource type="Script" uid="uid://d3gjx2do2fq2d" path="res://scripts/utility/enterButton.gd" id="4_ua6yw"]
+[ext_resource type="Script" uid="uid://d5rbuve4536c" path="res://deprecated/scripts/utility/exit.gd" id="1_dj8aq"]
+[ext_resource type="Script" uid="uid://eiteasc26n63" path="res://deprecated/scripts/player/shovel_coal.gd" id="1_ro3t7"]
+[ext_resource type="Script" uid="uid://d3gjx2do2fq2d" path="res://deprecated/scripts/utility/enterButton.gd" id="4_ua6yw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ua6yw"]
 bg_color = Color(0.74978, 0.74978, 0.74978, 1)
