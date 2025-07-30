@@ -1,5 +1,5 @@
 extends Node
 
 #SINGAL FOR STARTING THE TUNNEL TRANSITION
-signal tunnelTransition
+signal createTunnel
 signal deleteTunnel

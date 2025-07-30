@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwk5ljrotxrr7"
-path="res://.godot/imported/track.png-de1a75b08375ea198bc25062ab4d5cc3.ctex"
+uid="uid://cgalsqoroh1vt"
+path="res://.godot/imported/tunnelFade.png-63fa3610a55daece4ac5b42335c100fb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/track.png"
-dest_files=["res://.godot/imported/track.png-de1a75b08375ea198bc25062ab4d5cc3.ctex"]
+source_file="res://art/landscapes/tunnelFade.png"
+dest_files=["res://.godot/imported/tunnelFade.png-63fa3610a55daece4ac5b42335c100fb.ctex"]
 
 [params]
 
