@@ -6,6 +6,10 @@ signal createTunnel
 signal deleteTunnel
 #INCREASE SPEED
 signal shovelCoal
+#ARRIVE AT A STATION
+signal stationStop
+#DELETES STATION
+signal stationDelete
 
 func _ready():
 	pass

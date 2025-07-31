@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://cgl0mqgmt2s56"]
 
 [ext_resource type="Texture2D" uid="uid://oicxgv2ekuku" path="res://art/player/engine.png" id="1_3vyb7"]
-[ext_resource type="Script" uid="uid://bkbfmqmaj4ogf" path="res://scenes/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://bkbfmqmaj4ogf" path="res://scripts/player/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://bp3cqg2gkru7c" path="res://art/player/smokeSprite.png" id="2_qhqgy"]
 
 [sub_resource type="Gradient" id="Gradient_qhqgy"]
@@ -79,7 +79,6 @@ animations = [{
 
 [node name="player" type="Node2D"]
 script = ExtResource("1_g2els")
-velocity = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -99,3 +98,13 @@ sprite_frames = SubResource("SpriteFrames_fjrip")
 autoplay = "default"
 frame_progress = 0.919197
 speed_scale = 0.4
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.5
+
+[node name="StationTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 8.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

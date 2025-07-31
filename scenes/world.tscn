@@ -10,7 +10,6 @@
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_i7141")
-velocity = 8
 
 [node name="Farground" type="Parallax2D" parent="."]
 repeat_size = Vector2(1920, 0)
@@ -43,6 +42,8 @@ position = Vector2(960, 540)
 texture = ExtResource("3_qfnet")
 vframes = 7
 
+[node name="POIs" type="Node2D" parent="."]
+
 [node name="Tracks" type="Parallax2D" parent="."]
 repeat_size = Vector2(1920, 0)
 autoscroll = Vector2(-4, 0)
@@ -54,7 +55,6 @@ texture = ExtResource("4_i7141")
 
 [node name="player" parent="." instance=ExtResource("6_qfnet")]
 position = Vector2(960, 540)
-velocity = 8
 
 [node name="Foreground" type="Parallax2D" parent="."]
 repeat_size = Vector2(1920, 0)
@@ -65,3 +65,13 @@ texture_filter = 1
 position = Vector2(960, 540)
 texture = ExtResource("5_71j4m")
 vframes = 7
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="StationTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 8.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="StationTimer" to="." method="_on_station_timer_timeout"]

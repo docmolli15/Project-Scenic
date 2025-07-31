@@ -1,13 +1,34 @@
 extends Node2D
-#ADD ELEMENT TO THE INSPECTOR THAT WILL BE USED TO GOVERN THE SPEED OF THE LANDSCAPE AND TRAIN
-@export var velocity: int
-#VARIABLE TO ACCESS PROPERTIES OF THE PARALLAX2D NODES
+#ELEMENT THAT WILL BE USED TO GOVERN THE SPEED OF THE LANDSCAPE AND TRAIN
+@export var velocity: float
+#ELEMENT FOR LOCKING VELOCITY
+@export var friction_lock = false
+@export var parked = false
+@onready var timer = %Timer
+@onready var stationTimer = %StationTimer
 
 func _ready() -> void:
-	pass
-	
+	MessageBus.shovelCoal.connect(increaseSpeed)
+	MessageBus.stationStop.connect(station)
+	MessageBus.stationStop.connect(stop)
+	friction()
+
 func _process(_delta: float) -> void:
 	animationSpeed()
+
+func increaseSpeed():
+	if friction_lock == false:
+		velocity += 1.0
+
+func friction():
+	if friction_lock == false:
+		if velocity < 28.0 and velocity > 16.0:
+			velocity -= 0.2
+		elif velocity > 28.0:
+			velocity = 27.0
+		else:
+			velocity = 16.0
+	timer.start()
 
 func animationSpeed():
 	#VARIABLE TO ACCESS PROPERTIES OF THE PARALLAX2D NODES
@@ -21,3 +42,33 @@ func animationSpeed():
 			child.autoscroll.x = base * velocity
 			#INCREASE BASE WITH EACH LAYER
 			base -= 2
+
+func _on_timer_timeout() -> void:
+	friction()
+
+func stop():
+	if parked == false:
+		friction_lock = true
+		var tween = create_tween()
+		tween.tween_property(self, "velocity", 0.0, 18.0)
+		stationTimer.start()
+		parked = true
+	else:
+		parked = false
+		var tween = create_tween()
+		tween.tween_property(self, "velocity", 16.0, 18.0)
+		stationTimer.start()
+		friction_lock = false
+
+func station():
+	if parked == false:
+		var parent_node = $POIs
+		var stop_scene = preload("res://scenes/station.tscn")
+		var new_station = stop_scene.instantiate()
+		parent_node.add_child(new_station)
+		new_station.global_position = Vector2(2000, 1060)
+		var tween = get_tree().create_tween()
+		tween.tween_property(new_station, "global_position", Vector2(960, 1060), 18.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+		await get_tree().create_timer(25.0).timeout
+	else:
+		MessageBus.stationDelete.emit()

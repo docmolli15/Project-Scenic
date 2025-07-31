@@ -3,19 +3,24 @@
 [ext_resource type="Script" uid="uid://40by5ayi07sh" path="res://scripts/testing/test_widget.gd" id="1_km868"]
 
 [node name="testWidget" type="Node2D"]
+position = Vector2(1670, 862)
 script = ExtResource("1_km868")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -93.0
+offset_right = 38.0
+offset_bottom = 37.0
 
 [node name="shovelCoal" type="Button" parent="HBoxContainer"]
 layout_mode = 2
+text = "coal"
 
 [node name="station" type="Button" parent="HBoxContainer"]
 layout_mode = 2
+text = "station"
 
 [node name="chooseLandscape" type="OptionButton" parent="HBoxContainer"]
 layout_mode = 2
 
 [connection signal="pressed" from="HBoxContainer/shovelCoal" to="." method="_on_shovel_coal_pressed"]
+[connection signal="pressed" from="HBoxContainer/station" to="." method="_on_station_pressed"]
