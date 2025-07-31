@@ -10,10 +10,11 @@
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_i7141")
+velocity = 8
 
 [node name="Farground" type="Parallax2D" parent="."]
 repeat_size = Vector2(1920, 0)
-autoscroll = Vector2(-25, 0)
+autoscroll = Vector2(-1, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Farground"]
 texture_filter = 1
@@ -24,7 +25,7 @@ vframes = 7
 [node name="Background" type="Parallax2D" parent="."]
 scroll_scale = Vector2(10, 10)
 repeat_size = Vector2(1920, 0)
-autoscroll = Vector2(-50, 0)
+autoscroll = Vector2(-2, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Background"]
 texture_filter = 1
@@ -34,7 +35,7 @@ vframes = 7
 
 [node name="Midground" type="Parallax2D" parent="."]
 repeat_size = Vector2(1920, 0)
-autoscroll = Vector2(-75, 0)
+autoscroll = Vector2(-3, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Midground"]
 texture_filter = 1
@@ -44,7 +45,7 @@ vframes = 7
 
 [node name="Tracks" type="Parallax2D" parent="."]
 repeat_size = Vector2(1920, 0)
-autoscroll = Vector2(-95, 0)
+autoscroll = Vector2(-4, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Tracks"]
 texture_filter = 1
@@ -53,10 +54,11 @@ texture = ExtResource("4_i7141")
 
 [node name="player" parent="." instance=ExtResource("6_qfnet")]
 position = Vector2(960, 540)
+velocity = 8
 
 [node name="Foreground" type="Parallax2D" parent="."]
 repeat_size = Vector2(1920, 0)
-autoscroll = Vector2(-110, 0)
+autoscroll = Vector2(-5, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Foreground"]
 texture_filter = 1

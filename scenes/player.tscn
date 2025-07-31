@@ -1,6 +1,31 @@
-[gd_scene load_steps=9 format=3 uid="uid://cgl0mqgmt2s56"]
+[gd_scene load_steps=16 format=3 uid="uid://cgl0mqgmt2s56"]
 
 [ext_resource type="Texture2D" uid="uid://oicxgv2ekuku" path="res://art/player/engine.png" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://bkbfmqmaj4ogf" path="res://scenes/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://bp3cqg2gkru7c" path="res://art/player/smokeSprite.png" id="2_qhqgy"]
+
+[sub_resource type="Gradient" id="Gradient_qhqgy"]
+offsets = PackedFloat32Array(0.130782, 0.539075, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.329158, 0.329158, 0.329158, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dqkch"]
+gradient = SubResource("Gradient_qhqgy")
+
+[sub_resource type="Curve" id="Curve_qlg0r"]
+_data = [Vector2(0, 0.327586), 0.0, 0.0, 0, 0, Vector2(0.445636, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_tuyoq"]
+curve = SubResource("Curve_qlg0r")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fjrip"]
+particle_flag_disable_z = true
+radial_velocity_min = 7.99998
+radial_velocity_max = 7.99998
+gravity = Vector3(0, -45, -0.69)
+scale_curve = SubResource("CurveTexture_tuyoq")
+color = Color(0, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_dqkch")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3vyb7"]
 atlas = ExtResource("1_3vyb7")
@@ -53,12 +78,24 @@ animations = [{
 }]
 
 [node name="player" type="Node2D"]
+script = ExtResource("1_g2els")
+velocity = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(7, 499)
+amount = 60
+texture = ExtResource("2_qhqgy")
+process_material = SubResource("ParticleProcessMaterial_fjrip")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
 texture_filter = 1
 position = Vector2(0, 511)
 sprite_frames = SubResource("SpriteFrames_fjrip")
 autoplay = "default"
-frame_progress = 0.853259
+frame_progress = 0.919197
+speed_scale = 0.4
