@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cq5fgu5au8cul"]
+
+[node name="testWidget" type="Node2D"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="shovelCoal" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="chooseLandscape" type="OptionButton" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="station" type="Button" parent="HBoxContainer"]
+layout_mode = 2

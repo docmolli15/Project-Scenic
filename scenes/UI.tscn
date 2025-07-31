@@ -1,10 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://biaeo50jq4a"]
+[gd_scene load_steps=7 format=3 uid="uid://biaeo50jq4a"]
 
 [ext_resource type="Texture2D" uid="uid://0vjqo5jaabd4" path="res://art/UI/coalIcon.png" id="1_5en4g"]
-[ext_resource type="Script" uid="uid://d5rbuve4536c" path="res://scripts/utility/exit.gd" id="1_dj8aq"]
-[ext_resource type="Script" path="res://deprecated/scripts/player/shovel_coal.gd" id="1_ro3t7"]
-[ext_resource type="Script" path="res://deprecated/scripts/utility/enterButton.gd" id="4_ua6yw"]
-
+[ext_resource type="Script" uid="uid://dah33oao3jg3j" path="res://scripts/ui/ui.gd" id="1_ro3t7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ua6yw"]
 bg_color = Color(0.74978, 0.74978, 0.74978, 1)
@@ -18,6 +15,7 @@ bg_color = Color(0.932619, 0, 0.224904, 1)
 bg_color = Color(0.618435, 0, 0.0253273, 1)
 
 [node name="PlayerUI" type="Node2D"]
+script = ExtResource("1_ro3t7")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -30,7 +28,6 @@ offset_bottom = 1018.0
 theme_override_icons/icon = ExtResource("1_5en4g")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ua6yw")
 icon_alignment = 1
-script = ExtResource("1_ro3t7")
 
 [node name="Quit" type="Button" parent="CanvasLayer"]
 texture_filter = 1
@@ -42,16 +39,3 @@ theme = SubResource("Theme_dj8aq")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ro3t7")
 theme_override_styles/normal = SubResource("StyleBoxFlat_5en4g")
 text = "X"
-script = ExtResource("1_dj8aq")
-
-[node name="Enter" type="Button" parent="CanvasLayer"]
-offset_left = 1740.0
-offset_top = 922.0
-offset_right = 1819.0
-offset_bottom = 975.0
-text = "ENTER"
-script = ExtResource("4_ua6yw")
-
-[connection signal="pressed" from="CanvasLayer/Shovel Coal" to="CanvasLayer/Shovel Coal" method="_on_pressed"]
-[connection signal="pressed" from="CanvasLayer/Quit" to="CanvasLayer/Quit" method="_on_pressed"]
-[connection signal="pressed" from="CanvasLayer/Enter" to="CanvasLayer/Enter" method="_on_pressed"]

@@ -15,6 +15,7 @@ func _process(_delta: float) -> void:
 
 func smoke():
 	smokeStack.amount_ratio = velocity * 0.03
+	smokeStack.process_material.gravity.x = velocity * -5
 
 func trainAnimation():
 	trainAnim.speed_scale = velocity * .12
