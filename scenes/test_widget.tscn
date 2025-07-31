@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://cq5fgu5au8cul"]
+[gd_scene load_steps=2 format=3 uid="uid://cq5fgu5au8cul"]
+
+[ext_resource type="Script" uid="uid://40by5ayi07sh" path="res://scripts/testing/test_widget.gd" id="1_km868"]
 
 [node name="testWidget" type="Node2D"]
+script = ExtResource("1_km868")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 offset_right = 40.0
@@ -9,8 +12,10 @@ offset_bottom = 40.0
 [node name="shovelCoal" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 
+[node name="station" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+
 [node name="chooseLandscape" type="OptionButton" parent="HBoxContainer"]
 layout_mode = 2
 
-[node name="station" type="Button" parent="HBoxContainer"]
-layout_mode = 2
+[connection signal="pressed" from="HBoxContainer/shovelCoal" to="." method="_on_shovel_coal_pressed"]

@@ -6,6 +6,8 @@ extends Node2D
 @onready var trainAnim = %AnimatedSprite2D
 @onready var smokeStack = %GPUParticles2D
 
+
+
 func _ready() -> void:
 	pass
 	
