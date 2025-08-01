@@ -1,14 +1,15 @@
 extends Node2D
 #ELEMENT THAT WILL BE USED TO GOVERN THE SPEED OF THE LANDSCAPE AND TRAIN
 @export var velocity: float
-#ELEMENT FOR LOCKING VELOCITY
+#ELEMENT TO KEEP TRACK OF DIFFERENT STAGES; TRAIN RUNNING, STOPPED, IN A TUNNEL
 @export var friction_lock = false
 @export var parked = false
 @export var transitioning = false
+#IMPORTANT TIMERS FOR MEASURING FRICTION AND DELETING TUNNELS
 @onready var timer = %Timer
-@onready var stationTimer = %StationTimer
 @onready var tunnelTimer = %TunnelTimer
 
+#INCOMING SIGNALS
 func _ready() -> void:
 	MessageBus.shovelCoal.connect(increaseSpeed)
 	MessageBus.stationStop.connect(station)
@@ -19,20 +20,27 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	animationSpeed()
 
+#FUNCTION ACTIVATED BY SHOVELING COAL
 func increaseSpeed():
 	if friction_lock == false:
 		velocity += 1.0
 
+#FUNCTION THAT SLOWS THE TERRAIN WHEN RUNNING
 func friction():
+	#IF VARIABLE IS FALSE
 	if friction_lock == false:
+		#KEEPS SPEED WITHIN A CERTAIN RANGE
 		if velocity < 28.0 and velocity > 16.0:
 			velocity -= 0.2
+			#CEILING TO THE SPEED, CORRECTED IF COAL SHOVELING PUTS SPEED OUTSIDE RANGE
 		elif velocity > 28.0:
 			velocity = 27.0
+			#MINIMUM SPEED WHEN TRAIN IS RUNNING
 		else:
 			velocity = 16.0
 	timer.start()
 
+#KEEPS ANIMATION OF THE TRAIN AT SPEED PROPORTIONAL TO THE LANDSCAPE
 func animationSpeed():
 	#VARIABLE TO ACCESS PROPERTIES OF THE PARALLAX2D NODES
 	var childrenNodes = get_children()
@@ -46,49 +54,61 @@ func animationSpeed():
 			#INCREASE BASE WITH EACH LAYER
 			base -= 2
 
+#PERIODICALLY APPLYING FRICTION
 func _on_timer_timeout() -> void:
 	friction()
 
+#STOPPING TERRAIN AT THE SPAWNED STATION
 func stop():
 	if parked == false:
 		friction_lock = true
+		#USE TWEEN TO SLOW THE TERRAIN TO A STOP
 		var tween = create_tween()
 		tween.tween_property(self, "velocity", 0.0, 18.0)
-		stationTimer.start()
 		parked = true
 	else:
 		parked = false
+		#USE TWEEN TO LEAVE THE STATION
 		var tween = create_tween()
 		tween.tween_property(self, "velocity", 16.0, 18.0)
-		stationTimer.start()
 		friction_lock = false
 
-func station():
+#SPAWN STATION
+func station(): 
+	#IF THE TRAIN ISN'T ALREADY AT A STATION
 	if parked == false:
+		#SPAWN A STATION AS A CHILD OF POIs
 		var parent_node = $POIs
 		var stop_scene = preload("res://scenes/station.tscn")
 		var new_station = stop_scene.instantiate()
 		parent_node.add_child(new_station)
+		#POSITION IT OUTSIDE OF THE CAMERA'S RIGHT BORDER AND MOVE IT IN TO KEEP PACE WITH THE SLOWING PARALLAX
 		new_station.global_position = Vector2(2000, 1060)
 		var tween = get_tree().create_tween()
 		tween.tween_property(new_station, "global_position", Vector2(960, 1060), 18.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	else:
+	#IF ALREADY AT A STATION, TRIGGER THE PROCESS OF LEAVING AND DELETING THE STATION
 		MessageBus.stationDelete.emit()
 
+#SPAWN TUNNEL
 func createTunnel():
+	#LOCK AT SLIGHTER HIGHER THAN SLOWEST SPEED TO FACILITATE TRANSITION
 	if transitioning == false:
 		transitioning = true
 		friction_lock = true
 		velocity = 20
+		#SPAWN TUNNEL AS CHILD OF POIs OUTSIDE OF RIGHT CAMERA BOUNDARY
 		var parent_node = $POIs
 		var tunnel = preload("res://scenes/tunnel.tscn")
 		var new_tunnel = tunnel.instantiate()
 		parent_node.add_child(new_tunnel)
 		new_tunnel.global_position = Vector2(3300, 1020)
+		#USE TWEEN TO PASS TUNNEL THROUGH THE SCENE AT SAME SPEED AS PARALLAX
 		var tween = get_tree().create_tween()
 		tween.tween_property(new_tunnel, "global_position", Vector2(-2000, 1020), 32.0)
 		tunnelTimer.start()
 
+#TIMER TO TRIGGER DELETING OF TUNNEL
 func _on_tunnel_timer_timeout():
 	transitioning = false
 	MessageBus.deleteTunnel.emit()

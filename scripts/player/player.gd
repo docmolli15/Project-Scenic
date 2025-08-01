@@ -1,6 +1,6 @@
 extends Node2D
 
-#ADD ELEMENTS TO THE INSPECTOR THAT WILL BE USED TO GOVERN THE SPEED OF THE LANDSCAPE AND TRAIN
+#ELEMENTS THAT WILL BE USED TO GOVERN THE SPEED OF THE LANDSCAPE AND TRAIN
 @export var velocity: float
 @export var friction_lock = false
 @export var parked = false
@@ -10,6 +10,7 @@ extends Node2D
 @onready var timer = %Timer
 @onready var stationTimer = %StationTimer
 
+#INCOMING SIGNALS
 func _ready() -> void:
 	MessageBus.shovelCoal.connect(increaseSpeed)
 	MessageBus.stationStop.connect(stop)
@@ -19,6 +20,7 @@ func _process(_delta: float) -> void:
 	trainAnimation()
 	smoke()
 
+#FUNCTION THAT SLOWS THE TRAIN WHEN RUNNING
 func friction():
 	if friction_lock == false:
 		if velocity < 23.0 and velocity > 11.0:
@@ -29,28 +31,35 @@ func friction():
 			velocity = 11
 	timer.start()
 
+#FUNCTION ACTIVATED BY SHOVELING COAL
 func increaseSpeed():
 	if friction_lock == false:
 		velocity += 1.0
 
+#INCREASE THE SMOKE GENERATION AND PUSHES THE SMOKE FURTHER BEHIND THE TRAIN AS SPEED INCREASES
 func smoke():
 	smokeStack.amount_ratio = velocity * 0.1
 	smokeStack.process_material.gravity.x = velocity * -15
 
+#INCREASES SPEED OF ANIMATION AS THE TRAIN SPEEDS UP
 func trainAnimation():
 	trainAnim.speed_scale = velocity * .18
 
+#PERIODICALLY APPLYING FRICTION
 func _on_timer_timeout() -> void:
 	friction()
 
+#STOPPING TERRAIN AT THE SPAWNED STATION
 func stop():
 	if parked == false:
 		friction_lock = true
+		#USE TWEEN TO SLOW THE TRAIN TO A STOP
 		var tween = create_tween()
 		tween.tween_property(self, "velocity", 0.0, 18.0)
 		parked = true
 	else:
 		parked = false
+		#USE TWEEN TO LEAVE THE STATION
 		var tween = create_tween()
 		tween.tween_property(self, "velocity", 11.0, 18.0)
 		stationTimer.start()

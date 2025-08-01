@@ -1,5 +1,5 @@
 extends Node2D
-
+#BUTTONS FOR TESTS
 func _ready():
 	pass
 
@@ -12,3 +12,6 @@ func _on_station_pressed() -> void:
 
 func _on_tunnel_pressed():
 	MessageBus.summonTunnel.emit()
+
+func _on_button_pressed():
+	get_tree().quit()

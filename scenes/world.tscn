@@ -70,14 +70,9 @@ vframes = 7
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
 
-[node name="StationTimer" type="Timer" parent="."]
-unique_name_in_owner = true
-wait_time = 8.0
-
 [node name="TunnelTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 wait_time = 32.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="StationTimer" to="." method="_on_station_timer_timeout"]
 [connection signal="timeout" from="TunnelTimer" to="." method="_on_tunnel_timer_timeout"]
