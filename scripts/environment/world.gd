@@ -5,8 +5,11 @@ extends Node2D
 @export var friction_lock = false
 @export var parked = false
 @export var transitioning = false
-#IMPORTANT TIMERS FOR MEASURING FRICTION AND DELETING TUNNELS
-@onready var timer = %Timer
+#VARIABLE FOR ANIMATION FRAME OF ALL BACKGROUNDS
+@export var landscapeFrame: int
+#IMPORTANT TIMERS FOR MEASURING FRICTION,SELECTING LANDSCAPES AND DELETING TUNNELS
+@onready var frictionTimer = %FrictionTimer
+@onready var landscapeTimer = %LandscapeTimer
 @onready var tunnelTimer = %TunnelTimer
 
 #INCOMING SIGNALS
@@ -15,6 +18,7 @@ func _ready() -> void:
 	MessageBus.stationStop.connect(station)
 	MessageBus.stationStop.connect(stop)
 	MessageBus.summonTunnel.connect(createTunnel)
+	MessageBus.selectLandscape.connect(landscapeTimerStart)
 	friction()
 
 func _process(_delta: float) -> void:
@@ -23,7 +27,7 @@ func _process(_delta: float) -> void:
 #FUNCTION ACTIVATED BY SHOVELING COAL
 func increaseSpeed():
 	if friction_lock == false:
-		velocity += 1.0
+		velocity += 0.2
 
 #FUNCTION THAT SLOWS THE TERRAIN WHEN RUNNING
 func friction():
@@ -38,7 +42,7 @@ func friction():
 			#MINIMUM SPEED WHEN TRAIN IS RUNNING
 		else:
 			velocity = 16.0
-	timer.start()
+	frictionTimer.start()
 
 #KEEPS ANIMATION OF THE TRAIN AT SPEED PROPORTIONAL TO THE LANDSCAPE
 func animationSpeed():
@@ -112,3 +116,18 @@ func createTunnel():
 func _on_tunnel_timer_timeout():
 	transitioning = false
 	MessageBus.deleteTunnel.emit()
+
+#START LANDSCAPE TIMER
+func landscapeTimerStart(index):
+	#SET THE INCOMING LANDSCAPE FRAMES
+	landscapeFrame = index
+	#START A TIMER TO COINCIDE WITH THE TUNNEL OBSCURING THE SCENE
+	landscapeTimer.start()
+
+#CHANGE FRAMES OF BACKGROUNDS TO SELECTED LANDSCAPE
+func _on_landscape_timer_timeout() -> void:
+	#ITERATE THROUGH THE ENTIRE TREE TO FIND ALL SPRITE2D NODES
+	for node in self.find_children("*", "AnimatedSprite2D", true, false):
+		if node is AnimatedSprite2D:
+			#SET THE SPRITES TO THE INCOMING FRAMES
+			node.frame = landscapeFrame

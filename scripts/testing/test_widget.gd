@@ -15,3 +15,7 @@ func _on_tunnel_pressed():
 
 func _on_button_pressed():
 	get_tree().quit()
+
+func _on_option_button_item_selected(choice: int) -> void:
+	MessageBus.summonTunnel.emit()
+	MessageBus.selectLandscape.emit(choice)

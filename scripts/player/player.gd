@@ -19,6 +19,11 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	trainAnimation()
 	smoke()
+	velocityCheck()
+
+#CHECKS THE CURRENT VELOCITY AND SENDS UPDATE TO THE UI SPEED GUAGE
+func velocityCheck():
+	MessageBus.updateSpeedGauge.emit(velocity)
 
 #FUNCTION THAT SLOWS THE TRAIN WHEN RUNNING
 func friction():
