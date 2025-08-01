@@ -34,8 +34,8 @@ func increaseSpeed():
 		velocity += 1.0
 
 func smoke():
-	smokeStack.amount_ratio = velocity * 0.03
-	smokeStack.process_material.gravity.x = velocity * -5
+	smokeStack.amount_ratio = velocity * 0.1
+	smokeStack.process_material.gravity.x = velocity * -15
 
 func trainAnimation():
 	trainAnim.speed_scale = velocity * .18

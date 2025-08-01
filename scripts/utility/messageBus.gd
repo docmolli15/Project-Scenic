@@ -10,6 +10,8 @@ signal shovelCoal
 signal stationStop
 #DELETES STATION
 signal stationDelete
+#SUMMONS TUNNEL
+signal summonTunnel
 
 func _ready():
 	pass

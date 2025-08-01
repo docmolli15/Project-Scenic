@@ -19,8 +19,10 @@ text = "coal"
 layout_mode = 2
 text = "station"
 
-[node name="chooseLandscape" type="OptionButton" parent="HBoxContainer"]
+[node name="tunnel" type="Button" parent="HBoxContainer"]
 layout_mode = 2
+text = "Tunnel"
 
 [connection signal="pressed" from="HBoxContainer/shovelCoal" to="." method="_on_shovel_coal_pressed"]
 [connection signal="pressed" from="HBoxContainer/station" to="." method="_on_station_pressed"]
+[connection signal="pressed" from="HBoxContainer/tunnel" to="." method="_on_tunnel_pressed"]

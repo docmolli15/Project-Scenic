@@ -57,6 +57,7 @@ texture = ExtResource("4_i7141")
 position = Vector2(960, 540)
 
 [node name="Foreground" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.85, 0.85)
 repeat_size = Vector2(1920, 0)
 autoscroll = Vector2(-5, 0)
 
@@ -73,5 +74,10 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 wait_time = 8.0
 
+[node name="TunnelTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 32.0
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="StationTimer" to="." method="_on_station_timer_timeout"]
+[connection signal="timeout" from="TunnelTimer" to="." method="_on_tunnel_timer_timeout"]

@@ -12,6 +12,5 @@ script = ExtResource("1_twpsu")
 script = ExtResource("2_lrqlo")
 
 [node name="World" parent="." instance=ExtResource("3_lrqlo")]
-velocity = 0.0
 
 [node name="testWidget" parent="." instance=ExtResource("4_sqa0i")]

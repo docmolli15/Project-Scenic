@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://bp3cqg2gkru7c" path="res://art/player/smokeSprite.png" id="2_qhqgy"]
 
 [sub_resource type="Gradient" id="Gradient_qhqgy"]
-offsets = PackedFloat32Array(0.130782, 0.539075, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.329158, 0.329158, 0.329158, 1, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0.20614, 0.486842, 0.75, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.043956, 0.043956, 0.043956, 0.956044, 0.201911, 0.201911, 0.201911, 0.798089, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_dqkch"]
 gradient = SubResource("Gradient_qhqgy")
@@ -27,39 +27,33 @@ scale_curve = SubResource("CurveTexture_tuyoq")
 color = Color(0, 0, 0, 1)
 color_ramp = SubResource("GradientTexture1D_dqkch")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3vyb7"]
-atlas = ExtResource("1_3vyb7")
-region = Rect2(0, 0, 32, 36)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
-atlas = ExtResource("1_3vyb7")
-region = Rect2(32, 0, 32, 36)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("1_3vyb7")
-region = Rect2(64, 0, 32, 36)
+region = Rect2(0, 0, 32, 25)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
 atlas = ExtResource("1_3vyb7")
-region = Rect2(96, 0, 32, 36)
+region = Rect2(32, 0, 32, 25)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
 atlas = ExtResource("1_3vyb7")
-region = Rect2(128, 0, 32, 36)
+region = Rect2(64, 0, 32, 25)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
 atlas = ExtResource("1_3vyb7")
-region = Rect2(160, 0, 32, 36)
+region = Rect2(96, 0, 32, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjrip"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(128, 0, 32, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(160, 0, 32, 25)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fjrip"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3vyb7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g2els")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qhqgy")
 }, {
@@ -71,6 +65,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tuyoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjrip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smehm")
 }],
 "loop": true,
 "name": &"default",
@@ -84,14 +84,16 @@ script = ExtResource("1_g2els")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
+self_modulate = Color(0, 0, 0, 1)
 texture_filter = 1
-position = Vector2(7, 499)
+position = Vector2(7, 495)
 amount = 60
 texture = ExtResource("2_qhqgy")
 process_material = SubResource("ParticleProcessMaterial_fjrip")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
+show_behind_parent = true
 texture_filter = 1
 position = Vector2(0, 511)
 sprite_frames = SubResource("SpriteFrames_fjrip")
