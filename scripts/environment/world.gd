@@ -23,7 +23,12 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	animationSpeed()
+	velocityCheck()
 
+#CHECKS THE CURRENT VELOCITY AND SENDS UPDATE TO THE UI SPEED GUAGE
+func velocityCheck():
+	MessageBus.updateSpeedGauge.emit(velocity)
+	
 #FUNCTION ACTIVATED BY SHOVELING COAL
 func increaseSpeed():
 	if friction_lock == false:
@@ -115,6 +120,7 @@ func createTunnel():
 #TIMER TO TRIGGER DELETING OF TUNNEL
 func _on_tunnel_timer_timeout():
 	transitioning = false
+	friction_lock = false
 	MessageBus.deleteTunnel.emit()
 
 #START LANDSCAPE TIMER
