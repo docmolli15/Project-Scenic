@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://beltfk6nfr8v"]
+[gd_scene load_steps=14 format=3 uid="uid://beltfk6nfr8v"]
 
 [ext_resource type="Texture2D" uid="uid://cx1464uuw0pan" path="res://art/UI/map.png" id="1_mlgqr"]
+[ext_resource type="Script" uid="uid://bct37dggbjrb1" path="res://scripts/ui/map.gd" id="1_wslke"]
 [ext_resource type="Texture2D" uid="uid://q0t1lwcbb8bg" path="res://art/UI/a.png" id="2_wslke"]
 [ext_resource type="Texture2D" uid="uid://dn8oe0p2hdr43" path="res://art/UI/b.png" id="3_gw3fx"]
 [ext_resource type="Texture2D" uid="uid://dm6fnp3n5i0xa" path="res://art/UI/c.png" id="4_n1psn"]
@@ -12,32 +13,56 @@
 [ext_resource type="Texture2D" uid="uid://d1xxl74q4i3d8" path="res://art/UI/cities.png" id="10_m335s"]
 [ext_resource type="Texture2D" uid="uid://dxymscd7po4p3" path="res://art/UI/map border.png" id="11_sq6bu"]
 
+[sub_resource type="Theme" id="Theme_wslke"]
+
 [node name="map" type="Node2D"]
 top_level = true
+script = ExtResource("1_wslke")
 
 [node name="terrain" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("1_mlgqr")
 
-[node name="a" type="Sprite2D" parent="."]
+[node name="a" type="Button" parent="."]
 texture_filter = 1
-texture = ExtResource("2_wslke")
+offset_left = -93.0
+offset_top = -93.0
+offset_right = -67.0
+offset_bottom = -65.0
+theme = SubResource("Theme_wslke")
+icon = ExtResource("2_wslke")
 
-[node name="b" type="Sprite2D" parent="."]
+[node name="b" type="Button" parent="."]
 texture_filter = 1
-texture = ExtResource("3_gw3fx")
+offset_left = -17.0
+offset_top = -84.0
+offset_right = 9.0
+offset_bottom = -56.0
+icon = ExtResource("3_gw3fx")
 
-[node name="c" type="Sprite2D" parent="."]
+[node name="c" type="Button" parent="."]
 texture_filter = 1
-texture = ExtResource("4_n1psn")
+offset_left = -3.0
+offset_top = -17.0
+offset_right = 23.0
+offset_bottom = 11.0
+icon = ExtResource("4_n1psn")
 
-[node name="d" type="Sprite2D" parent="."]
+[node name="d" type="Button" parent="."]
 texture_filter = 1
-texture = ExtResource("5_c00ee")
+offset_left = 16.0
+offset_top = 38.0
+offset_right = 42.0
+offset_bottom = 66.0
+icon = ExtResource("5_c00ee")
 
-[node name="e" type="Sprite2D" parent="."]
+[node name="e" type="Button" parent="."]
 texture_filter = 1
-texture = ExtResource("6_p7tei")
+offset_left = 58.0
+offset_top = -65.0
+offset_right = 84.0
+offset_bottom = -37.0
+icon = ExtResource("6_p7tei")
 
 [node name="greenLine" type="Sprite2D" parent="."]
 texture_filter = 1

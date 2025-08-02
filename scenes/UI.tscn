@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://biaeo50jq4a"]
+[gd_scene load_steps=17 format=3 uid="uid://biaeo50jq4a"]
 
 [ext_resource type="Texture2D" uid="uid://0vjqo5jaabd4" path="res://art/UI/coalIcon.png" id="1_5en4g"]
 [ext_resource type="Script" uid="uid://dah33oao3jg3j" path="res://scripts/ui/ui.gd" id="1_ro3t7"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c035eubhofex3" path="res://art/UI/speedBarProgress.png" id="8_w7enk"]
 [ext_resource type="Texture2D" uid="uid://6jyty6yhcmc4" path="res://art/UI/speedSteam.png" id="9_ukj8e"]
 [ext_resource type="Texture2D" uid="uid://dou06ilfuonf7" path="res://art/UI/speedBarCone.png" id="9_w7enk"]
+[ext_resource type="PackedScene" uid="uid://beltfk6nfr8v" path="res://scenes/map.tscn" id="12_7paak"]
 
 [sub_resource type="Theme" id="Theme_dj8aq"]
 
@@ -108,7 +109,13 @@ layout_mode = 2
 icon = ExtResource("5_xpksx")
 metadata/_edit_use_anchors_ = true
 
+[node name="map" parent="." instance=ExtResource("12_7paak")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(1548, 963)
+
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/shovelCoal" to="." method="_on_shovel_coal_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/mapIcon" to="." method="_on_map_icon_pressed"]
 [connection signal="pressed" from="Sprite2D/HBoxContainer/Yes" to="." method="_on_yes_pressed"]
 [connection signal="pressed" from="Sprite2D/HBoxContainer/No" to="." method="_on_no_pressed"]

@@ -98,7 +98,7 @@ texture_filter = 1
 position = Vector2(0, 511)
 sprite_frames = SubResource("SpriteFrames_fjrip")
 autoplay = "default"
-frame_progress = 0.919197
+frame_progress = 0.640851
 speed_scale = 0.4
 
 [node name="Timer" type="Timer" parent="."]

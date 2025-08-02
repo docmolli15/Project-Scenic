@@ -5,6 +5,10 @@ extends Node2D
 #SPEED GUAGE VARIABLE & MAX SPEED ART
 @onready var speedGauge = %TextureProgressBar
 @onready var steam = %steam
+#MAP VARIABLE
+@onready var map = %map
+#VARIABLE TRACKING WHETHER OR NOT THE MAP IS OPEN
+var mapOpen = false
 
 func _ready() -> void:
 	MessageBus.updateSpeedGauge.connect(updateSpeedValue)
@@ -23,6 +27,7 @@ func _on_shovel_coal_pressed() -> void:
 
 #EXIT BUTTON
 func _on_quit_pressed() -> void:
+	map.visible = false
 	controlBox.visible = false
 	quitBox.visible = true
 
@@ -34,3 +39,12 @@ func _on_yes_pressed() -> void:
 func _on_no_pressed() -> void:
 	controlBox.visible = true
 	quitBox.visible = false
+
+#OPENING AND CLOSING THE MAP
+func _on_map_icon_pressed() -> void:
+	if mapOpen == false:
+		mapOpen = true
+		map.visible = true
+	else:
+		mapOpen = false
+		map.visible = false
