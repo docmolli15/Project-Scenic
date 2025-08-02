@@ -12,7 +12,6 @@ func _ready() -> void:
 #UPDATE THE VALUE WITHIN THE SPEED GAUGE
 func updateSpeedValue(velocity):
 	speedGauge.value = velocity
-	print(speedGauge.value)
 	if speedGauge.value >= (speedGauge.max_value - 1.0):
 		steam.visible = true
 	else:

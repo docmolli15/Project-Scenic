@@ -280,9 +280,6 @@ texture = ExtResource("4_i7141")
 
 [node name="player" parent="." instance=ExtResource("6_qfnet")]
 position = Vector2(960, 540)
-velocity = 0.0
-friction_lock = false
-parked = false
 
 [node name="Foreground" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0.85, 0.85)
