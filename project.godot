@@ -13,7 +13,9 @@ config_version=5
 config/name="Conducter"
 run/main_scene="uid://cb1hd6m8b1j4u"
 config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
-config/icon="res://icon.svg"
+boot_splash/show_image=false
+boot_splash/fullsize=false
+boot_splash/use_filter=false
 
 [autoload]
 
@@ -39,3 +41,4 @@ project/assembly_name="DesktopPet"
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

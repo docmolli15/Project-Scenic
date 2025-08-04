@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://biaeo50jq4a"]
+[gd_scene load_steps=16 format=3 uid="uid://biaeo50jq4a"]
 
 [ext_resource type="Texture2D" uid="uid://0vjqo5jaabd4" path="res://art/UI/coalIcon.png" id="1_5en4g"]
 [ext_resource type="Script" uid="uid://dah33oao3jg3j" path="res://scripts/ui/ui.gd" id="1_ro3t7"]
@@ -11,7 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://c035eubhofex3" path="res://art/UI/speedBarProgress.png" id="8_w7enk"]
 [ext_resource type="Texture2D" uid="uid://6jyty6yhcmc4" path="res://art/UI/speedSteam.png" id="9_ukj8e"]
 [ext_resource type="Texture2D" uid="uid://dou06ilfuonf7" path="res://art/UI/speedBarCone.png" id="9_w7enk"]
-[ext_resource type="PackedScene" uid="uid://beltfk6nfr8v" path="res://scenes/map.tscn" id="12_7paak"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ua6yw"]
+bg_color = Color(0.74978, 0.74978, 0.74978, 1)
 
 [sub_resource type="Theme" id="Theme_dj8aq"]
 
@@ -21,9 +23,6 @@ bg_color = Color(0.932619, 0, 0.224904, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5en4g"]
 bg_color = Color(0.618435, 0, 0.0253273, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ua6yw"]
-bg_color = Color(0.74978, 0.74978, 0.74978, 1)
-
 [node name="PlayerUI" type="Node2D"]
 script = ExtResource("1_ro3t7")
 
@@ -31,10 +30,17 @@ script = ExtResource("1_ro3t7")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 unique_name_in_owner = true
-offset_left = 1834.0
-offset_top = 958.0
-offset_right = 1882.0
-offset_bottom = 1077.0
+offset_left = 1835.0
+offset_top = 1003.0
+offset_right = 1892.0
+offset_bottom = 1062.0
+
+[node name="shovelCoal" type="Button" parent="CanvasLayer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_icons/icon = ExtResource("1_5en4g")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ua6yw")
+icon_alignment = 1
 
 [node name="Quit" type="Button" parent="CanvasLayer/VBoxContainer"]
 texture_filter = 1
@@ -44,18 +50,14 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_ro3t7")
 theme_override_styles/normal = SubResource("StyleBoxFlat_5en4g")
 text = "X"
 
-[node name="shovelCoal" type="Button" parent="CanvasLayer/VBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-theme_override_icons/icon = ExtResource("1_5en4g")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_ua6yw")
-icon_alignment = 1
-
 [node name="mapIcon" type="Button" parent="CanvasLayer/VBoxContainer"]
+visible = false
 layout_mode = 2
 icon = ExtResource("3_aputy")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+[node name="SpeedGauge" type="Node2D" parent="CanvasLayer"]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/SpeedGauge"]
 unique_name_in_owner = true
 top_level = true
 texture_filter = 1
@@ -72,50 +74,45 @@ texture_under = ExtResource("6_24e4x")
 texture_over = ExtResource("7_ukj8e")
 texture_progress = ExtResource("8_w7enk")
 
-[node name="cone" type="Sprite2D" parent="."]
+[node name="cone" type="Sprite2D" parent="CanvasLayer/SpeedGauge"]
 top_level = true
 texture_filter = 1
 position = Vector2(1812, 935)
 texture = ExtResource("9_w7enk")
 
-[node name="steam" type="Sprite2D" parent="."]
+[node name="steam" type="Sprite2D" parent="CanvasLayer/SpeedGauge"]
 unique_name_in_owner = true
 visible = false
 texture_filter = 1
 position = Vector2(1753, 941)
 texture = ExtResource("9_ukj8e")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Quit?" type="Sprite2D" parent="CanvasLayer"]
 unique_name_in_owner = true
 visible = false
 top_level = true
 z_as_relative = false
-position = Vector2(1788, 997)
+position = Vector2(924, 862)
 texture = ExtResource("3_75u2n")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Sprite2D"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Quit?"]
 offset_left = -80.0
 offset_top = 8.0
 offset_right = 80.0
 offset_bottom = 58.0
 
-[node name="Yes" type="Button" parent="Sprite2D/HBoxContainer"]
+[node name="Yes" type="Button" parent="CanvasLayer/Quit?/HBoxContainer"]
 layout_mode = 2
 icon = ExtResource("4_3wlde")
 metadata/_edit_use_anchors_ = true
 
-[node name="No" type="Button" parent="Sprite2D/HBoxContainer"]
+[node name="No" type="Button" parent="CanvasLayer/Quit?/HBoxContainer"]
 layout_mode = 2
 icon = ExtResource("5_xpksx")
 metadata/_edit_use_anchors_ = true
 
-[node name="map" parent="." instance=ExtResource("12_7paak")]
-unique_name_in_owner = true
-visible = false
-position = Vector2(1548, 963)
-
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/shovelCoal" to="." method="_on_shovel_coal_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/mapIcon" to="." method="_on_map_icon_pressed"]
-[connection signal="pressed" from="Sprite2D/HBoxContainer/Yes" to="." method="_on_yes_pressed"]
-[connection signal="pressed" from="Sprite2D/HBoxContainer/No" to="." method="_on_no_pressed"]
+[connection signal="pressed" from="CanvasLayer/Quit?/HBoxContainer/Yes" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="CanvasLayer/Quit?/HBoxContainer/No" to="." method="_on_no_pressed"]

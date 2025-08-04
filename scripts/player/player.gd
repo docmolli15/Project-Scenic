@@ -20,6 +20,7 @@ func _process(_delta: float) -> void:
 	trainAnimation()
 	smoke()
 
+
 #FUNCTION THAT SLOWS THE TRAIN WHEN RUNNING
 func friction():
 	if friction_lock == false:
@@ -55,6 +56,8 @@ func stop():
 		friction_lock = true
 		#USE TWEEN TO SLOW THE TRAIN TO A STOP
 		var tween = create_tween()
+		#FIRE SIGNAL TO UPDATE PLAYER LOCATION ON THE MAP
+		MessageBus.updatePlayerLocation.emit()
 		tween.tween_property(self, "velocity", 0.0, 18.0)
 		parked = true
 	else:

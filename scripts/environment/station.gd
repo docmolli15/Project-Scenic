@@ -11,5 +11,4 @@ func delete():
 	timer.start()
 
 func _on_timer_timeout() -> void:
-	print("deleted")
 	queue_free()

@@ -14,6 +14,19 @@ signal deleteTunnel
 signal selectLandscape(index)
 #UPDATES THE SPEED GAUGE IN THE UI
 signal updateSpeedGauge
+#UPDATES THE TRIP PROGRESS BAR
+signal updateProgressBar(index)
+#SETS LENGTH OF TRIP FOR THE PROGRESS BAR
+signal setTripLength(index)
+#SETS TUNNEL POSITION IN TRIP
+signal setTunnelPosition(index)
+#UPDATES PLAYER LOCATION ON THE MAP
+signal updatePlayerLocation()
+#BEGINS THE NEWEST TRIP BY PROVIDING TRIP INFORMATION
+signal sendItinerary(itinerary)
+signal resumeTrip()
+signal makeMapVisible()
+signal resetProgressBar()
 
 func _ready():
 	pass

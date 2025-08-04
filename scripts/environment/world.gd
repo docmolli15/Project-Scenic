@@ -11,6 +11,7 @@ extends Node2D
 @onready var frictionTimer = %FrictionTimer
 @onready var landscapeTimer = %LandscapeTimer
 @onready var tunnelTimer = %TunnelTimer
+var nextFrame = 0
 
 #INCOMING SIGNALS
 func _ready() -> void:
@@ -18,7 +19,7 @@ func _ready() -> void:
 	MessageBus.stationStop.connect(station)
 	MessageBus.stationStop.connect(stop)
 	MessageBus.summonTunnel.connect(createTunnel)
-	MessageBus.selectLandscape.connect(landscapeTimerStart)
+	MessageBus.selectLandscape.connect(setFrame)
 	friction()
 
 func _process(_delta: float) -> void:
@@ -34,11 +35,17 @@ func increaseSpeed():
 	if friction_lock == false:
 		velocity += 0.2
 
+func setFrame(index):
+	nextFrame = index
+
 #FUNCTION THAT SLOWS THE TERRAIN WHEN RUNNING
 func friction():
 	#IF VARIABLE IS FALSE
 	if friction_lock == false:
+		#UPDATES THE PROGRESS BAR IN THE UI
+		MessageBus.updateProgressBar.emit(velocity)
 		#KEEPS SPEED WITHIN A CERTAIN RANGE
+		#Study up on clamp functions
 		if velocity < 28.0 and velocity > 16.0:
 			velocity -= 0.2
 			#CEILING TO THE SPEED, CORRECTED IF COAL SHOVELING PUTS SPEED OUTSIDE RANGE
@@ -60,7 +67,7 @@ func animationSpeed():
 		if child is Parallax2D:
 			#CONTROL SPEED THROUGH AUTOSCROLL
 			child.autoscroll.x = base * velocity
-			#INCREASE BASE WITH EACH LAYER
+			#INCREASE BASE WITH EACH LAYER, MOVING RIGHT TO LEFT GOES NEGATIVE
 			base -= 2
 
 #PERIODICALLY APPLYING FRICTION
@@ -94,7 +101,11 @@ func station():
 		#POSITION IT OUTSIDE OF THE CAMERA'S RIGHT BORDER AND MOVE IT IN TO KEEP PACE WITH THE SLOWING PARALLAX
 		new_station.global_position = Vector2(2000, 1060)
 		var tween = get_tree().create_tween()
-		tween.tween_property(new_station, "global_position", Vector2(960, 1060), 18.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+		tween.tween_property(
+			new_station, 
+			"global_position", 
+			Vector2(960, 1060), 18.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD
+		)
 	else:
 	#IF ALREADY AT A STATION, TRIGGER THE PROCESS OF LEAVING AND DELETING THE STATION
 		MessageBus.stationDelete.emit()
@@ -116,17 +127,21 @@ func createTunnel():
 		var tween = get_tree().create_tween()
 		tween.tween_property(new_tunnel, "global_position", Vector2(-2000, 1020), 32.0)
 		tunnelTimer.start()
+		landscapeTimerStart()
+		print('fired')
 
 #TIMER TO TRIGGER DELETING OF TUNNEL
 func _on_tunnel_timer_timeout():
-	transitioning = false
-	friction_lock = false
-	MessageBus.deleteTunnel.emit()
+	if parked == false:
+		transitioning = false
+		friction_lock = false
+		MessageBus.deleteTunnel.emit()
 
 #START LANDSCAPE TIMER
-func landscapeTimerStart(index):
+func landscapeTimerStart():
 	#SET THE INCOMING LANDSCAPE FRAMES
-	landscapeFrame = index
+	landscapeFrame = nextFrame
+	print('landscapeFrame', landscapeFrame)
 	#START A TIMER TO COINCIDE WITH THE TUNNEL OBSCURING THE SCENE
 	landscapeTimer.start()
 

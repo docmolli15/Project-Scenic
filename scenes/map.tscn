@@ -1,85 +1,232 @@
-[gd_scene load_steps=14 format=3 uid="uid://beltfk6nfr8v"]
+[gd_scene load_steps=22 format=3 uid="uid://beltfk6nfr8v"]
 
-[ext_resource type="Texture2D" uid="uid://cx1464uuw0pan" path="res://art/UI/map.png" id="1_mlgqr"]
+[ext_resource type="Texture2D" uid="uid://cx1464uuw0pan" path="res://art/UI/maps/map.png" id="1_mlgqr"]
 [ext_resource type="Script" uid="uid://bct37dggbjrb1" path="res://scripts/ui/map.gd" id="1_wslke"]
-[ext_resource type="Texture2D" uid="uid://q0t1lwcbb8bg" path="res://art/UI/a.png" id="2_wslke"]
-[ext_resource type="Texture2D" uid="uid://dn8oe0p2hdr43" path="res://art/UI/b.png" id="3_gw3fx"]
-[ext_resource type="Texture2D" uid="uid://dm6fnp3n5i0xa" path="res://art/UI/c.png" id="4_n1psn"]
-[ext_resource type="Texture2D" uid="uid://bp7ek0hsemv2y" path="res://art/UI/d.png" id="5_c00ee"]
-[ext_resource type="Texture2D" uid="uid://c4ueqqfkdfc7d" path="res://art/UI/e.png" id="6_p7tei"]
-[ext_resource type="Texture2D" uid="uid://bt0xav6wrvnk5" path="res://art/UI/greenLine.png" id="7_c70he"]
-[ext_resource type="Texture2D" uid="uid://bwxx5us0836g6" path="res://art/UI/purpleLine.png" id="8_mo32q"]
-[ext_resource type="Texture2D" uid="uid://b6sejogosvf8n" path="res://art/UI/redLine.png" id="9_6k6j1"]
-[ext_resource type="Texture2D" uid="uid://d1xxl74q4i3d8" path="res://art/UI/cities.png" id="10_m335s"]
-[ext_resource type="Texture2D" uid="uid://dxymscd7po4p3" path="res://art/UI/map border.png" id="11_sq6bu"]
+[ext_resource type="Texture2D" uid="uid://q0t1lwcbb8bg" path="res://art/UI/maps/a.png" id="2_wslke"]
+[ext_resource type="Texture2D" uid="uid://dn8oe0p2hdr43" path="res://art/UI/maps/b.png" id="3_gw3fx"]
+[ext_resource type="Texture2D" uid="uid://cfekab65w8tcx" path="res://art/UI/maps/greenLine.png" id="3_sq6bu"]
+[ext_resource type="Texture2D" uid="uid://cl3jyfokwbvu1" path="res://art/UI/maps/purpleLine.png" id="4_4b7dj"]
+[ext_resource type="Texture2D" uid="uid://dm6fnp3n5i0xa" path="res://art/UI/maps/c.png" id="4_n1psn"]
+[ext_resource type="Texture2D" uid="uid://c0n172rfvuixs" path="res://art/UI/maps/redLine.png" id="5_2cfcp"]
+[ext_resource type="Texture2D" uid="uid://bp7ek0hsemv2y" path="res://art/UI/maps/d.png" id="5_c00ee"]
+[ext_resource type="Texture2D" uid="uid://c4ueqqfkdfc7d" path="res://art/UI/maps/e.png" id="6_p7tei"]
+[ext_resource type="Texture2D" uid="uid://764wfascn7na" path="res://art/UI/maps/cities.png" id="10_m335s"]
+[ext_resource type="Texture2D" uid="uid://dxymscd7po4p3" path="res://art/UI/maps/map border.png" id="11_sq6bu"]
+[ext_resource type="Texture2D" uid="uid://d1xxl74q4i3d8" path="res://art/UI/maps/city.png" id="13_gw3fx"]
+[ext_resource type="Texture2D" uid="uid://chttdx8rkvfyo" path="res://art/UI/maps/redLine1.png" id="14_sq6bu"]
+[ext_resource type="Texture2D" uid="uid://cyxsrdxvro2n3" path="res://art/UI/maps/redLine2.png" id="15_4b7dj"]
+[ext_resource type="Texture2D" uid="uid://dt0x1m26kw21p" path="res://art/UI/maps/redLine3.png" id="16_2cfcp"]
+[ext_resource type="Texture2D" uid="uid://bc720nh11plba" path="res://art/UI/maps/greenLine1.png" id="17_y2ir2"]
+[ext_resource type="Texture2D" uid="uid://dfn7nwaeggug8" path="res://art/UI/maps/greenLine2.png" id="18_5u2yt"]
+[ext_resource type="Texture2D" uid="uid://wmc3mu77cxsd" path="res://art/UI/maps/greenLine3.png" id="19_30iet"]
+[ext_resource type="Texture2D" uid="uid://xusi5kr64yys" path="res://art/UI/maps/purpleLine1.png" id="20_mkblt"]
 
 [sub_resource type="Theme" id="Theme_wslke"]
 
-[node name="map" type="Node2D"]
+[node name="maps" type="Node2D"]
 top_level = true
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_wslke")
 
-[node name="terrain" type="Sprite2D" parent="."]
+[node name="mainMap" type="Node2D" parent="."]
+position = Vector2(-339, -109)
+
+[node name="Border" type="Sprite2D" parent="mainMap"]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("11_sq6bu")
+
+[node name="Terrain" type="Sprite2D" parent="mainMap"]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("1_mlgqr")
+
+[node name="CityButtons" type="Node2D" parent="mainMap"]
+
+[node name="A" type="Button" parent="mainMap/CityButtons"]
+unique_name_in_owner = true
+texture_filter = 1
+offset_left = -188.0
+offset_top = -190.0
+offset_right = -162.0
+offset_bottom = -162.0
+scale = Vector2(2, 2)
+theme = SubResource("Theme_wslke")
+icon = ExtResource("2_wslke")
+metadata/_edit_use_anchors_ = true
+
+[node name="CityA" type="Sprite2D" parent="mainMap/CityButtons"]
+texture_filter = 1
+position = Vector2(-149, -95)
+scale = Vector2(2, 2)
+texture = ExtResource("13_gw3fx")
+
+[node name="B" type="Button" parent="mainMap/CityButtons"]
+unique_name_in_owner = true
+texture_filter = 1
+offset_left = -7.0
+offset_top = -31.0
+offset_right = 19.0
+offset_bottom = -3.0
+scale = Vector2(2, 2)
+icon = ExtResource("3_gw3fx")
+metadata/_edit_use_anchors_ = true
+
+[node name="CityB" type="Sprite2D" parent="mainMap/CityButtons"]
+texture_filter = 1
+position = Vector2(-19, 21)
+scale = Vector2(2, 2)
+texture = ExtResource("13_gw3fx")
+
+[node name="C" type="Button" parent="mainMap/CityButtons"]
+unique_name_in_owner = true
+texture_filter = 1
+offset_left = -35.0
+offset_top = -168.0
+offset_right = -9.0
+offset_bottom = -140.0
+scale = Vector2(2, 2)
+icon = ExtResource("4_n1psn")
+metadata/_edit_use_anchors_ = true
+
+[node name="CityC" type="Sprite2D" parent="mainMap/CityButtons"]
+texture_filter = 1
+position = Vector2(25, -177)
+scale = Vector2(2, 2)
+texture = ExtResource("13_gw3fx")
+
+[node name="D" type="Button" parent="mainMap/CityButtons"]
+unique_name_in_owner = true
+texture_filter = 1
+offset_left = 31.0
+offset_top = 74.0
+offset_right = 57.0
+offset_bottom = 102.0
+scale = Vector2(2, 2)
+icon = ExtResource("5_c00ee")
+metadata/_edit_use_anchors_ = true
+
+[node name="CityD" type="Sprite2D" parent="mainMap/CityButtons"]
+texture_filter = 1
+position = Vector2(45, 177)
+scale = Vector2(2, 2)
+texture = ExtResource("13_gw3fx")
+
+[node name="E" type="Button" parent="mainMap/CityButtons"]
+unique_name_in_owner = true
+texture_filter = 1
+offset_left = 115.0
+offset_top = -127.0
+offset_right = 141.0
+offset_bottom = -99.0
+scale = Vector2(2, 2)
+icon = ExtResource("6_p7tei")
+metadata/_edit_use_anchors_ = true
+
+[node name="CityE" type="Sprite2D" parent="mainMap/CityButtons"]
+texture_filter = 1
+position = Vector2(177, -63)
+scale = Vector2(2, 2)
+texture = ExtResource("13_gw3fx")
+
+[node name="Routes" type="Node2D" parent="mainMap"]
+
+[node name="Red1" type="Sprite2D" parent="mainMap/Routes"]
+unique_name_in_owner = true
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("14_sq6bu")
+
+[node name="Red2" type="Sprite2D" parent="mainMap/Routes"]
+unique_name_in_owner = true
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("15_4b7dj")
+
+[node name="Red3" type="Sprite2D" parent="mainMap/Routes"]
+unique_name_in_owner = true
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("16_2cfcp")
+
+[node name="Green1" type="Sprite2D" parent="mainMap/Routes"]
+unique_name_in_owner = true
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("17_y2ir2")
+
+[node name="Green2" type="Sprite2D" parent="mainMap/Routes"]
+unique_name_in_owner = true
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("18_5u2yt")
+
+[node name="Green3" type="Sprite2D" parent="mainMap/Routes"]
+unique_name_in_owner = true
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("19_30iet")
+
+[node name="Purple1" type="Sprite2D" parent="mainMap/Routes"]
+unique_name_in_owner = true
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("20_mkblt")
+
+[node name="tripMap" type="Node2D" parent="."]
+visible = false
+
+[node name="terrain" type="Sprite2D" parent="tripMap"]
 texture_filter = 1
 texture = ExtResource("1_mlgqr")
 
-[node name="a" type="Button" parent="."]
+[node name="greenLine" type="Sprite2D" parent="tripMap"]
 texture_filter = 1
-offset_left = -93.0
-offset_top = -93.0
-offset_right = -67.0
-offset_bottom = -65.0
-theme = SubResource("Theme_wslke")
-icon = ExtResource("2_wslke")
+texture = ExtResource("3_sq6bu")
 
-[node name="b" type="Button" parent="."]
+[node name="purpleLine" type="Sprite2D" parent="tripMap"]
 texture_filter = 1
-offset_left = -17.0
-offset_top = -84.0
-offset_right = 9.0
-offset_bottom = -56.0
-icon = ExtResource("3_gw3fx")
+texture = ExtResource("4_4b7dj")
 
-[node name="c" type="Button" parent="."]
+[node name="redLine" type="Sprite2D" parent="tripMap"]
 texture_filter = 1
-offset_left = -3.0
-offset_top = -17.0
-offset_right = 23.0
-offset_bottom = 11.0
-icon = ExtResource("4_n1psn")
+texture = ExtResource("5_2cfcp")
 
-[node name="d" type="Button" parent="."]
+[node name="a" type="Sprite2D" parent="tripMap"]
 texture_filter = 1
-offset_left = 16.0
-offset_top = 38.0
-offset_right = 42.0
-offset_bottom = 66.0
-icon = ExtResource("5_c00ee")
+position = Vector2(-83, -69)
+texture = ExtResource("2_wslke")
 
-[node name="e" type="Button" parent="."]
+[node name="b" type="Sprite2D" parent="tripMap"]
 texture_filter = 1
-offset_left = 58.0
-offset_top = -65.0
-offset_right = 84.0
-offset_bottom = -37.0
-icon = ExtResource("6_p7tei")
+position = Vector2(5, -6)
+texture = ExtResource("3_gw3fx")
 
-[node name="greenLine" type="Sprite2D" parent="."]
+[node name="c" type="Sprite2D" parent="tripMap"]
 texture_filter = 1
-texture = ExtResource("7_c70he")
+position = Vector2(-1, -72)
+texture = ExtResource("4_n1psn")
 
-[node name="purpleLine" type="Sprite2D" parent="."]
+[node name="d" type="Sprite2D" parent="tripMap"]
 texture_filter = 1
-texture = ExtResource("8_mo32q")
+position = Vector2(30, 60)
+texture = ExtResource("5_c00ee")
 
-[node name="redLine" type="Sprite2D" parent="."]
+[node name="e" type="Sprite2D" parent="tripMap"]
 texture_filter = 1
-texture = ExtResource("9_6k6j1")
+position = Vector2(76, -46)
+texture = ExtResource("6_p7tei")
 
-[node name="cities" type="Sprite2D" parent="."]
+[node name="cities" type="Sprite2D" parent="tripMap"]
 texture_filter = 1
 texture = ExtResource("10_m335s")
 
-[node name="border" type="Sprite2D" parent="."]
+[node name="border" type="Sprite2D" parent="tripMap"]
 texture_filter = 1
 texture = ExtResource("11_sq6bu")
+
+[connection signal="pressed" from="mainMap/CityButtons/A" to="." method="_on_a_pressed"]
+[connection signal="pressed" from="mainMap/CityButtons/B" to="." method="_on_b_pressed"]
+[connection signal="pressed" from="mainMap/CityButtons/C" to="." method="_on_c_pressed"]
+[connection signal="pressed" from="mainMap/CityButtons/D" to="." method="_on_d_pressed"]
+[connection signal="pressed" from="mainMap/CityButtons/E" to="." method="_on_e_pressed"]

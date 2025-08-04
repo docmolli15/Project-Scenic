@@ -14,6 +14,6 @@ script = ExtResource("2_lrqlo")
 
 [node name="World" parent="." instance=ExtResource("3_lrqlo")]
 
-[node name="testWidget" parent="." instance=ExtResource("4_sqa0i")]
-
 [node name="PlayerUI" parent="." instance=ExtResource("5_jh1ax")]
+
+[node name="testWidget" parent="." instance=ExtResource("4_sqa0i")]

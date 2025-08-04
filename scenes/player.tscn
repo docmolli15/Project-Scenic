@@ -5,14 +5,14 @@
 [ext_resource type="Texture2D" uid="uid://bp3cqg2gkru7c" path="res://art/player/smokeSprite.png" id="2_qhqgy"]
 
 [sub_resource type="Gradient" id="Gradient_qhqgy"]
-offsets = PackedFloat32Array(0.20614, 0.486842, 0.75, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.043956, 0.043956, 0.043956, 0.956044, 0.201911, 0.201911, 0.201911, 0.798089, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0.416667, 1)
+colors = PackedColorArray(0.471441, 0.471441, 0.471441, 0.528559, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_dqkch"]
 gradient = SubResource("Gradient_qhqgy")
 
 [sub_resource type="Curve" id="Curve_qlg0r"]
-_data = [Vector2(0, 0.327586), 0.0, 0.0, 0, 0, Vector2(0.445636, 1), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.264559), 0.0, 0.0, 0, 0, Vector2(1, 0.956739), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_tuyoq"]
@@ -23,8 +23,9 @@ particle_flag_disable_z = true
 radial_velocity_min = 7.99998
 radial_velocity_max = 7.99998
 gravity = Vector3(0, -45, -0.69)
+scale_max = 4.0
 scale_curve = SubResource("CurveTexture_tuyoq")
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0.894118)
 color_ramp = SubResource("GradientTexture1D_dqkch")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
@@ -86,7 +87,7 @@ script = ExtResource("1_g2els")
 unique_name_in_owner = true
 self_modulate = Color(0, 0, 0, 1)
 texture_filter = 1
-position = Vector2(7, 495)
+position = Vector2(7, 497)
 amount = 60
 texture = ExtResource("2_qhqgy")
 process_material = SubResource("ParticleProcessMaterial_fjrip")
