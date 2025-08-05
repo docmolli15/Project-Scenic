@@ -45,7 +45,7 @@ func friction():
 		#UPDATES THE PROGRESS BAR IN THE UI
 		MessageBus.updateProgressBar.emit(velocity)
 		#KEEPS SPEED WITHIN A CERTAIN RANGE
-		#Study up on clamp functions
+		# Study up on clamp functions
 		if velocity < 28.0 and velocity > 16.0:
 			velocity -= 0.2
 			#CEILING TO THE SPEED, CORRECTED IF COAL SHOVELING PUTS SPEED OUTSIDE RANGE
