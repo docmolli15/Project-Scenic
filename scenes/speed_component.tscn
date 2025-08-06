@@ -4,3 +4,8 @@
 
 [node name="SpeedComponent" type="Node2D"]
 script = ExtResource("1_f88dc")
+
+[node name="FrictionTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[connection signal="timeout" from="FrictionTimer" to="." method="_cruise"]
