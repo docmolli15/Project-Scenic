@@ -1,33 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://cgl0mqgmt2s56"]
+[gd_scene load_steps=11 format=3 uid="uid://cgl0mqgmt2s56"]
 
 [ext_resource type="Texture2D" uid="uid://oicxgv2ekuku" path="res://art/player/engine.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://bkbfmqmaj4ogf" path="res://scripts/player/TrainCar.gd" id="1_g2els"]
 [ext_resource type="PackedScene" uid="uid://ux40hv8cirwh" path="res://scenes/speed_component.tscn" id="2_ke7dt"]
-[ext_resource type="Texture2D" uid="uid://bp3cqg2gkru7c" path="res://art/player/smokeSprite.png" id="2_qhqgy"]
-
-[sub_resource type="Gradient" id="Gradient_qhqgy"]
-offsets = PackedFloat32Array(0.416667, 1)
-colors = PackedColorArray(0.471441, 0.471441, 0.471441, 0.528559, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_dqkch"]
-gradient = SubResource("Gradient_qhqgy")
-
-[sub_resource type="Curve" id="Curve_qlg0r"]
-_data = [Vector2(0, 0.264559), 0.0, 0.0, 0, 0, Vector2(1, 0.956739), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_tuyoq"]
-curve = SubResource("Curve_qlg0r")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fjrip"]
-particle_flag_disable_z = true
-radial_velocity_min = 7.99998
-radial_velocity_max = 7.99998
-gravity = Vector3(0, -45, -0.69)
-scale_max = 4.0
-scale_curve = SubResource("CurveTexture_tuyoq")
-color = Color(0, 0, 0, 0.894118)
-color_ramp = SubResource("GradientTexture1D_dqkch")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("1_3vyb7")
@@ -86,15 +61,6 @@ script = ExtResource("1_g2els")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-unique_name_in_owner = true
-self_modulate = Color(0, 0, 0, 1)
-texture_filter = 1
-position = Vector2(7, 497)
-amount = 60
-texture = ExtResource("2_qhqgy")
-process_material = SubResource("ParticleProcessMaterial_fjrip")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 show_behind_parent = true
@@ -104,12 +70,30 @@ sprite_frames = SubResource("SpriteFrames_fjrip")
 autoplay = "default"
 frame_progress = 0.640851
 
-[node name="Button" type="Button" parent="."]
-offset_left = 53.0
-offset_top = 487.0
-offset_right = 141.0
-offset_bottom = 518.0
-text = "add speed"
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 8.0
+offset_top = 401.0
+offset_right = 132.0
+offset_bottom = 441.0
+
+[node name="Coal" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "coal"
+
+[node name="Arrive" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "arrive"
+
+[node name="Depart" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "depart"
+
+[node name="Tunnel" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "tunnel"
 
 [connection signal="speed_adjusted" from="SpeedComponent" to="." method="_on_speed_component_speed_adjusted"]
-[connection signal="pressed" from="Button" to="SpeedComponent" method="speed_up"]
+[connection signal="pressed" from="HBoxContainer/Coal" to="SpeedComponent" method="speed_up"]
+[connection signal="pressed" from="HBoxContainer/Arrive" to="SpeedComponent" method="arrive"]
+[connection signal="pressed" from="HBoxContainer/Depart" to="SpeedComponent" method="depart"]
+[connection signal="pressed" from="HBoxContainer/Tunnel" to="SpeedComponent" method="transition"]

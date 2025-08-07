@@ -12,7 +12,6 @@ class_name TrainCar extends Node2D
 # Enum us PascalCase for name but CONSTANT_CASE for members 'MyEnum = {FIRST, SECOND}'
 
 @onready var TrainAnim = %AnimatedSprite2D
-@onready var SmokeStack = %GPUParticles2D
 
 @export var current_speed: float
 
@@ -28,10 +27,6 @@ func _on_speed_component_speed_adjusted(speed: Variant) -> void:
 func set_animation_speed():
 	TrainAnim.speed_scale = current_speed
 	print(TrainAnim.speed_scale)
-
-#func smoke():
-	#SmokeStack.amount_ratio = current_speed * 0.1
-	#SmokeStack.process_material.gravity.x = current_speed * -15
 
 #PERIODICALLY APPLYING FRICTION
 #func _on_timer_timeout() -> void:
