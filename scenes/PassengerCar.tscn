@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://vuyffspygbq0"]
-
-[ext_resource type="Script" uid="uid://bkbfmqmaj4ogf" path="res://scripts/player/TrainCar.gd" id="1_6db01"]
-
-[node name="TrainCar" type="Node2D"]
-script = ExtResource("1_6db01")
-metadata/_custom_type_script = "uid://bkbfmqmaj4ogf"

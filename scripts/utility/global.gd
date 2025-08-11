@@ -1,8 +1,6 @@
 extends Node
 
-var player_location = 4
-var enroute = false
-var firstTime = true
-#GLOBAL SCRIPT, CURRENTLY UNUSED
+var current_speed: float
+
 func _ready():
 	pass

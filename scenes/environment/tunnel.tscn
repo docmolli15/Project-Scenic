@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://ybgh7hy0sk50"]
+
+[ext_resource type="Script" uid="uid://dd633l6egdbm3" path="res://scripts/environment/tunnel.gd" id="1_sitcv"]
+[ext_resource type="Texture2D" uid="uid://cgalsqoroh1vt" path="res://art/landscapes/tunnelFade.png" id="2_mv5om"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_q1d3g"]
+polygon = PackedVector2Array(-1128, -70, -1133, 62, 1139, 67, 1123, -78)
+
+[node name="tunnel" type="Node2D"]
+z_index = 20
+script = ExtResource("1_sitcv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_mv5om")
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 40.0
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+z_index = 5
+occluder = SubResource("OccluderPolygon2D_q1d3g")
+
+[connection signal="timeout" from="Timer" to="." method="delete"]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://ux40hv8cirwh"]
+
+[ext_resource type="Script" uid="uid://bai46isun2lyg" path="res://scripts/utility/speed_component.gd" id="1_f88dc"]
+
+[node name="SpeedComponent" type="Node2D"]
+script = ExtResource("1_f88dc")
+
+[node name="UpdateTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.2
+
+[node name="CruiseTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.2
+
+[node name="TunnelTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 12.0
+
+[connection signal="timeout" from="UpdateTimer" to="." method="_update_speed"]
+[connection signal="timeout" from="CruiseTimer" to="." method="_cruise"]
+[connection signal="timeout" from="TunnelTimer" to="." method="transitioned"]

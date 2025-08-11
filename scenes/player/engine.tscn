@@ -1,0 +1,147 @@
+[gd_scene load_steps=20 format=3 uid="uid://cgl0mqgmt2s56"]
+
+[ext_resource type="Script" uid="uid://bkbfmqmaj4ogf" path="res://scripts/player/engine.gd" id="1_8vtrv"]
+[ext_resource type="Texture2D" uid="uid://bp3cqg2gkru7c" path="res://art/player/smokeSprite.png" id="2_7xwl4"]
+[ext_resource type="PackedScene" uid="uid://ux40hv8cirwh" path="res://scenes/utility/speed_component.tscn" id="2_rvm6x"]
+[ext_resource type="Texture2D" uid="uid://oicxgv2ekuku" path="res://art/player/engine.png" id="3_7yq1s"]
+[ext_resource type="Script" uid="uid://benmtupuslq5n" path="res://scripts/player/smoke_stack.gd" id="3_jt7g1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
+atlas = ExtResource("3_7yq1s")
+region = Rect2(0, 0, 32, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
+atlas = ExtResource("3_7yq1s")
+region = Rect2(32, 0, 32, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
+atlas = ExtResource("3_7yq1s")
+region = Rect2(64, 0, 32, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
+atlas = ExtResource("3_7yq1s")
+region = Rect2(96, 0, 32, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjrip"]
+atlas = ExtResource("3_7yq1s")
+region = Rect2(128, 0, 32, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
+atlas = ExtResource("3_7yq1s")
+region = Rect2(160, 0, 32, 25)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fjrip"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhqgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqkch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlg0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuyoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjrip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smehm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_vt5c8"]
+offsets = PackedFloat32Array(0.416667, 1)
+colors = PackedColorArray(0.471441, 0.471441, 0.471441, 0.528559, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dqkch"]
+gradient = SubResource("Gradient_vt5c8")
+
+[sub_resource type="Curve" id="Curve_vw60e"]
+_data = [Vector2(0, 0.264559), 0.0, 0.0, 0, 0, Vector2(1, 0.956739), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_tuyoq"]
+curve = SubResource("Curve_vw60e")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lkvyd"]
+particle_flag_disable_z = true
+radial_velocity_min = 7.99998
+radial_velocity_max = 7.99998
+gravity = Vector3(0, -45, -0.69)
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_tuyoq")
+color = Color(0, 0, 0, 0.894118)
+color_ramp = SubResource("GradientTexture1D_dqkch")
+
+[sub_resource type="Gradient" id="Gradient_8vtrv"]
+offsets = PackedFloat32Array(0.0367647, 0.0919118, 0.180147, 0.433824, 0.665441)
+colors = PackedColorArray(1, 0.926708, 0.838175, 1, 0.843511, 0.781689, 0.70701, 1, 0.633588, 0.587151, 0.531057, 1, 0.255725, 0.236983, 0.214342, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rvm6x"]
+gradient = SubResource("Gradient_8vtrv")
+fill = 1
+fill_from = Vector2(0.504274, 0.495726)
+
+[node name="Engine" type="Node2D"]
+z_index = 10
+script = ExtResource("1_8vtrv")
+
+[node name="SpeedComponent" parent="." instance=ExtResource("2_rvm6x")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+show_behind_parent = true
+texture_filter = 1
+position = Vector2(0, 511)
+sprite_frames = SubResource("SpriteFrames_fjrip")
+autoplay = "default"
+frame_progress = 0.640851
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 8.0
+offset_top = 401.0
+offset_right = 132.0
+offset_bottom = 441.0
+
+[node name="Arrive" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "arrive"
+
+[node name="Depart" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "depart"
+
+[node name="Tunnel" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "tunnel"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+position = Vector2(7, 497)
+amount = 60
+texture = ExtResource("2_7xwl4")
+process_material = SubResource("ParticleProcessMaterial_lkvyd")
+script = ExtResource("3_jt7g1")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-8, 508)
+scale = Vector2(0.59375, 0.578125)
+shadow_enabled = true
+shadow_filter = 1
+texture = SubResource("GradientTexture2D_rvm6x")
+
+[connection signal="speed_adjusted" from="SpeedComponent" to="." method="_on_speed_component_speed_adjusted"]
+[connection signal="pressed" from="HBoxContainer/Arrive" to="SpeedComponent" method="arrive"]
+[connection signal="pressed" from="HBoxContainer/Depart" to="SpeedComponent" method="depart"]
+[connection signal="pressed" from="HBoxContainer/Tunnel" to="SpeedComponent" method="transition"]

@@ -19,7 +19,7 @@ boot_splash/use_filter=false
 
 [autoload]
 
-MessageBus="*res://scripts/utility/messageBus.gd"
+MessageBus="*res://scripts/utility/message_bus.gd"
 Global="*res://scripts/utility/global.gd"
 
 [display]

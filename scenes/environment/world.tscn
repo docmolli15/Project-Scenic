@@ -1,11 +1,19 @@
-[gd_scene load_steps=27 format=3 uid="uid://b1quvsltlp4xo"]
+[gd_scene load_steps=30 format=3 uid="uid://b1quvsltlp4xo"]
 
-[ext_resource type="Script" uid="uid://b1my4rfrir3hv" path="res://scripts/environment/world.gd" id="1_i7141"]
 [ext_resource type="Texture2D" uid="uid://c3nfaqvgj4n21" path="res://art/landscapes/farground.png" id="1_k0juu"]
+[ext_resource type="Script" uid="uid://bbxpr5wfm6oup" path="res://scripts/utility/scroll_component.gd" id="1_tmq7g"]
+[ext_resource type="Script" uid="uid://dbfjrlxd5nebi" path="res://scripts/environment/day_night_cycle.gd" id="2_43fak"]
 [ext_resource type="Texture2D" uid="uid://dobwtago2hq6q" path="res://art/landscapes/background.png" id="2_71j4m"]
 [ext_resource type="Texture2D" uid="uid://8iof8eucy5yo" path="res://art/landscapes/midground.png" id="3_qfnet"]
 [ext_resource type="Texture2D" uid="uid://bwk5ljrotxrr7" path="res://art/landscapes/track.png" id="4_i7141"]
 [ext_resource type="Texture2D" uid="uid://brxs8dud3mr0y" path="res://art/landscapes/foreground.png" id="5_71j4m"]
+
+[sub_resource type="Gradient" id="Gradient_scdbs"]
+offsets = PackedFloat32Array(0, 0.221831, 0.323944, 0.440141, 0.535211, 0.658451, 1)
+colors = PackedColorArray(0.192157, 0.180392, 0.647059, 1, 0.217758, 0.206366, 0.658244, 1, 0.457277, 0.309744, 0.702753, 1, 0.811765, 0.462745, 0.768627, 1, 0.934013, 0.732336, 0.591729, 1, 0.991612, 0.965975, 0.948101, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xrntt"]
+gradient = SubResource("Gradient_scdbs")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i7141"]
 atlas = ExtResource("1_k0juu")
@@ -152,9 +160,17 @@ animations = [{
 }]
 
 [node name="World" type="Node2D"]
-script = ExtResource("1_i7141")
+z_index = 5
+script = ExtResource("1_tmq7g")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.398346, 0.450271, 0.980181, 1)
+script = ExtResource("2_43fak")
+gradient = SubResource("GradientTexture1D_xrntt")
+cycle_speed = 0.01
 
 [node name="Farground" type="Parallax2D" parent="."]
+unique_name_in_owner = true
 repeat_size = Vector2(1920, 0)
 autoscroll = Vector2(-1, 0)
 
@@ -164,6 +180,7 @@ position = Vector2(960, 540)
 sprite_frames = SubResource("SpriteFrames_o8fc1")
 
 [node name="Background" type="Parallax2D" parent="."]
+unique_name_in_owner = true
 scroll_scale = Vector2(10, 10)
 repeat_size = Vector2(1920, 0)
 autoscroll = Vector2(-2, 0)
@@ -174,6 +191,7 @@ position = Vector2(960, 540)
 sprite_frames = SubResource("SpriteFrames_oo54l")
 
 [node name="Midground" type="Parallax2D" parent="."]
+unique_name_in_owner = true
 repeat_size = Vector2(1920, 0)
 autoscroll = Vector2(-3, 0)
 
@@ -182,9 +200,11 @@ texture_filter = 1
 position = Vector2(960, 540)
 sprite_frames = SubResource("SpriteFrames_navra")
 
-[node name="POIs" type="Node2D" parent="."]
+[node name="PointOfInterest" type="Node2D" parent="."]
+unique_name_in_owner = true
 
 [node name="Tracks" type="Parallax2D" parent="."]
+unique_name_in_owner = true
 repeat_size = Vector2(1920, 0)
 autoscroll = Vector2(-4, 0)
 
@@ -194,6 +214,8 @@ position = Vector2(960, 540)
 texture = ExtResource("4_i7141")
 
 [node name="Foreground" type="Parallax2D" parent="."]
+unique_name_in_owner = true
+z_index = 15
 scroll_scale = Vector2(0.85, 0.85)
 repeat_size = Vector2(1920, 0)
 autoscroll = Vector2(-5, 0)
@@ -202,18 +224,3 @@ autoscroll = Vector2(-5, 0)
 texture_filter = 1
 position = Vector2(960, 540)
 sprite_frames = SubResource("SpriteFrames_ggc52")
-
-[node name="FrictionTimer" type="Timer" parent="."]
-unique_name_in_owner = true
-
-[node name="TunnelTimer" type="Timer" parent="."]
-unique_name_in_owner = true
-wait_time = 32.0
-
-[node name="LandscapeTimer" type="Timer" parent="."]
-unique_name_in_owner = true
-wait_time = 14.0
-
-[connection signal="timeout" from="FrictionTimer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="TunnelTimer" to="." method="_on_tunnel_timer_timeout"]
-[connection signal="timeout" from="LandscapeTimer" to="." method="_on_landscape_timer_timeout"]

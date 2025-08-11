@@ -10,34 +10,29 @@ extends Node2D
 var tripOver = false
 
 func _ready() -> void:
-	MessageBus.updateSpeedGauge.connect(updateSpeedValue)
+	pass
 
 
 func _process(_delta):
-	pass
+	update_speed_value()
 
-#UPDATE THE VALUE WITHIN THE SPEED GAUGE
-func updateSpeedValue(velocity):
-	speedGauge.value = velocity
-	if speedGauge.value >= (speedGauge.max_value - 3.0):
+func update_speed_value():
+	speedGauge.value = Global.current_speed
+	if speedGauge.value >= (speedGauge.max_value - 1.0):
 		steam.visible = true
 	else:
 		steam.visible = false
 
-#SHOVEL COAL BUTTON FOR INCREASING SPEED
 func _on_shovel_coal_pressed() -> void:
-	MessageBus.shovelCoal.emit()
+	MessageBus.sped_up.emit()
 
-#EXIT BUTTON
 func _on_quit_pressed() -> void:
 	controlBox.visible = false
 	quitBox.visible = true
 
-#QUIT
 func _on_yes_pressed() -> void:
 	get_tree().quit()
 
-#GO BACK
 func _on_no_pressed() -> void:
 	controlBox.visible = true
 	quitBox.visible = false

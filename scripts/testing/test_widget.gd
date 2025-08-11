@@ -15,5 +15,3 @@ func _on_button_pressed():
 func _on_option_button_item_selected(index):
 	MessageBus.selectLandscape.emit(index)
 	MessageBus.summonTunnel.emit()
-	
-	print(index)
