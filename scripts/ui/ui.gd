@@ -1,8 +1,6 @@
 extends Node2D
-#VARIABLE FOR POP-UP ASKING IF PLAYER IS SURE ABOUT QUITTING
-@onready var controlBox = %VBoxContainer
+
 @onready var quitBox = %"Quit?"
-#SPEED GUAGE VARIABLE & MAX SPEED ART
 @onready var speedGauge = %TextureProgressBar
 @onready var steam = %steam
 @onready var tunnelFired = false
@@ -27,12 +25,10 @@ func _on_shovel_coal_pressed() -> void:
 	MessageBus.sped_up.emit()
 
 func _on_quit_pressed() -> void:
-	controlBox.visible = false
 	quitBox.visible = true
 
 func _on_yes_pressed() -> void:
 	get_tree().quit()
 
 func _on_no_pressed() -> void:
-	controlBox.visible = true
 	quitBox.visible = false
