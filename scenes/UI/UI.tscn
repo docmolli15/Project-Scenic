@@ -87,7 +87,7 @@ top_level = true
 texture_filter = 1
 offset_left = 1675.0
 offset_top = 952.0
-offset_right = 1746.0
+offset_right = 1754.0
 offset_bottom = 1080.0
 max_value = 17.0
 step = 0.01
@@ -100,7 +100,7 @@ texture_progress = ExtResource("8_w7enk")
 [node name="cone" type="Sprite2D" parent="CanvasLayer/SpeedGauge"]
 top_level = true
 texture_filter = 1
-position = Vector2(1711, 935)
+position = Vector2(1714, 935)
 texture = ExtResource("9_w7enk")
 
 [node name="steam" type="Sprite2D" parent="CanvasLayer/SpeedGauge"]
