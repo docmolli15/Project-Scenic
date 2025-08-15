@@ -167,6 +167,7 @@ z_index = 5
 script = ExtResource("1_tmq7g")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.398346, 0.450271, 0.980181, 1)
 script = ExtResource("2_43fak")
 gradient = SubResource("GradientTexture1D_xrntt")
@@ -182,10 +183,10 @@ unique_name_in_owner = true
 texture_filter = 1
 position = Vector2(960, 540)
 sprite_frames = SubResource("SpriteFrames_o8fc1")
+frame = 1
 
 [node name="Background" type="Parallax2D" parent="."]
 unique_name_in_owner = true
-scroll_scale = Vector2(10, 10)
 repeat_size = Vector2(1920, 0)
 autoscroll = Vector2(-2, 0)
 
@@ -193,6 +194,7 @@ autoscroll = Vector2(-2, 0)
 texture_filter = 1
 position = Vector2(960, 540)
 sprite_frames = SubResource("SpriteFrames_oo54l")
+frame = 1
 
 [node name="Midground" type="Parallax2D" parent="."]
 unique_name_in_owner = true
@@ -203,6 +205,7 @@ autoscroll = Vector2(-3, 0)
 texture_filter = 1
 position = Vector2(960, 540)
 sprite_frames = SubResource("SpriteFrames_navra")
+frame = 1
 
 [node name="PointOfInterest" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -228,6 +231,7 @@ autoscroll = Vector2(-5, 0)
 texture_filter = 1
 position = Vector2(960, 540)
 sprite_frames = SubResource("SpriteFrames_ggc52")
+frame = 1
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(-55, 1050)
@@ -235,7 +239,7 @@ collision_layer = 6
 collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(132, -30)
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_43fak")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
