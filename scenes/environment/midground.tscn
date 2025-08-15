@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://c225if7w7nopx"]
+
+[ext_resource type="Texture2D" uid="uid://dobwtago2hq6q" path="res://art/landscapes/background.png" id="1_pvoeo"]
+[ext_resource type="Script" uid="uid://bis7st4bs5q6y" path="res://scripts/environment/scroll_speed_manager.gd" id="2_xiqn3"]
+[ext_resource type="Script" uid="uid://coqal3f8uwdy2" path="res://scripts/environment/change_frame.gd" id="3_euk2m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xo05s"]
+atlas = ExtResource("1_pvoeo")
+region = Rect2(0, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dss4m"]
+atlas = ExtResource("1_pvoeo")
+region = Rect2(0, 1080, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7t5mc"]
+atlas = ExtResource("1_pvoeo")
+region = Rect2(0, 2160, 1920, 1080)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w0b0u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xo05s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dss4m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7t5mc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Midground" type="Node2D"]
+script = ExtResource("2_xiqn3")
+
+[node name="Background" type="Parallax2D" parent="."]
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-2, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background"]
+texture_filter = 1
+position = Vector2(960, 540)
+sprite_frames = SubResource("SpriteFrames_w0b0u")
+script = ExtResource("3_euk2m")

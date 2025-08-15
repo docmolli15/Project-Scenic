@@ -8,7 +8,6 @@ extends Node
 # Classes and nodes get PascalCase like 'MyNode'
 # Constants use CONSTANT_CASE
 # Enum us PascalCase for name but CONSTANT_CASE for members 'MyEnum {FIRST, SECOND}'
-@export var scroll_multiplier: float = 30.0 
 @export var farground_autoscroll: float = -1
 @export var background_autoscroll: float = -2
 @export var midground_autoscroll: float = -7
@@ -16,11 +15,6 @@ extends Node
 @export var foreground_autoscroll: float = -15
 @export var spawn_location: Vector2 = Vector2( 2000,1060) 
 
-@onready var farground = %Farground
-@onready var background = %Background
-@onready var midground = %Midground
-@onready var tracks = %Tracks
-@onready var foreground = %Foreground
 @onready var point_of_interest = %PointOfInterest
 
 var autoscroll_map = {
@@ -39,28 +33,18 @@ func _ready() -> void:
 	MessageBus.tunnelled_through.connect(spawn_tunnel)
 
 func _process(_delta) -> void:
-	scroll_multiplier = Global.current_speed
-	_scroll()
-
-func _scroll():
-	for layer in get_children():
-		if layer is Parallax2D and autoscroll_map.has(layer.name):
-			layer.autoscroll.x = autoscroll_map[layer.name] * Global.current_speed
+	pass
 
 func spawn_station():
 	var station_scene = STATION.instantiate()
 	point_of_interest.add_child(station_scene)
 	station_scene.position = Vector2(2000, 1060)
 
-func spawn_tunnel():
+func spawn_tunnel(index):
 	var tunnel_scene = TUNNEL.instantiate()
 	point_of_interest.add_child(tunnel_scene)
 	tunnel_scene.position = Vector2(3300, 1017)
+	tunnel_scene.parallax_frame = index
 
-func _on_area_2d_area_entered(_area):
-	print("area triggered")
-	for layer in get_children():
-		if layer is Parallax2D:
-			for child in layer.get_children():
-				if child is AnimatedSprite2D:
-					child.frame = Global.parralax_frame
+func _on_area_2d_area_entered(area):
+	Global.parralax_frame = area.get_parent().parallax_frame

@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://80cxf0dwls8m"]
+
+[ext_resource type="Texture2D" uid="uid://c3nfaqvgj4n21" path="res://art/landscapes/farground.png" id="1_kq547"]
+[ext_resource type="Script" uid="uid://bis7st4bs5q6y" path="res://scripts/environment/scroll_speed_manager.gd" id="1_pr6am"]
+[ext_resource type="Script" uid="uid://coqal3f8uwdy2" path="res://scripts/environment/change_frame.gd" id="3_dowoq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7141"]
+atlas = ExtResource("1_kq547")
+region = Rect2(0, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mrxx"]
+atlas = ExtResource("1_kq547")
+region = Rect2(0, 1080, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7r4gi"]
+atlas = ExtResource("1_kq547")
+region = Rect2(0, 2160, 1920, 1080)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pr6am"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7141")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mrxx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7r4gi")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Farground" type="Node2D"]
+script = ExtResource("1_pr6am")
+
+[node name="Farground" type="Parallax2D" parent="."]
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-1, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Farground"]
+texture_filter = 1
+position = Vector2(960, 540)
+sprite_frames = SubResource("SpriteFrames_pr6am")
+script = ExtResource("3_dowoq")

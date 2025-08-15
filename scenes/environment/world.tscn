@@ -1,12 +1,12 @@
-[gd_scene load_steps=31 format=3 uid="uid://b1quvsltlp4xo"]
+[gd_scene load_steps=11 format=3 uid="uid://b1quvsltlp4xo"]
 
-[ext_resource type="Texture2D" uid="uid://c3nfaqvgj4n21" path="res://art/landscapes/farground.png" id="1_k0juu"]
 [ext_resource type="Script" uid="uid://bbxpr5wfm6oup" path="res://scripts/utility/scroll_component.gd" id="1_tmq7g"]
 [ext_resource type="Script" uid="uid://dbfjrlxd5nebi" path="res://scripts/environment/day_night_cycle.gd" id="2_43fak"]
-[ext_resource type="Texture2D" uid="uid://dobwtago2hq6q" path="res://art/landscapes/background.png" id="2_71j4m"]
-[ext_resource type="Texture2D" uid="uid://8iof8eucy5yo" path="res://art/landscapes/midground.png" id="3_qfnet"]
-[ext_resource type="Texture2D" uid="uid://bwk5ljrotxrr7" path="res://art/landscapes/track.png" id="4_i7141"]
-[ext_resource type="Texture2D" uid="uid://brxs8dud3mr0y" path="res://art/landscapes/foreground.png" id="5_71j4m"]
+[ext_resource type="PackedScene" uid="uid://80cxf0dwls8m" path="res://scenes/environment/farground.tscn" id="3_43fak"]
+[ext_resource type="PackedScene" uid="uid://c3rwuotlrltmy" path="res://scenes/environment/background.tscn" id="4_scdbs"]
+[ext_resource type="PackedScene" uid="uid://c225if7w7nopx" path="res://scenes/environment/midground.tscn" id="5_xrntt"]
+[ext_resource type="PackedScene" uid="uid://qrga4xfylgb5" path="res://scenes/environment/tracks.tscn" id="6_hfr0h"]
+[ext_resource type="PackedScene" uid="uid://blsfkrmu6613l" path="res://scenes/environment/foreground.tscn" id="7_7sfyy"]
 
 [sub_resource type="Gradient" id="Gradient_scdbs"]
 offsets = PackedFloat32Array(0, 0.221831, 0.323944, 0.440141, 0.535211, 0.658451, 1)
@@ -14,150 +14,6 @@ colors = PackedColorArray(0.192157, 0.180392, 0.647059, 1, 0.217758, 0.206366, 0
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_xrntt"]
 gradient = SubResource("Gradient_scdbs")
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i7141"]
-atlas = ExtResource("1_k0juu")
-region = Rect2(0, 0, 1920, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4mrxx"]
-atlas = ExtResource("1_k0juu")
-region = Rect2(0, 1080, 1920, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7r4gi"]
-atlas = ExtResource("1_k0juu")
-region = Rect2(0, 2160, 1920, 1080)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_o8fc1"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i7141")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4mrxx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7r4gi")
-}],
-"loop": false,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xo05s"]
-atlas = ExtResource("2_71j4m")
-region = Rect2(0, 0, 1920, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dss4m"]
-atlas = ExtResource("2_71j4m")
-region = Rect2(0, 1080, 1920, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7t5mc"]
-atlas = ExtResource("2_71j4m")
-region = Rect2(0, 2160, 1920, 1080)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_oo54l"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xo05s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dss4m")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7t5mc")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kpybi"]
-atlas = ExtResource("3_qfnet")
-region = Rect2(0, 0, 1920, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ctatt"]
-atlas = ExtResource("3_qfnet")
-region = Rect2(0, 1080, 1920, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xgqkh"]
-atlas = ExtResource("3_qfnet")
-region = Rect2(0, 2160, 1920, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_munwf"]
-atlas = ExtResource("3_qfnet")
-region = Rect2(0, 3240, 1920, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ts3gi"]
-atlas = ExtResource("3_qfnet")
-region = Rect2(0, 4320, 1920, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0nbtd"]
-atlas = ExtResource("3_qfnet")
-region = Rect2(0, 5400, 1920, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_37qwj"]
-atlas = ExtResource("3_qfnet")
-region = Rect2(0, 6480, 1920, 1080)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_navra"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kpybi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ctatt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xgqkh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_munwf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ts3gi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0nbtd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_37qwj")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_luhhm"]
-atlas = ExtResource("5_71j4m")
-region = Rect2(0, 0, 1920, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fh13f"]
-atlas = ExtResource("5_71j4m")
-region = Rect2(0, 1080, 1920, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rup4s"]
-atlas = ExtResource("5_71j4m")
-region = Rect2(0, 2160, 1920, 1080)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ggc52"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_luhhm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fh13f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rup4s")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_43fak"]
 size = Vector2(60, 95)
@@ -173,65 +29,18 @@ script = ExtResource("2_43fak")
 gradient = SubResource("GradientTexture1D_xrntt")
 cycle_speed = 0.01
 
-[node name="Farground" type="Parallax2D" parent="."]
-unique_name_in_owner = true
-repeat_size = Vector2(1920, 0)
-autoscroll = Vector2(-1, 0)
+[node name="Farground" parent="." instance=ExtResource("3_43fak")]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Farground"]
-unique_name_in_owner = true
-texture_filter = 1
-position = Vector2(960, 540)
-sprite_frames = SubResource("SpriteFrames_o8fc1")
-frame = 1
+[node name="Background" parent="." instance=ExtResource("4_scdbs")]
 
-[node name="Background" type="Parallax2D" parent="."]
-unique_name_in_owner = true
-repeat_size = Vector2(1920, 0)
-autoscroll = Vector2(-2, 0)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background"]
-texture_filter = 1
-position = Vector2(960, 540)
-sprite_frames = SubResource("SpriteFrames_oo54l")
-frame = 1
-
-[node name="Midground" type="Parallax2D" parent="."]
-unique_name_in_owner = true
-repeat_size = Vector2(1920, 0)
-autoscroll = Vector2(-3, 0)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Midground"]
-texture_filter = 1
-position = Vector2(960, 540)
-sprite_frames = SubResource("SpriteFrames_navra")
-frame = 1
+[node name="Midground" parent="." instance=ExtResource("5_xrntt")]
 
 [node name="PointOfInterest" type="Node2D" parent="."]
 unique_name_in_owner = true
 
-[node name="Tracks" type="Parallax2D" parent="."]
-unique_name_in_owner = true
-repeat_size = Vector2(1920, 0)
-autoscroll = Vector2(-4, 0)
+[node name="Tracks2" parent="." instance=ExtResource("6_hfr0h")]
 
-[node name="Sprite2D" type="Sprite2D" parent="Tracks"]
-texture_filter = 1
-position = Vector2(960, 540)
-texture = ExtResource("4_i7141")
-
-[node name="Foreground" type="Parallax2D" parent="."]
-unique_name_in_owner = true
-z_index = 15
-scroll_scale = Vector2(0.85, 0.85)
-repeat_size = Vector2(1920, 0)
-autoscroll = Vector2(-5, 0)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Foreground"]
-texture_filter = 1
-position = Vector2(960, 540)
-sprite_frames = SubResource("SpriteFrames_ggc52")
-frame = 1
+[node name="Foreground" parent="." instance=ExtResource("7_7sfyy")]
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(-55, 1050)

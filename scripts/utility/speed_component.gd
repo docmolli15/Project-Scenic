@@ -85,7 +85,8 @@ func _update_speed() -> void:
 	UpdateTimer.start()
 
 func speed_up() -> void:
-	if current_train_state == State.CRUISING:
+	print(current_train_state)
+	if current_train_state == 3:
 		current_speed += COAL_VALUE
 
 func arrive() -> void:
@@ -97,7 +98,5 @@ func depart() -> void:
 	MessageBus.departed_station.emit()
 
 func transition(index) -> void:
-	print("index changed")
-	Global.parralax_frame = index
 	switch_state(State.TRANSITIONING)
-	MessageBus.tunnelled_through.emit()
+	MessageBus.tunnelled_through.emit(index)

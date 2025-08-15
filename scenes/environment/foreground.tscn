@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://blsfkrmu6613l"]
+
+[ext_resource type="Texture2D" uid="uid://brxs8dud3mr0y" path="res://art/landscapes/foreground.png" id="1_ti68m"]
+[ext_resource type="Script" uid="uid://bis7st4bs5q6y" path="res://scripts/environment/scroll_speed_manager.gd" id="2_1aa7s"]
+[ext_resource type="Script" uid="uid://coqal3f8uwdy2" path="res://scripts/environment/change_frame.gd" id="3_47srl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luhhm"]
+atlas = ExtResource("1_ti68m")
+region = Rect2(0, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fh13f"]
+atlas = ExtResource("1_ti68m")
+region = Rect2(0, 1080, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rup4s"]
+atlas = ExtResource("1_ti68m")
+region = Rect2(0, 2160, 1920, 1080)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1aa7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_luhhm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fh13f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rup4s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Foreground" type="Node2D"]
+script = ExtResource("2_1aa7s")
+
+[node name="Foreground" type="Parallax2D" parent="."]
+z_index = 15
+scroll_scale = Vector2(0.85, 0.85)
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-5, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Foreground"]
+texture_filter = 1
+position = Vector2(960, 540)
+sprite_frames = SubResource("SpriteFrames_1aa7s")
+script = ExtResource("3_47srl")
