@@ -24,6 +24,3 @@ func _on_speed_component_speed_adjusted(speed: Variant) -> void:
 
 func set_animation_speed():
 	TrainAnim.speed_scale = current_speed
-
-func _on_button_pressed() -> void:
-	current_speed += 2.0

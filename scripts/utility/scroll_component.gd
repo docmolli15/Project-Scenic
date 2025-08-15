@@ -56,3 +56,11 @@ func spawn_tunnel():
 	var tunnel_scene = TUNNEL.instantiate()
 	point_of_interest.add_child(tunnel_scene)
 	tunnel_scene.position = Vector2(3300, 1017)
+
+func _on_area_2d_area_entered(_area):
+	print("area triggered")
+	for layer in get_children():
+		if layer is Parallax2D:
+			for child in layer.get_children():
+				if child is AnimatedSprite2D:
+					child.frame = Global.parralax_frame

@@ -4,6 +4,8 @@ extends Node2D
 @onready var duration: float = 32.0
 @onready var DeleteTimer = %Timer
 
+@export var parallax_frame = 0
+
 func _ready():
 	transition()
 

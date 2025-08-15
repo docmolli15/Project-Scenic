@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://dd633l6egdbm3" path="res://scripts/environment/tunnel.gd" id="1_sitcv"]
 [ext_resource type="Texture2D" uid="uid://cgalsqoroh1vt" path="res://art/landscapes/tunnelFade.png" id="2_mv5om"]
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_q1d3g"]
-polygon = PackedVector2Array(-1128, -70, -1133, 62, 1139, 67, 1123, -78)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q1d3g"]
+size = Vector2(2249, 125)
 
 [node name="tunnel" type="Node2D"]
 z_index = 20
@@ -18,8 +18,12 @@ texture = ExtResource("2_mv5om")
 unique_name_in_owner = true
 wait_time = 40.0
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-z_index = 5
-occluder = SubResource("OccluderPolygon2D_q1d3g")
+[node name="DarkZone" type="Area2D" parent="."]
+collision_layer = 6
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DarkZone"]
+position = Vector2(-0.5, -1.5)
+shape = SubResource("RectangleShape2D_q1d3g")
 
 [connection signal="timeout" from="Timer" to="." method="delete"]

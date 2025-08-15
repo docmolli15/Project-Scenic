@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://cgl0mqgmt2s56"]
+[gd_scene load_steps=22 format=3 uid="uid://cgl0mqgmt2s56"]
 
 [ext_resource type="Script" uid="uid://bkbfmqmaj4ogf" path="res://scripts/player/engine.gd" id="1_8vtrv"]
 [ext_resource type="Texture2D" uid="uid://bp3cqg2gkru7c" path="res://art/player/smokeSprite.png" id="2_7xwl4"]
 [ext_resource type="PackedScene" uid="uid://ux40hv8cirwh" path="res://scenes/utility/speed_component.tscn" id="2_rvm6x"]
 [ext_resource type="Texture2D" uid="uid://oicxgv2ekuku" path="res://art/player/engine.png" id="3_7yq1s"]
 [ext_resource type="Script" uid="uid://benmtupuslq5n" path="res://scripts/player/smoke_stack.gd" id="3_jt7g1"]
+[ext_resource type="Script" uid="uid://by75ysmkqqu41" path="res://scripts/utility/switch_light.gd" id="6_rvm6x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("3_7yq1s")
@@ -80,6 +81,9 @@ scale_curve = SubResource("CurveTexture_tuyoq")
 color = Color(0, 0, 0, 0.894118)
 color_ramp = SubResource("GradientTexture1D_dqkch")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_8vtrv"]
+radius = 7.0
+
 [sub_resource type="Gradient" id="Gradient_8vtrv"]
 offsets = PackedFloat32Array(0.0367647, 0.0919118, 0.180147, 0.433824, 0.665441)
 colors = PackedColorArray(1, 0.926708, 0.838175, 1, 0.843511, 0.781689, 0.70701, 1, 0.633588, 0.587151, 0.531057, 1, 0.255725, 0.236983, 0.214342, 1, 0, 0, 0, 1)
@@ -120,9 +124,23 @@ text = "arrive"
 layout_mode = 2
 text = "depart"
 
-[node name="Tunnel" type="Button" parent="HBoxContainer"]
+[node name="Landscape" type="OptionButton" parent="HBoxContainer"]
 layout_mode = 2
-text = "tunnel"
+item_count = 7
+popup/item_0/text = "Desert"
+popup/item_0/id = 0
+popup/item_1/text = "City"
+popup/item_1/id = 1
+popup/item_2/text = "Forest"
+popup/item_2/id = 2
+popup/item_3/text = "4"
+popup/item_3/id = 3
+popup/item_4/text = "5"
+popup/item_4/id = 4
+popup/item_5/text = "6"
+popup/item_5/id = 5
+popup/item_6/text = "7"
+popup/item_6/id = 6
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
@@ -134,8 +152,19 @@ texture = ExtResource("2_7xwl4")
 process_material = SubResource("ParticleProcessMaterial_lkvyd")
 script = ExtResource("3_jt7g1")
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(-8, 508)
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(2, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("6_rvm6x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-14, 509)
+shape = SubResource("CircleShape2D_8vtrv")
+
+[node name="PointLight2D" type="PointLight2D" parent="Area2D/CollisionShape2D"]
+unique_name_in_owner = true
+position = Vector2(5, 5.96046e-08)
 scale = Vector2(0.59375, 0.578125)
 shadow_enabled = true
 shadow_filter = 1
@@ -144,4 +173,6 @@ texture = SubResource("GradientTexture2D_rvm6x")
 [connection signal="speed_adjusted" from="SpeedComponent" to="." method="_on_speed_component_speed_adjusted"]
 [connection signal="pressed" from="HBoxContainer/Arrive" to="SpeedComponent" method="arrive"]
 [connection signal="pressed" from="HBoxContainer/Depart" to="SpeedComponent" method="depart"]
-[connection signal="pressed" from="HBoxContainer/Tunnel" to="SpeedComponent" method="transition"]
+[connection signal="item_selected" from="HBoxContainer/Landscape" to="SpeedComponent" method="transition"]
+[connection signal="area_entered" from="Area2D" to="Area2D" method="_turn_off"]
+[connection signal="area_exited" from="Area2D" to="Area2D" method="_turn_on"]

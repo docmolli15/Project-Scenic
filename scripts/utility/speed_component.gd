@@ -96,6 +96,8 @@ func depart() -> void:
 	switch_state(State.DEPARTING)
 	MessageBus.departed_station.emit()
 
-func transition() -> void:
+func transition(index) -> void:
+	print("index changed")
+	Global.parralax_frame = index
 	switch_state(State.TRANSITIONING)
 	MessageBus.tunnelled_through.emit()

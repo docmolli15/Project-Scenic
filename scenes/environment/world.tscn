@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://b1quvsltlp4xo"]
+[gd_scene load_steps=31 format=3 uid="uid://b1quvsltlp4xo"]
 
 [ext_resource type="Texture2D" uid="uid://c3nfaqvgj4n21" path="res://art/landscapes/farground.png" id="1_k0juu"]
 [ext_resource type="Script" uid="uid://bbxpr5wfm6oup" path="res://scripts/utility/scroll_component.gd" id="1_tmq7g"]
@@ -159,6 +159,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_43fak"]
+size = Vector2(60, 95)
+
 [node name="World" type="Node2D"]
 z_index = 5
 script = ExtResource("1_tmq7g")
@@ -175,6 +178,7 @@ repeat_size = Vector2(1920, 0)
 autoscroll = Vector2(-1, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Farground"]
+unique_name_in_owner = true
 texture_filter = 1
 position = Vector2(960, 540)
 sprite_frames = SubResource("SpriteFrames_o8fc1")
@@ -224,3 +228,14 @@ autoscroll = Vector2(-5, 0)
 texture_filter = 1
 position = Vector2(960, 540)
 sprite_frames = SubResource("SpriteFrames_ggc52")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-55, 1050)
+collision_layer = 6
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(132, -30)
+shape = SubResource("RectangleShape2D_43fak")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
