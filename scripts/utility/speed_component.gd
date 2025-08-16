@@ -85,8 +85,7 @@ func _update_speed() -> void:
 	UpdateTimer.start()
 
 func speed_up() -> void:
-	print(current_train_state)
-	if current_train_state == 3:
+	if current_train_state == 0:
 		current_speed += COAL_VALUE
 
 func arrive() -> void:

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chttdx8rkvfyo"
-path="res://.godot/imported/redLine1.png-eaf7be7374fcb0897de5800702243b3a.ctex"
+uid="uid://pqmsnwkb578"
+path="res://.godot/imported/pink_route.png-5c4bc74251ae116f36d20c75b2d61cae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/UI/maps/redLine1.png"
-dest_files=["res://.godot/imported/redLine1.png-eaf7be7374fcb0897de5800702243b3a.ctex"]
+source_file="res://art/UI/maps/pink_route.png"
+dest_files=["res://.godot/imported/pink_route.png-5c4bc74251ae116f36d20c75b2d61cae.ctex"]
 
 [params]
 

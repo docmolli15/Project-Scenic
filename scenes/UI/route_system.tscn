@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://bfaseixi3ntpy"]
+
+[ext_resource type="Texture2D" uid="uid://dxymscd7po4p3" path="res://art/UI/maps/map border.png" id="1_60yf2"]
+[ext_resource type="Texture2D" uid="uid://cx1464uuw0pan" path="res://art/UI/maps/map.png" id="2_1gkun"]
+[ext_resource type="Texture2D" uid="uid://pqmsnwkb578" path="res://art/UI/maps/pink_route.png" id="3_ft5qj"]
+[ext_resource type="Texture2D" uid="uid://cvutcph770c6l" path="res://art/UI/maps/blue_route.png" id="4_klkr1"]
+[ext_resource type="Texture2D" uid="uid://cw0nn1ictp3fr" path="res://art/UI/maps/green_route.png" id="5_lt5xo"]
+[ext_resource type="Texture2D" uid="uid://bh657xg2fdhgi" path="res://art/UI/map_button2.png" id="6_ft5qj"]
+[ext_resource type="Texture2D" uid="uid://dg8lw8yl3qh4i" path="res://art/UI/map_button3.png" id="7_klkr1"]
+
+[node name="Route System" type="Node2D"]
+
+[node name="Map" type="Node2D" parent="."]
+position = Vector2(696, 926)
+
+[node name="Box" type="Sprite2D" parent="Map"]
+texture_filter = 1
+texture = ExtResource("1_60yf2")
+
+[node name="Map" type="Sprite2D" parent="Map"]
+texture_filter = 1
+texture = ExtResource("2_1gkun")
+
+[node name="Pink" type="Sprite2D" parent="Map"]
+texture = ExtResource("3_ft5qj")
+
+[node name="Blue" type="Sprite2D" parent="Map"]
+texture = ExtResource("4_klkr1")
+
+[node name="Green" type="Sprite2D" parent="Map"]
+texture = ExtResource("5_lt5xo")
+
+[node name="Destinations" type="Node2D" parent="Map"]
+
+[node name="A" type="TextureButton" parent="Map/Destinations"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="B" type="TextureButton" parent="Map/Destinations"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="C" type="TextureButton" parent="Map/Destinations"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="D" type="TextureButton" parent="Map/Destinations"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="E" type="TextureButton" parent="Map/Destinations"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="F" type="TextureButton" parent="Map/Destinations"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="mapIcon" type="TextureButton" parent="."]
+texture_filter = 1
+offset_left = 1458.0
+offset_top = 1032.0
+offset_right = 1491.0
+offset_bottom = 1074.0
+texture_normal = ExtResource("6_ft5qj")
+texture_pressed = ExtResource("7_klkr1")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://biaeo50jq4a"]
+[gd_scene load_steps=21 format=3 uid="uid://biaeo50jq4a"]
 
 [ext_resource type="Script" uid="uid://dah33oao3jg3j" path="res://scripts/ui/ui.gd" id="1_ro3t7"]
 [ext_resource type="Texture2D" uid="uid://nhomkbowas20" path="res://art/UI/ui_right_filigree.png" id="2_04ait"]
@@ -10,10 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://ba883er0at2oi" path="res://art/UI/speedBarUnder.png" id="6_24e4x"]
 [ext_resource type="Texture2D" uid="uid://gddh3tgmo11r" path="res://art/UI/coal_button3.png" id="6_q7onm"]
 [ext_resource type="Texture2D" uid="uid://b05tv0l3uii1" path="res://art/UI/speedBarOver.png" id="7_ukj8e"]
-[ext_resource type="Texture2D" uid="uid://bh657xg2fdhgi" path="res://art/UI/map_button2.png" id="8_suu2r"]
 [ext_resource type="Texture2D" uid="uid://c035eubhofex3" path="res://art/UI/speedBarProgress.png" id="8_w7enk"]
 [ext_resource type="Texture2D" uid="uid://nu4enwrnub5a" path="res://art/UI/settings_button1.png" id="9_ce6m7"]
-[ext_resource type="Texture2D" uid="uid://dg8lw8yl3qh4i" path="res://art/UI/map_button3.png" id="9_kd6sr"]
 [ext_resource type="Texture2D" uid="uid://6jyty6yhcmc4" path="res://art/UI/speedSteam.png" id="9_ukj8e"]
 [ext_resource type="Texture2D" uid="uid://dou06ilfuonf7" path="res://art/UI/speedBarCone.png" id="9_w7enk"]
 [ext_resource type="Texture2D" uid="uid://gadqhoqophqy" path="res://art/UI/settings_button2.png" id="10_ok71f"]
@@ -33,21 +31,12 @@ script = ExtResource("1_ro3t7")
 
 [node name="ShovelCoal" type="TextureButton" parent="CanvasLayer/MainButtons"]
 texture_filter = 1
-offset_left = 1406.0
+offset_left = 1440.0
 offset_top = 1028.0
-offset_right = 1454.0
+offset_right = 1488.0
 offset_bottom = 1076.0
 texture_normal = ExtResource("5_jxfsc")
 texture_pressed = ExtResource("6_q7onm")
-
-[node name="mapIcon" type="TextureButton" parent="CanvasLayer/MainButtons"]
-texture_filter = 1
-offset_left = 1458.0
-offset_top = 1032.0
-offset_right = 1491.0
-offset_bottom = 1074.0
-texture_normal = ExtResource("8_suu2r")
-texture_pressed = ExtResource("9_kd6sr")
 
 [node name="TripMeterContainer" type="Sprite2D" parent="CanvasLayer"]
 texture_filter = 1
@@ -120,9 +109,9 @@ position = Vector2(924, 862)
 texture = ExtResource("3_75u2n")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Quit?"]
-offset_left = -79.0
+offset_left = -73.0
 offset_top = -1.0
-offset_right = 89.0
+offset_right = 95.0
 offset_bottom = 63.0
 
 [node name="Yes" type="TextureButton" parent="CanvasLayer/Quit?/HBoxContainer"]
@@ -138,7 +127,6 @@ texture_pressed = ExtResource("14_ouxww")
 metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="CanvasLayer/MainButtons/ShovelCoal" to="." method="_on_shovel_coal_pressed"]
-[connection signal="pressed" from="CanvasLayer/MainButtons/mapIcon" to="." method="_on_map_icon_pressed"]
 [connection signal="pressed" from="CanvasLayer/RCornerUI/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="CanvasLayer/Quit?/HBoxContainer/Yes" to="." method="_on_yes_pressed"]
 [connection signal="pressed" from="CanvasLayer/Quit?/HBoxContainer/No" to="." method="_on_no_pressed"]

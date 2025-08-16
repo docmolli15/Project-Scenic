@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xusi5kr64yys"
-path="res://.godot/imported/purpleLine1.png-0d531d9be8440a080f46d21300b1c58e.ctex"
+uid="uid://cw0nn1ictp3fr"
+path="res://.godot/imported/green_route.png-aa48c40b9321a2fbf01199645e66c819.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/UI/maps/purpleLine1.png"
-dest_files=["res://.godot/imported/purpleLine1.png-0d531d9be8440a080f46d21300b1c58e.ctex"]
+source_file="res://art/UI/maps/green_route.png"
+dest_files=["res://.godot/imported/green_route.png-aa48c40b9321a2fbf01199645e66c819.ctex"]
 
 [params]
 
