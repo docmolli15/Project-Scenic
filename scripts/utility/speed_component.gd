@@ -32,6 +32,7 @@ var current_train_state = State.CRUISING
 
 func _ready() -> void:
 	MessageBus.sped_up.connect(speed_up)
+	MessageBus.back_to_cruise.connect(finished_transition)
 	switch_state(State.CRUISING)
 
 func _process(_delta: float) -> void:
@@ -48,6 +49,7 @@ func switch_state(state: State):
 			_depart()
 		State.TRANSITIONING:
 			_transition()
+			print('State Switched')
 
 func _cruise():
 	if current_train_state == State.CRUISING:
@@ -62,22 +64,30 @@ func _depart():
 	__tween_adjustment(STATION_DEPART_SPEED, START_STOP_TIME)
 	
 func _transition():
+	print('_transition')
 	__tween_adjustment(TUNNEL_TRANSITION_SPEED, TUNNEL_TRANSITION_TIME)
 
 func __tween_adjustment(target_speed: float, duration: float):
+	print('tween adjustment')
 	var tween = create_tween()
 	tween.tween_property(self, "current_speed", target_speed, duration)
 	if target_speed == STATION_DEPART_SPEED:
 		tween.finished.connect(departed, CONNECT_ONE_SHOT)
 	if target_speed == TUNNEL_TRANSITION_SPEED:
 		tween.finished.connect(transitioned, CONNECT_ONE_SHOT)
+		print("tween")
 		TunnelTimer.start()
 
 func departed():
 	switch_state(State.CRUISING)
 
 func transitioned() -> void:
+	switch_state(State.TRANSITIONING)
+	print('print transitioning')
+
+func finished_transition():
 	switch_state(State.CRUISING)
+	print(current_train_state)
 
 func _update_speed() -> void:
 	Global.current_speed = current_speed
@@ -85,6 +95,7 @@ func _update_speed() -> void:
 	UpdateTimer.start()
 
 func speed_up() -> void:
+	print(current_train_state)
 	if current_train_state == 0:
 		current_speed += COAL_VALUE
 

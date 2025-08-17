@@ -1,34 +1,34 @@
 [gd_scene load_steps=8 format=3 uid="uid://bfaseixi3ntpy"]
 
-[ext_resource type="Texture2D" uid="uid://dxymscd7po4p3" path="res://art/UI/maps/map border.png" id="1_60yf2"]
-[ext_resource type="Texture2D" uid="uid://cx1464uuw0pan" path="res://art/UI/maps/map.png" id="2_1gkun"]
-[ext_resource type="Texture2D" uid="uid://pqmsnwkb578" path="res://art/UI/maps/pink_route.png" id="3_ft5qj"]
-[ext_resource type="Texture2D" uid="uid://cvutcph770c6l" path="res://art/UI/maps/blue_route.png" id="4_klkr1"]
-[ext_resource type="Texture2D" uid="uid://cw0nn1ictp3fr" path="res://art/UI/maps/green_route.png" id="5_lt5xo"]
-[ext_resource type="Texture2D" uid="uid://bh657xg2fdhgi" path="res://art/UI/map_button2.png" id="6_ft5qj"]
-[ext_resource type="Texture2D" uid="uid://dg8lw8yl3qh4i" path="res://art/UI/map_button3.png" id="7_klkr1"]
+[ext_resource type="Texture2D" uid="uid://dxymscd7po4p3" path="res://art/UI/maps/map border.png" id="1_w0t4q"]
+[ext_resource type="Texture2D" uid="uid://cx1464uuw0pan" path="res://art/UI/maps/map.png" id="2_lfooq"]
+[ext_resource type="Texture2D" uid="uid://pqmsnwkb578" path="res://art/UI/maps/pink_route.png" id="3_ac55w"]
+[ext_resource type="Texture2D" uid="uid://cvutcph770c6l" path="res://art/UI/maps/blue_route.png" id="4_i8mpw"]
+[ext_resource type="Texture2D" uid="uid://cw0nn1ictp3fr" path="res://art/UI/maps/green_route.png" id="5_lbcel"]
+[ext_resource type="Texture2D" uid="uid://bh657xg2fdhgi" path="res://art/UI/map_button2.png" id="6_1ug0r"]
+[ext_resource type="Texture2D" uid="uid://dg8lw8yl3qh4i" path="res://art/UI/map_button3.png" id="7_a83xy"]
 
-[node name="Route System" type="Node2D"]
+[node name="Route Manager" type="Node2D"]
 
 [node name="Map" type="Node2D" parent="."]
 position = Vector2(696, 926)
 
 [node name="Box" type="Sprite2D" parent="Map"]
 texture_filter = 1
-texture = ExtResource("1_60yf2")
+texture = ExtResource("1_w0t4q")
 
 [node name="Map" type="Sprite2D" parent="Map"]
 texture_filter = 1
-texture = ExtResource("2_1gkun")
+texture = ExtResource("2_lfooq")
 
 [node name="Pink" type="Sprite2D" parent="Map"]
-texture = ExtResource("3_ft5qj")
+texture = ExtResource("3_ac55w")
 
 [node name="Blue" type="Sprite2D" parent="Map"]
-texture = ExtResource("4_klkr1")
+texture = ExtResource("4_i8mpw")
 
 [node name="Green" type="Sprite2D" parent="Map"]
-texture = ExtResource("5_lt5xo")
+texture = ExtResource("5_lbcel")
 
 [node name="Destinations" type="Node2D" parent="Map"]
 
@@ -62,5 +62,5 @@ offset_left = 1458.0
 offset_top = 1032.0
 offset_right = 1491.0
 offset_bottom = 1074.0
-texture_normal = ExtResource("6_ft5qj")
-texture_pressed = ExtResource("7_klkr1")
+texture_normal = ExtResource("6_1ug0r")
+texture_pressed = ExtResource("7_a83xy")

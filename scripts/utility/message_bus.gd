@@ -5,6 +5,7 @@ signal departed_station
 signal tunnelled_through
 signal sped_up
 signal change_frame
+signal back_to_cruise
 
 func _ready():
 	pass

@@ -15,4 +15,6 @@ func transition():
 	DeleteTimer.start()
 
 func delete() -> void:
+	MessageBus.back_to_cruise.emit()
+	print("tunnel message fired")
 	queue_free()

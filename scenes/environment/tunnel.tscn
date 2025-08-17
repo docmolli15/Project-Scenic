@@ -16,7 +16,7 @@ texture = ExtResource("2_mv5om")
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 40.0
+wait_time = 35.0
 
 [node name="DarkZone" type="Area2D" parent="."]
 collision_layer = 6

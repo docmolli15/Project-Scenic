@@ -16,6 +16,7 @@ wait_time = 0.2
 [node name="TunnelTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 wait_time = 12.0
+one_shot = true
 
 [connection signal="timeout" from="UpdateTimer" to="." method="_update_speed"]
 [connection signal="timeout" from="CruiseTimer" to="." method="_cruise"]
