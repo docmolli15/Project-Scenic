@@ -27,26 +27,24 @@ script = ExtResource("1_ro3t7")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="MainButtons" type="Node" parent="CanvasLayer"]
+[node name="TripMeterContainer" type="Sprite2D" parent="CanvasLayer"]
+texture_filter = 1
+position = Vector2(1597, 1052)
+texture = ExtResource("2_ok71f")
 
-[node name="ShovelCoal" type="TextureButton" parent="CanvasLayer/MainButtons"]
+[node name="ShovelCoal" type="TextureButton" parent="CanvasLayer/TripMeterContainer"]
 texture_filter = 1
 anchors_preset = -1
 anchor_left = 0.75
 anchor_top = 0.952
 anchor_right = 0.775
 anchor_bottom = 0.996
-offset_left = -0.00012207
-offset_top = -0.160034
-offset_right = -0.00012207
-offset_bottom = 0.319946
+offset_left = -301.0
+offset_top = -75.408
+offset_right = -257.8
+offset_bottom = -29.784
 texture_normal = ExtResource("5_jxfsc")
 texture_pressed = ExtResource("6_q7onm")
-
-[node name="TripMeterContainer" type="Sprite2D" parent="CanvasLayer"]
-texture_filter = 1
-position = Vector2(1597, 1052)
-texture = ExtResource("2_ok71f")
 
 [node name="RCornerUI" type="Sprite2D" parent="CanvasLayer"]
 texture_filter = 1
@@ -141,7 +139,7 @@ texture_normal = ExtResource("13_04ait")
 texture_pressed = ExtResource("14_ouxww")
 metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="CanvasLayer/MainButtons/ShovelCoal" to="." method="_on_shovel_coal_pressed"]
+[connection signal="pressed" from="CanvasLayer/TripMeterContainer/ShovelCoal" to="." method="_on_shovel_coal_pressed"]
 [connection signal="pressed" from="CanvasLayer/RCornerUI/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="CanvasLayer/Quit?/HBoxContainer/Yes" to="." method="_on_yes_pressed"]
 [connection signal="pressed" from="CanvasLayer/Quit?/HBoxContainer/No" to="." method="_on_no_pressed"]

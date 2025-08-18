@@ -74,15 +74,13 @@ func __tween_adjustment(target_speed: float, duration: float):
 	if target_speed == STATION_DEPART_SPEED:
 		tween.finished.connect(departed, CONNECT_ONE_SHOT)
 	if target_speed == TUNNEL_TRANSITION_SPEED:
-		tween.finished.connect(transitioned, CONNECT_ONE_SHOT)
-		print("tween")
-		TunnelTimer.start()
+		tween.finished.connect(TunnelTimer.start, CONNECT_ONE_SHOT)
 
 func departed():
 	switch_state(State.CRUISING)
 
 func transitioned() -> void:
-	switch_state(State.TRANSITIONING)
+	switch_state(State.CRUISING)
 	print('print transitioning')
 
 func finished_transition():
