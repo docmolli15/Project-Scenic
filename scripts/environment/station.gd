@@ -1,15 +1,22 @@
 extends Node2D
 
 @onready var timer = %Timer
-@onready var stop_point: Vector2 = Vector2(960, 1060)
-@onready var delete_point: Vector2 = Vector2(-120, 1060)
+@onready var viewport_size: Vector2 = get_viewport().size
 
 @export var stop_time: float = 16.0
+@export var station_y_offset: float = -20.0  # vertical offset from bottom of screen
+
+var stop_point: Vector2
+var delete_point: Vector2
 
 # same signal being used on multiple operations, ie station or tunnel
 
 func _ready():
 	MessageBus.departed_station.connect(depart)
+	viewport_size = get_viewport().size
+	var y_pos = viewport_size.y + station_y_offset
+	stop_point = Vector2(viewport_size.x / 2, y_pos) 
+	delete_point = Vector2(-200, y_pos)              
 	arrive()
 
 func arrive():

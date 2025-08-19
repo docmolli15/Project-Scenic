@@ -13,7 +13,6 @@ extends Node
 @export var midground_autoscroll: float = -7
 @export var tracks_autoscroll: float = -12
 @export var foreground_autoscroll: float = -15
-@export var spawn_location: Vector2 = Vector2( 2000,1060) 
 
 @onready var point_of_interest = %PointOfInterest
 
@@ -41,9 +40,12 @@ func spawn_station():
 	station_scene.position = Vector2(2000, 1060)
 
 func spawn_tunnel(index):
+	var viewport_size = get_viewport().size
 	var tunnel_scene = TUNNEL.instantiate()
 	point_of_interest.add_child(tunnel_scene)
-	tunnel_scene.position = Vector2(3300, 1017)
+	var x_offset: float = viewport_size.x + 1400
+	var y_offset: float = -57                   
+	tunnel_scene.position = Vector2(x_offset, viewport_size.y + y_offset)
 	tunnel_scene.parallax_frame = index
 
 func _on_area_2d_area_entered(area):
