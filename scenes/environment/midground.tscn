@@ -37,11 +37,13 @@ animations = [{
 script = ExtResource("2_xiqn3")
 
 [node name="Background" type="Parallax2D" parent="."]
+scroll_offset = Vector2(4667, 362)
 repeat_size = Vector2(1920, 0)
 autoscroll = Vector2(-2, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background"]
 texture_filter = 1
-position = Vector2(960, 540)
+position = Vector2(1092, 717)
 sprite_frames = SubResource("SpriteFrames_w0b0u")
+offset = Vector2(961, -539)
 script = ExtResource("3_euk2m")

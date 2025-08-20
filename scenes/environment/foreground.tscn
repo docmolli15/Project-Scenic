@@ -44,6 +44,7 @@ autoscroll = Vector2(-5, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Foreground"]
 texture_filter = 1
-position = Vector2(960, 540)
+position = Vector2(0, 1082)
 sprite_frames = SubResource("SpriteFrames_1aa7s")
+offset = Vector2(960, -542)
 script = ExtResource("3_47srl")
