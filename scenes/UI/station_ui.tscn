@@ -1,6 +1,5 @@
-[gd_scene load_steps=8 format=3 uid="uid://bw8kueb0wjrk5"]
+[gd_scene load_steps=7 format=3 uid="uid://bw8kueb0wjrk5"]
 
-[ext_resource type="Texture2D" uid="uid://cyhtnfns3ximp" path="res://art/UI/station UI/jobs_shops_panel.png" id="1_grmgb"]
 [ext_resource type="Texture2D" uid="uid://ciax3yll6lgq5" path="res://art/UI/station UI/tab_map1.png" id="1_qv22c"]
 [ext_resource type="Texture2D" uid="uid://c75hon534twxo" path="res://art/UI/station UI/tab_map2.png" id="2_7n1nf"]
 [ext_resource type="Texture2D" uid="uid://d25avl48dkb7w" path="res://art/UI/station UI/tab_jobs2.png" id="2_lyeua"]
@@ -16,31 +15,29 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="TextureButton" type="TextureButton" parent="."]
 texture_filter = 1
-position = Vector2(662, 894)
-texture = ExtResource("1_grmgb")
-
-[node name="TextureButton" type="TextureButton" parent="Sprite2D"]
-offset_left = -203.0
-offset_top = -134.0
-offset_right = -147.0
-offset_bottom = -94.0
+offset_left = 459.0
+offset_top = 760.0
+offset_right = 515.0
+offset_bottom = 800.0
 texture_normal = ExtResource("2_7n1nf")
 texture_focused = ExtResource("1_qv22c")
 
-[node name="TextureButton2" type="TextureButton" parent="Sprite2D"]
-offset_left = -146.0
-offset_top = -134.0
-offset_right = -90.0
-offset_bottom = -94.0
-texture_normal = ExtResource("2_lyeua")
-texture_focused = ExtResource("3_o81l5")
-
-[node name="TextureButton3" type="TextureButton" parent="Sprite2D"]
-offset_left = -89.0
-offset_top = -134.0
-offset_right = -33.0
-offset_bottom = -94.0
+[node name="TextureButton3" type="TextureButton" parent="."]
+texture_filter = 1
+offset_left = 516.0
+offset_top = 760.0
+offset_right = 572.0
+offset_bottom = 800.0
 texture_normal = ExtResource("6_cahkl")
 texture_focused = ExtResource("7_s84oh")
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+texture_filter = 1
+offset_left = 573.0
+offset_top = 760.0
+offset_right = 629.0
+offset_bottom = 800.0
+texture_normal = ExtResource("2_lyeua")
+texture_focused = ExtResource("3_o81l5")

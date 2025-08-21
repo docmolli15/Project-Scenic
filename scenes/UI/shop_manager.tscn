@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://dn0pxwh7upmlt"]
+
+[ext_resource type="Texture2D" uid="uid://d5ycdd5eqee2" path="res://art/UI/station UI/shop_panel.png" id="1_ttefy"]
+
+[node name="Shop Manager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_ttefy")
+
+[node name="Inventory" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Inventory"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -4.925
+anchor_top = -1.975
+anchor_right = 4.925
+anchor_bottom = 1.875
+
+[node name="MarginContainer" type="MarginContainer" parent="Inventory/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Inventory/HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Inventory/HBoxContainer/MarginContainer"]
+layout_mode = 2
