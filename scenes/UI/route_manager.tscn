@@ -1,12 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfaseixi3ntpy"]
+[gd_scene load_steps=6 format=3 uid="uid://bfaseixi3ntpy"]
 
-[ext_resource type="Texture2D" uid="uid://dxymscd7po4p3" path="res://art/UI/maps/map border.png" id="1_w0t4q"]
-[ext_resource type="Texture2D" uid="uid://cx1464uuw0pan" path="res://art/UI/maps/map.png" id="2_lfooq"]
-[ext_resource type="Texture2D" uid="uid://pqmsnwkb578" path="res://art/UI/maps/pink_route.png" id="3_ac55w"]
-[ext_resource type="Texture2D" uid="uid://cvutcph770c6l" path="res://art/UI/maps/blue_route.png" id="4_i8mpw"]
-[ext_resource type="Texture2D" uid="uid://cw0nn1ictp3fr" path="res://art/UI/maps/green_route.png" id="5_lbcel"]
-[ext_resource type="Texture2D" uid="uid://bh657xg2fdhgi" path="res://art/UI/map_button2.png" id="6_1ug0r"]
-[ext_resource type="Texture2D" uid="uid://dg8lw8yl3qh4i" path="res://art/UI/map_button3.png" id="7_a83xy"]
+[ext_resource type="Texture2D" path="res://art/UI/maps/map border.png" id="1_w0t4q"]
+[ext_resource type="Texture2D" path="res://art/UI/maps/map.png" id="2_lfooq"]
+[ext_resource type="Texture2D" path="res://art/UI/maps/pink_route.png" id="3_ac55w"]
+[ext_resource type="Texture2D" path="res://art/UI/maps/blue_route.png" id="4_i8mpw"]
+[ext_resource type="Texture2D" path="res://art/UI/maps/green_route.png" id="5_lbcel"]
 
 [node name="Route Manager" type="Node2D"]
 
@@ -55,12 +53,3 @@ offset_bottom = 40.0
 [node name="F" type="TextureButton" parent="Map/Destinations"]
 offset_right = 40.0
 offset_bottom = 40.0
-
-[node name="mapIcon" type="TextureButton" parent="."]
-texture_filter = 1
-offset_left = 1458.0
-offset_top = 1032.0
-offset_right = 1491.0
-offset_bottom = 1074.0
-texture_normal = ExtResource("6_1ug0r")
-texture_pressed = ExtResource("7_a83xy")

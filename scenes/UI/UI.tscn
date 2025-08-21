@@ -22,29 +22,32 @@
 
 [sub_resource type="Theme" id="Theme_dj8aq"]
 
-[node name="PlayerUI" type="Node2D"]
+[node name="PlayerUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_ro3t7")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TripMeterContainer" type="Sprite2D" parent="CanvasLayer"]
 texture_filter = 1
-position = Vector2(1597, 1052)
+position = Vector2(1551, 1043)
 texture = ExtResource("2_ok71f")
 
 [node name="ShovelCoal" type="TextureButton" parent="CanvasLayer/TripMeterContainer"]
 texture_filter = 1
 anchors_preset = -1
-anchor_left = 0.75
-anchor_top = 0.952
-anchor_right = 0.775
-anchor_bottom = 0.996
-offset_left = -301.0
-offset_top = -75.408
-offset_right = -257.8
-offset_bottom = -29.784
+anchor_left = 0.06
+anchor_top = 0.153
+anchor_right = 0.23
+anchor_bottom = 0.819
+offset_left = -140.92
+offset_top = -36.016
+offset_right = -140.86
+offset_bottom = -35.968
 texture_normal = ExtResource("5_jxfsc")
 texture_pressed = ExtResource("6_q7onm")
+metadata/_edit_use_anchors_ = true
 
 [node name="RCornerUI" type="Sprite2D" parent="CanvasLayer"]
 texture_filter = 1
@@ -81,12 +84,15 @@ theme = SubResource("Theme_dj8aq")
 texture_normal = ExtResource("9_ce6m7")
 texture_pressed = ExtResource("10_ok71f")
 
-[node name="SpeedGauge" type="Node2D" parent="CanvasLayer"]
+[node name="SpeedGauge" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/SpeedGauge"]
 unique_name_in_owner = true
 top_level = true
 texture_filter = 1
+layout_mode = 0
 offset_left = 1675.0
 offset_top = 952.0
 offset_right = 1754.0
