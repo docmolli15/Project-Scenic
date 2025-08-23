@@ -1,6 +1,53 @@
-[gd_scene load_steps=2 format=3 uid="uid://dn0pxwh7upmlt"]
+[gd_scene load_steps=12 format=3 uid="uid://dn0pxwh7upmlt"]
 
 [ext_resource type="Texture2D" uid="uid://d5ycdd5eqee2" path="res://art/UI/station UI/shop_panel.png" id="1_ttefy"]
+[ext_resource type="Texture2D" uid="uid://13feosvrpyfx" path="res://art/UI/station UI/traincar_container.png" id="2_l3div"]
+[ext_resource type="Texture2D" uid="uid://cqpotjxc6dsns" path="res://art/player/train_cars.png" id="3_ijy1q"]
+[ext_resource type="Texture2D" uid="uid://dtybka4r6i8sg" path="res://art/UI/station UI/focus_container.png" id="4_hcybb"]
+[ext_resource type="Texture2D" uid="uid://d4l0bxedy0v8n" path="res://art/UI/station UI/description_box.png" id="5_qbf44"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2y127"]
+atlas = ExtResource("3_ijy1q")
+region = Rect2(0, 0, 46, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wexb4"]
+atlas = ExtResource("3_ijy1q")
+region = Rect2(0, 36, 46, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlgt6"]
+atlas = ExtResource("3_ijy1q")
+region = Rect2(0, 72, 46, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jqie"]
+atlas = ExtResource("3_ijy1q")
+region = Rect2(0, 108, 46, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hct3s"]
+atlas = ExtResource("3_ijy1q")
+region = Rect2(0, 144, 46, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7dm12"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2y127")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wexb4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mlgt6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jqie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hct3s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Shop Manager" type="Control"]
 layout_mode = 3
@@ -14,24 +61,116 @@ grow_vertical = 2
 texture_filter = 1
 texture = ExtResource("1_ttefy")
 
-[node name="Inventory" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Car" type="NinePatchRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = -194.0
+offset_top = -77.0
+offset_right = -92.0
+offset_bottom = -31.0
+texture = ExtResource("2_l3div")
+patch_margin_left = 9
+patch_margin_top = 9
+patch_margin_right = 9
+patch_margin_bottom = 9
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Inventory"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Car"]
+position = Vector2(50, 23)
+sprite_frames = SubResource("SpriteFrames_7dm12")
+frame = 4
+
+[node name="Car2" type="NinePatchRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = -194.0
+offset_top = -25.0
+offset_right = -92.0
+offset_bottom = 21.0
+texture = ExtResource("2_l3div")
+patch_margin_left = 9
+patch_margin_top = 9
+patch_margin_right = 9
+patch_margin_bottom = 9
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Car2"]
+position = Vector2(50, 23)
+sprite_frames = SubResource("SpriteFrames_7dm12")
+
+[node name="Car3" type="NinePatchRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = -194.0
+offset_top = 27.0
+offset_right = -92.0
+offset_bottom = 73.0
+texture = ExtResource("2_l3div")
+patch_margin_left = 9
+patch_margin_top = 9
+patch_margin_right = 9
+patch_margin_bottom = 9
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Car3"]
+position = Vector2(50, 23)
+sprite_frames = SubResource("SpriteFrames_7dm12")
+frame = 3
+
+[node name="Focus" type="NinePatchRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 14.0
+offset_top = -77.0
+offset_right = 185.0
+texture = ExtResource("4_hcybb")
+patch_margin_left = 11
+patch_margin_top = 12
+patch_margin_right = 11
+patch_margin_bottom = 12
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Focus"]
+position = Vector2(84, 38)
+scale = Vector2(1.66667, 1.66667)
+sprite_frames = SubResource("SpriteFrames_7dm12")
+
+[node name="Label3" type="Label" parent="Focus"]
+layout_mode = 0
+offset_top = -6.0
+offset_right = 171.0
+offset_bottom = 17.0
+text = "Coal Car"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="NinePatchRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 192.0
+offset_bottom = 70.0
+texture = ExtResource("5_qbf44")
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 17
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -4.925
-anchor_top = -1.975
-anchor_right = 4.925
-anchor_bottom = 1.875
-
-[node name="MarginContainer" type="MarginContainer" parent="Inventory/HBoxContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Inventory/HBoxContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="Inventory/HBoxContainer/MarginContainer"]
-layout_mode = 2
+anchor_left = -0.101
+anchor_top = -0.072
+anchor_right = -0.049
+anchor_bottom = 0.068
+offset_left = -5.07999
+offset_top = -3.24
+offset_right = 5.08
+offset_bottom = 3.56
+grow_horizontal = 2
+grow_vertical = 2
