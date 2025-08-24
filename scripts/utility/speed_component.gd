@@ -93,8 +93,8 @@ func _update_speed() -> void:
 	UpdateTimer.start()
 
 func speed_up() -> void:
-	print(current_train_state)
-	if current_train_state == 0:
+	if current_train_state == 0 and Global.funds > 0 and current_speed < (max_speed - 1.0):
+		MessageBus.spent.emit(5)
 		current_speed += COAL_VALUE
 
 func arrive() -> void:
@@ -108,3 +108,7 @@ func depart() -> void:
 func transition(index) -> void:
 	switch_state(State.TRANSITIONING)
 	MessageBus.tunnelled_through.emit(index)
+
+func add_funds() -> void:
+	MessageBus.acquired.emit(100000)
+	print("funds added")

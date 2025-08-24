@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://biaeo50jq4a"]
+[gd_scene load_steps=25 format=3 uid="uid://biaeo50jq4a"]
 
 [ext_resource type="Script" uid="uid://dah33oao3jg3j" path="res://scripts/ui/ui.gd" id="1_ro3t7"]
 [ext_resource type="Texture2D" uid="uid://nhomkbowas20" path="res://art/UI/ui_right_filigree.png" id="2_04ait"]
@@ -7,9 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://cfjnjnhmer8jn" path="res://art/UI/Quit.png" id="3_75u2n"]
 [ext_resource type="Texture2D" uid="uid://du2nsm0wcc0o0" path="res://art/UI/exit_button3.png" id="3_ppsko"]
 [ext_resource type="Texture2D" uid="uid://du0spd2ubp0e7" path="res://art/UI/coal_button2.png" id="5_jxfsc"]
+[ext_resource type="Texture2D" uid="uid://kqy4bad0rufp" path="res://art/UI/$.png" id="5_mrqhp"]
 [ext_resource type="Texture2D" uid="uid://ba883er0at2oi" path="res://art/UI/speedBarUnder.png" id="6_24e4x"]
+[ext_resource type="FontFile" uid="uid://caq0paj0qfvw1" path="res://art/UI/Retro Gaming.ttf" id="6_ppsko"]
 [ext_resource type="Texture2D" uid="uid://gddh3tgmo11r" path="res://art/UI/coal_button3.png" id="6_q7onm"]
 [ext_resource type="Texture2D" uid="uid://b05tv0l3uii1" path="res://art/UI/speedBarOver.png" id="7_ukj8e"]
+[ext_resource type="Script" uid="uid://ehon7ag0qbuv" path="res://scripts/ui/available_funds.gd" id="7_y5wdm"]
 [ext_resource type="Texture2D" uid="uid://c035eubhofex3" path="res://art/UI/speedBarProgress.png" id="8_w7enk"]
 [ext_resource type="Texture2D" uid="uid://nu4enwrnub5a" path="res://art/UI/settings_button1.png" id="9_ce6m7"]
 [ext_resource type="Texture2D" uid="uid://6jyty6yhcmc4" path="res://art/UI/speedSteam.png" id="9_ukj8e"]
@@ -19,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://527tl15tcrqd" path="res://art/UI/yes_button2.png" id="14_jfcp0"]
 [ext_resource type="Texture2D" uid="uid://bcf8k38mli4om" path="res://art/UI/no_button3.png" id="14_ouxww"]
 [ext_resource type="Texture2D" uid="uid://mmkjjy05ioaa" path="res://art/UI/yes_button3.png" id="15_04ait"]
+[ext_resource type="PackedScene" uid="uid://bw8kueb0wjrk5" path="res://scenes/UI/station_ui.tscn" id="23_ppsko"]
 
 [sub_resource type="Theme" id="Theme_dj8aq"]
 
@@ -48,6 +52,26 @@ offset_bottom = -35.968
 texture_normal = ExtResource("5_jxfsc")
 texture_pressed = ExtResource("6_q7onm")
 metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/TripMeterContainer"]
+position = Vector2(-126, -51)
+texture = ExtResource("5_mrqhp")
+
+[node name="Funds" type="Label" parent="CanvasLayer/TripMeterContainer"]
+offset_left = -116.0
+offset_top = -62.0
+offset_right = -76.0
+offset_bottom = -39.0
+theme_override_colors/font_color = Color(0.246873, 1, 0.0897869, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(9.14484e-07, 0.887663, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("6_ppsko")
+text = "0"
+script = ExtResource("7_y5wdm")
 
 [node name="RCornerUI" type="Sprite2D" parent="CanvasLayer"]
 texture_filter = 1
@@ -144,6 +168,8 @@ layout_mode = 2
 texture_normal = ExtResource("13_04ait")
 texture_pressed = ExtResource("14_ouxww")
 metadata/_edit_use_anchors_ = true
+
+[node name="Tabs" parent="CanvasLayer" instance=ExtResource("23_ppsko")]
 
 [connection signal="pressed" from="CanvasLayer/TripMeterContainer/ShovelCoal" to="." method="_on_shovel_coal_pressed"]
 [connection signal="pressed" from="CanvasLayer/RCornerUI/Quit" to="." method="_on_quit_pressed"]

@@ -142,6 +142,10 @@ popup/item_5/id = 5
 popup/item_6/text = "7"
 popup/item_6/id = 6
 
+[node name="Add Funds" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Add $10"
+
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
 self_modulate = Color(0, 0, 0, 1)
@@ -175,5 +179,6 @@ texture = SubResource("GradientTexture2D_rvm6x")
 [connection signal="pressed" from="HBoxContainer/Arrive" to="SpeedComponent" method="arrive"]
 [connection signal="pressed" from="HBoxContainer/Depart" to="SpeedComponent" method="depart"]
 [connection signal="item_selected" from="HBoxContainer/Landscape" to="SpeedComponent" method="transition"]
+[connection signal="pressed" from="HBoxContainer/Add Funds" to="SpeedComponent" method="add_funds"]
 [connection signal="area_entered" from="Area2D" to="Area2D" method="_turn_off"]
 [connection signal="area_exited" from="Area2D" to="Area2D" method="_turn_on"]
