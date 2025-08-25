@@ -354,6 +354,7 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="Car Button 2" type="TextureButton" parent="Car2"]
+layout_mode = 0
 offset_left = 28.0
 offset_top = 9.0
 offset_right = 73.0
@@ -381,6 +382,7 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="Car Button 3" type="TextureButton" parent="Car3"]
+layout_mode = 0
 offset_left = 28.0
 offset_top = 9.0
 offset_right = 73.0
@@ -408,6 +410,7 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="Upgrade Button" type="TextureButton" parent="Upgrade"]
+layout_mode = 0
 offset_left = 13.0
 offset_top = 9.0
 offset_right = 41.0
@@ -435,6 +438,7 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="Upgrade Button 2" type="TextureButton" parent="Upgrade2"]
+layout_mode = 0
 offset_left = 13.0
 offset_top = 9.0
 offset_right = 41.0
@@ -462,6 +466,7 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="Upgrade Button 3" type="TextureButton" parent="Upgrade3"]
+layout_mode = 0
 offset_left = 13.0
 offset_top = 9.0
 offset_right = 41.0
@@ -542,6 +547,7 @@ texture_pressed = ExtResource("7_qbf44")
 
 [node name="Price" type="Label" parent="."]
 texture_filter = 1
+layout_mode = 0
 offset_left = 125.0
 offset_top = -11.0
 offset_right = 196.0

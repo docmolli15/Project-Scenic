@@ -1,16 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://bw8kueb0wjrk5"]
+[gd_scene load_steps=11 format=3 uid="uid://bw8kueb0wjrk5"]
 
+[ext_resource type="Script" uid="uid://4urbisj2acwx" path="res://scenes/UI/station_ui.gd" id="1_4qvrk"]
 [ext_resource type="Texture2D" uid="uid://ciax3yll6lgq5" path="res://art/UI/station UI/tab_map1.png" id="1_qv22c"]
 [ext_resource type="Texture2D" uid="uid://c75hon534twxo" path="res://art/UI/station UI/tab_map2.png" id="2_7n1nf"]
 [ext_resource type="Texture2D" uid="uid://d25avl48dkb7w" path="res://art/UI/station UI/tab_jobs2.png" id="2_lyeua"]
 [ext_resource type="Texture2D" uid="uid://c2el2uk5o716r" path="res://art/UI/station UI/tab_jobs1.png" id="3_o81l5"]
+[ext_resource type="PackedScene" uid="uid://bfaseixi3ntpy" path="res://scenes/UI/route_manager.tscn" id="4_2d2ij"]
 [ext_resource type="PackedScene" uid="uid://dn0pxwh7upmlt" path="res://scenes/UI/shop_manager.tscn" id="5_7n1nf"]
 [ext_resource type="Texture2D" uid="uid://dthqed2lqxb6e" path="res://art/UI/station UI/tab_shops2.png" id="6_cahkl"]
 [ext_resource type="Texture2D" uid="uid://bvtyh4ovy7hoh" path="res://art/UI/station UI/tab_shops1.png" id="7_s84oh"]
+[ext_resource type="PackedScene" uid="uid://bl5iw108jk8er" path="res://scenes/UI/manifest_manager.tscn" id="10_eh80f"]
 
 [node name="Tabs" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_4qvrk")
 
 [node name="TextureButton" type="TextureButton" parent="."]
 texture_filter = 1
@@ -20,7 +24,14 @@ offset_top = 760.0
 offset_right = 515.0
 offset_bottom = 800.0
 texture_normal = ExtResource("2_7n1nf")
-texture_focused = ExtResource("1_qv22c")
+texture_pressed = ExtResource("1_qv22c")
+
+[node name="Route Manager" parent="TextureButton" instance=ExtResource("4_2d2ij")]
+unique_name_in_owner = true
+offset_left = 202.0
+offset_top = 134.0
+offset_right = 202.0
+offset_bottom = 134.0
 
 [node name="TextureButton3" type="TextureButton" parent="."]
 texture_filter = 1
@@ -30,9 +41,11 @@ offset_top = 760.0
 offset_right = 572.0
 offset_bottom = 800.0
 texture_normal = ExtResource("6_cahkl")
-texture_focused = ExtResource("7_s84oh")
+texture_pressed = ExtResource("7_s84oh")
 
 [node name="Shop Manager" parent="TextureButton3" instance=ExtResource("5_7n1nf")]
+unique_name_in_owner = true
+visible = false
 layout_mode = 1
 offset_left = 145.0
 offset_top = 134.0
@@ -47,4 +60,17 @@ offset_top = 760.0
 offset_right = 629.0
 offset_bottom = 800.0
 texture_normal = ExtResource("2_lyeua")
-texture_focused = ExtResource("3_o81l5")
+texture_pressed = ExtResource("3_o81l5")
+
+[node name="Manifest Manager" parent="TextureButton2" instance=ExtResource("10_eh80f")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+offset_left = 88.0
+offset_top = 134.0
+offset_right = 88.0
+offset_bottom = 134.0
+
+[connection signal="pressed" from="TextureButton" to="." method="maps_pressed"]
+[connection signal="pressed" from="TextureButton3" to="." method="shop_pressed"]
+[connection signal="pressed" from="TextureButton2" to="." method="manifest_pressed"]

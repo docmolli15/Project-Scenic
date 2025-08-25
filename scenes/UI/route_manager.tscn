@@ -27,9 +27,9 @@
 [node name="Route Manager" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+size_flags_vertical = 4
 
 [node name="Map" type="Node2D" parent="."]
-position = Vector2(696, 926)
 
 [node name="Box" type="Sprite2D" parent="Map"]
 texture_filter = 1
@@ -50,10 +50,9 @@ texture = ExtResource("5_lbcel")
 
 [node name="Destinations" type="Control" parent="."]
 anchors_preset = 0
-offset_left = 482.0
-offset_top = 926.0
-offset_right = 909.0
-offset_bottom = 946.0
+offset_left = -214.0
+offset_right = 213.0
+offset_bottom = 20.0
 
 [node name="A" type="TextureButton" parent="Destinations"]
 texture_filter = 1
