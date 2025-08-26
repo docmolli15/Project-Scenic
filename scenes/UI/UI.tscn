@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://biaeo50jq4a"]
+[gd_scene load_steps=28 format=3 uid="uid://biaeo50jq4a"]
 
 [ext_resource type="Script" uid="uid://dah33oao3jg3j" path="res://scripts/ui/ui.gd" id="1_ro3t7"]
 [ext_resource type="Texture2D" uid="uid://nhomkbowas20" path="res://art/UI/ui_right_filigree.png" id="2_04ait"]
@@ -14,7 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://b05tv0l3uii1" path="res://art/UI/speedBarOver.png" id="7_ukj8e"]
 [ext_resource type="Script" uid="uid://ehon7ag0qbuv" path="res://scripts/ui/available_funds.gd" id="7_y5wdm"]
 [ext_resource type="Texture2D" uid="uid://c035eubhofex3" path="res://art/UI/speedBarProgress.png" id="8_w7enk"]
+[ext_resource type="Texture2D" uid="uid://blb4ndk508068" path="res://art/UI/trip_meter.png" id="8_y5wdm"]
 [ext_resource type="Texture2D" uid="uid://nu4enwrnub5a" path="res://art/UI/settings_button1.png" id="9_ce6m7"]
+[ext_resource type="Texture2D" uid="uid://dwllsvghqrqrt" path="res://art/UI/progressTrain.png" id="9_jxfsc"]
 [ext_resource type="Texture2D" uid="uid://6jyty6yhcmc4" path="res://art/UI/speedSteam.png" id="9_ukj8e"]
 [ext_resource type="Texture2D" uid="uid://dou06ilfuonf7" path="res://art/UI/speedBarCone.png" id="9_w7enk"]
 [ext_resource type="Texture2D" uid="uid://gadqhoqophqy" path="res://art/UI/settings_button2.png" id="10_ok71f"]
@@ -23,6 +25,12 @@
 [ext_resource type="Texture2D" uid="uid://bcf8k38mli4om" path="res://art/UI/no_button3.png" id="14_ouxww"]
 [ext_resource type="Texture2D" uid="uid://mmkjjy05ioaa" path="res://art/UI/yes_button3.png" id="15_04ait"]
 [ext_resource type="PackedScene" uid="uid://bw8kueb0wjrk5" path="res://scenes/UI/station_ui.tscn" id="23_ppsko"]
+
+[sub_resource type="Curve2D" id="Curve2D_jxfsc"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -80, 0, 0, 0, 0, 0, 79, 0)
+}
+point_count = 2
 
 [sub_resource type="Theme" id="Theme_dj8aq"]
 
@@ -37,6 +45,10 @@ script = ExtResource("1_ro3t7")
 texture_filter = 1
 position = Vector2(1551, 1043)
 texture = ExtResource("2_ok71f")
+
+[node name="$" type="Sprite2D" parent="CanvasLayer/TripMeterContainer"]
+position = Vector2(-126, -51)
+texture = ExtResource("5_mrqhp")
 
 [node name="ShovelCoal" type="TextureButton" parent="CanvasLayer/TripMeterContainer"]
 texture_filter = 1
@@ -53,10 +65,6 @@ texture_normal = ExtResource("5_jxfsc")
 texture_pressed = ExtResource("6_q7onm")
 metadata/_edit_use_anchors_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/TripMeterContainer"]
-position = Vector2(-126, -51)
-texture = ExtResource("5_mrqhp")
-
 [node name="Funds" type="Label" parent="CanvasLayer/TripMeterContainer"]
 offset_left = -116.0
 offset_top = -62.0
@@ -72,6 +80,20 @@ theme_override_constants/shadow_outline_size = 2
 theme_override_fonts/font = ExtResource("6_ppsko")
 text = "0"
 script = ExtResource("7_y5wdm")
+
+[node name="TripMeter" type="Sprite2D" parent="CanvasLayer/TripMeterContainer"]
+texture_filter = 1
+position = Vector2(23, 1)
+texture = ExtResource("8_y5wdm")
+
+[node name="Path2D" type="Path2D" parent="CanvasLayer/TripMeterContainer/TripMeter"]
+curve = SubResource("Curve2D_jxfsc")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="CanvasLayer/TripMeterContainer/TripMeter/Path2D"]
+position = Vector2(-80, 0)
+
+[node name="TrainTripIcon" type="Sprite2D" parent="CanvasLayer/TripMeterContainer/TripMeter/Path2D/PathFollow2D"]
+texture = ExtResource("9_jxfsc")
 
 [node name="RCornerUI" type="Sprite2D" parent="CanvasLayer"]
 texture_filter = 1
@@ -170,6 +192,7 @@ texture_pressed = ExtResource("14_ouxww")
 metadata/_edit_use_anchors_ = true
 
 [node name="Tabs" parent="CanvasLayer" instance=ExtResource("23_ppsko")]
+visible = false
 
 [connection signal="pressed" from="CanvasLayer/TripMeterContainer/ShovelCoal" to="." method="_on_shovel_coal_pressed"]
 [connection signal="pressed" from="CanvasLayer/RCornerUI/Quit" to="." method="_on_quit_pressed"]

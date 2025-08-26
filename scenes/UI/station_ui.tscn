@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bw8kueb0wjrk5"]
+[gd_scene load_steps=13 format=3 uid="uid://bw8kueb0wjrk5"]
 
 [ext_resource type="Script" uid="uid://4urbisj2acwx" path="res://scenes/UI/station_ui.gd" id="1_4qvrk"]
 [ext_resource type="Texture2D" uid="uid://ciax3yll6lgq5" path="res://art/UI/station UI/tab_map1.png" id="1_qv22c"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://dthqed2lqxb6e" path="res://art/UI/station UI/tab_shops2.png" id="6_cahkl"]
 [ext_resource type="Texture2D" uid="uid://bvtyh4ovy7hoh" path="res://art/UI/station UI/tab_shops1.png" id="7_s84oh"]
 [ext_resource type="PackedScene" uid="uid://bl5iw108jk8er" path="res://scenes/UI/manifest_manager.tscn" id="10_eh80f"]
+[ext_resource type="Texture2D" uid="uid://b3y6rdwylmawi" path="res://art/UI/station UI/tab_confirm2.png" id="11_eh80f"]
+[ext_resource type="Texture2D" uid="uid://drrb8ydg71e43" path="res://art/UI/station UI/tab_confirm.png" id="12_fh1ow"]
 
 [node name="Tabs" type="Control"]
 layout_mode = 3
@@ -71,6 +73,25 @@ offset_top = 134.0
 offset_right = 88.0
 offset_bottom = 134.0
 
+[node name="TextureButton4" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 630.0
+offset_top = 760.0
+offset_right = 665.0
+offset_bottom = 800.0
+texture_normal = ExtResource("11_eh80f")
+texture_pressed = ExtResource("12_fh1ow")
+
+[node name="Manifest Manager" parent="TextureButton4" instance=ExtResource("10_eh80f")]
+visible = false
+layout_mode = 1
+offset_left = 88.0
+offset_top = 134.0
+offset_right = 88.0
+offset_bottom = 134.0
+
 [connection signal="pressed" from="TextureButton" to="." method="maps_pressed"]
 [connection signal="pressed" from="TextureButton3" to="." method="shop_pressed"]
 [connection signal="pressed" from="TextureButton2" to="." method="manifest_pressed"]
+[connection signal="pressed" from="TextureButton4" to="." method="manifest_pressed"]
