@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://b1quvsltlp4xo"]
 
-[ext_resource type="Script" uid="uid://bbxpr5wfm6oup" path="res://scripts/utility/scroll_component.gd" id="1_tmq7g"]
+[ext_resource type="Script" uid="uid://bbxpr5wfm6oup" path="res://scripts/environment/scroll_component.gd" id="1_tmq7g"]
 [ext_resource type="Script" uid="uid://dbfjrlxd5nebi" path="res://scripts/environment/day_night_cycle.gd" id="2_43fak"]
 [ext_resource type="PackedScene" uid="uid://80cxf0dwls8m" path="res://scenes/environment/farground.tscn" id="3_43fak"]
 [ext_resource type="PackedScene" uid="uid://c3rwuotlrltmy" path="res://scenes/environment/background.tscn" id="4_scdbs"]

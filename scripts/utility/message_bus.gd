@@ -8,6 +8,8 @@ signal change_frame
 signal back_to_cruise
 signal spent(amount)
 signal acquired(amount)
+signal trigger_shop
+signal finished_shopping
 
 func _ready():
 	pass

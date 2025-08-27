@@ -165,6 +165,7 @@ texture = ExtResource("1_2eo6v")
 
 [node name="Focus" type="NinePatchRect" parent="."]
 texture_filter = 1
+layout_mode = 0
 offset_left = 9.0
 offset_top = -74.0
 offset_right = 107.0
@@ -195,6 +196,7 @@ horizontal_alignment = 1
 
 [node name="Description" type="NinePatchRect" parent="."]
 texture_filter = 1
+layout_mode = 0
 offset_left = -5.0
 offset_top = 38.0
 offset_right = 189.0
@@ -221,6 +223,7 @@ autowrap_mode = 2
 
 [node name="Board" type="TextureButton" parent="."]
 texture_filter = 1
+layout_mode = 0
 offset_left = 111.0
 offset_top = -58.0
 offset_right = 193.0
@@ -230,6 +233,7 @@ texture_pressed = ExtResource("7_ht0r2")
 
 [node name="Price" type="Label" parent="."]
 texture_filter = 1
+layout_mode = 0
 offset_left = 125.0
 offset_top = 12.0
 offset_right = 196.0

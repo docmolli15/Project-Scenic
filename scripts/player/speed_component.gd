@@ -31,6 +31,7 @@ enum State {CRUISING, ARRIVING, DEPARTING, TRANSITIONING}
 var current_train_state = State.CRUISING
 
 func _ready() -> void:
+	MessageBus.departed_station.connect(depart)
 	MessageBus.sped_up.connect(speed_up)
 	MessageBus.back_to_cruise.connect(finished_transition)
 	switch_state(State.CRUISING)
@@ -81,7 +82,6 @@ func departed():
 
 func transitioned() -> void:
 	switch_state(State.CRUISING)
-	print('print transitioning')
 
 func finished_transition():
 	switch_state(State.CRUISING)
@@ -103,7 +103,6 @@ func arrive() -> void:
 
 func depart() -> void:
 	switch_state(State.DEPARTING)
-	MessageBus.departed_station.emit()
 
 func transition(index) -> void:
 	switch_state(State.TRANSITIONING)

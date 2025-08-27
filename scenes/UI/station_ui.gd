@@ -1,26 +1,38 @@
 extends Control
 
-@onready var route_manager = %"Route Manager"
-@onready var shop_manager = %"Shop Manager"
-@onready var manifest_manager = %"Manifest Manager"
+@onready var route_manager = %"RouteManager"
+@onready var shop_manager = %"ShopManager"
+@onready var manifest_manager = %"ManifestManager"
+@onready var route_button = %RouteTab
+@onready var shop_button = %ShopTab
+@onready var manifest_button = %ManifestTab
+@onready var confirm_button = %ConfirmTab
+@onready var confirm_panel = %ConfirmPanel
 
 func _ready():
-	$TextureButton.grab_focus()
+	for button in [route_button, shop_button, manifest_button, confirm_button]:
+		button.toggle_mode = true
+		button.pressed.connect(_on_tab_pressed.bind(button))  
 
-func maps_pressed():
-	route_manager.visible = true
-	shop_manager.visible = false
-	manifest_manager.visible = false
+	_set_tab(route_button, route_manager)
 
-func shop_pressed():
-	route_manager.visible = false
-	shop_manager.visible = true
-	manifest_manager.visible = false
+func _on_tab_pressed(button):
+	if button == route_button:
+		_set_tab(route_button, route_manager)
+	elif button == shop_button:
+		_set_tab(shop_button, shop_manager)
+	elif button == manifest_button:
+		_set_tab(manifest_button, manifest_manager)
+	elif button == confirm_button:
+		_set_tab(confirm_button, confirm_panel)
 
-func manifest_pressed():
-	route_manager.visible = false
-	shop_manager.visible = false
-	manifest_manager.visible = true
+func _set_tab(active_button, visible_manager):
+	for manager in [route_manager, shop_manager, manifest_manager, confirm_panel]:
+		if manager: manager.visible = (manager == visible_manager)
+	for button in [route_button, shop_button, manifest_button, confirm_button]:
+		button.button_pressed = (button == active_button)
 
-func confirm_pressed():
-	pass
+func finished_shopping():
+	MessageBus.finished_shopping.emit()
+	MessageBus.departed_station.emit()
+	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bppy51pyjx5dv"]
+[gd_scene load_steps=6 format=3 uid="uid://bppy51pyjx5dv"]
 
 [ext_resource type="Script" uid="uid://bbdspy32g58om" path="res://scripts/environment/station.gd" id="1_0r0hh"]
 [ext_resource type="Texture2D" uid="uid://cvwn8k14bwkoc" path="res://art/landscapes/station.png" id="2_0r0hh"]
@@ -12,6 +12,9 @@ gradient = SubResource("Gradient_ws4ny")
 fill = 1
 fill_from = Vector2(0.495726, 0.457265)
 fill_to = Vector2(0.512821, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ws4ny"]
+size = Vector2(20, 51)
 
 [node name="station" type="Node2D"]
 script = ExtResource("1_0r0hh")
@@ -54,5 +57,11 @@ texture = SubResource("GradientTexture2D_uu7nm")
 position = Vector2(59, -23)
 scale = Vector2(0.5, 0.5)
 texture = SubResource("GradientTexture2D_uu7nm")
+
+[node name="ShopTrigger" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShopTrigger"]
+position = Vector2(9, -9.5)
+shape = SubResource("RectangleShape2D_ws4ny")
 
 [connection signal="timeout" from="Timer" to="." method="delete"]

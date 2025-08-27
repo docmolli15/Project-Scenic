@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bw8kueb0wjrk5"]
+[gd_scene load_steps=18 format=3 uid="uid://bw8kueb0wjrk5"]
 
 [ext_resource type="Script" uid="uid://4urbisj2acwx" path="res://scenes/UI/station_ui.gd" id="1_4qvrk"]
 [ext_resource type="Texture2D" uid="uid://ciax3yll6lgq5" path="res://art/UI/station UI/tab_map1.png" id="1_qv22c"]
@@ -12,40 +12,49 @@
 [ext_resource type="PackedScene" uid="uid://bl5iw108jk8er" path="res://scenes/UI/manifest_manager.tscn" id="10_eh80f"]
 [ext_resource type="Texture2D" uid="uid://b3y6rdwylmawi" path="res://art/UI/station UI/tab_confirm2.png" id="11_eh80f"]
 [ext_resource type="Texture2D" uid="uid://drrb8ydg71e43" path="res://art/UI/station UI/tab_confirm.png" id="12_fh1ow"]
+[ext_resource type="Texture2D" uid="uid://3juub0hheora" path="res://art/UI/station UI/confirm_panel.png" id="13_wnoit"]
+[ext_resource type="Texture2D" uid="uid://d4l0bxedy0v8n" path="res://art/UI/station UI/description_box.png" id="14_d2t5m"]
+[ext_resource type="FontFile" uid="uid://caq0paj0qfvw1" path="res://art/UI/Retro Gaming.ttf" id="15_30nj2"]
+[ext_resource type="Texture2D" uid="uid://527tl15tcrqd" path="res://art/UI/yes_button2.png" id="16_vrtc5"]
+[ext_resource type="Texture2D" uid="uid://mmkjjy05ioaa" path="res://art/UI/yes_button3.png" id="17_ur2fa"]
 
 [node name="Tabs" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_4qvrk")
 
-[node name="TextureButton" type="TextureButton" parent="."]
+[node name="RouteTab" type="TextureButton" parent="."]
+unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 0
 offset_left = 459.0
 offset_top = 760.0
 offset_right = 515.0
 offset_bottom = 800.0
+toggle_mode = true
 texture_normal = ExtResource("2_7n1nf")
 texture_pressed = ExtResource("1_qv22c")
 
-[node name="Route Manager" parent="TextureButton" instance=ExtResource("4_2d2ij")]
+[node name="RouteManager" parent="RouteTab" instance=ExtResource("4_2d2ij")]
 unique_name_in_owner = true
 offset_left = 202.0
 offset_top = 134.0
 offset_right = 202.0
 offset_bottom = 134.0
 
-[node name="TextureButton3" type="TextureButton" parent="."]
+[node name="ShopTab" type="TextureButton" parent="."]
+unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 0
 offset_left = 516.0
 offset_top = 760.0
 offset_right = 572.0
 offset_bottom = 800.0
+toggle_mode = true
 texture_normal = ExtResource("6_cahkl")
 texture_pressed = ExtResource("7_s84oh")
 
-[node name="Shop Manager" parent="TextureButton3" instance=ExtResource("5_7n1nf")]
+[node name="ShopManager" parent="ShopTab" instance=ExtResource("5_7n1nf")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -54,17 +63,19 @@ offset_top = 134.0
 offset_right = 145.0
 offset_bottom = 134.0
 
-[node name="TextureButton2" type="TextureButton" parent="."]
+[node name="ManifestTab" type="TextureButton" parent="."]
+unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 0
 offset_left = 573.0
 offset_top = 760.0
 offset_right = 629.0
 offset_bottom = 800.0
+toggle_mode = true
 texture_normal = ExtResource("2_lyeua")
 texture_pressed = ExtResource("3_o81l5")
 
-[node name="Manifest Manager" parent="TextureButton2" instance=ExtResource("10_eh80f")]
+[node name="ManifestManager" parent="ManifestTab" instance=ExtResource("10_eh80f")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -73,25 +84,59 @@ offset_top = 134.0
 offset_right = 88.0
 offset_bottom = 134.0
 
-[node name="TextureButton4" type="TextureButton" parent="."]
+[node name="ConfirmTab" type="TextureButton" parent="."]
+unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 0
 offset_left = 630.0
 offset_top = 760.0
 offset_right = 665.0
 offset_bottom = 800.0
+toggle_mode = true
 texture_normal = ExtResource("11_eh80f")
 texture_pressed = ExtResource("12_fh1ow")
 
-[node name="Manifest Manager" parent="TextureButton4" instance=ExtResource("10_eh80f")]
-visible = false
-layout_mode = 1
-offset_left = 88.0
-offset_top = 134.0
-offset_right = 88.0
-offset_bottom = 134.0
+[node name="ConfirmPanel" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(661, 894)
+texture = ExtResource("13_wnoit")
 
-[connection signal="pressed" from="TextureButton" to="." method="maps_pressed"]
-[connection signal="pressed" from="TextureButton3" to="." method="shop_pressed"]
-[connection signal="pressed" from="TextureButton2" to="." method="manifest_pressed"]
-[connection signal="pressed" from="TextureButton4" to="." method="manifest_pressed"]
+[node name="NinePatchRect" type="NinePatchRect" parent="ConfirmPanel"]
+offset_left = -101.0
+offset_top = -72.0
+offset_right = 97.0
+offset_bottom = -4.0
+texture = ExtResource("14_d2t5m")
+patch_margin_left = 18
+patch_margin_top = 18
+patch_margin_right = 18
+patch_margin_bottom = 18
+
+[node name="Label" type="Label" parent="ConfirmPanel/NinePatchRect"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 40.0
+offset_top = 24.0
+offset_right = 163.0
+offset_bottom = 46.0
+scale = Vector2(0.986702, 1)
+theme_override_colors/font_color = Color(0.38429, 0.181981, 2.40654e-07, 1)
+theme_override_colors/font_outline_color = Color(0.758192, 0.758192, 0.758192, 1)
+theme_override_fonts/font = ExtResource("15_30nj2")
+theme_override_font_sizes/font_size = 11
+text = "Ready to depart?"
+
+[node name="Yes" type="TextureButton" parent="ConfirmPanel"]
+offset_left = -43.0
+offset_top = 5.0
+offset_right = 39.0
+offset_bottom = 63.0
+texture_normal = ExtResource("16_vrtc5")
+texture_pressed = ExtResource("17_ur2fa")
+
+[connection signal="pressed" from="RouteTab" to="." method="maps_pressed"]
+[connection signal="pressed" from="ShopTab" to="." method="shop_pressed"]
+[connection signal="pressed" from="ManifestTab" to="." method="manifest_pressed"]
+[connection signal="pressed" from="ConfirmTab" to="." method="manifest_pressed"]
+[connection signal="pressed" from="ConfirmPanel/Yes" to="." method="finished_shopping"]

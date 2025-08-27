@@ -3,12 +3,14 @@ extends Control
 @onready var quitBox = %"Quit?"
 @onready var speedGauge = %TextureProgressBar
 @onready var steam = %steam
+@onready var shop = %Tabs
 @onready var tunnelFired = false
 
 var tripOver = false
 
 func _ready() -> void:
-	pass
+	MessageBus.trigger_shop.connect(shop_pop_up)
+	MessageBus.finished_shopping.connect(shop_de_pop)
 
 
 func _process(_delta):
@@ -32,3 +34,10 @@ func _on_yes_pressed() -> void:
 
 func _on_no_pressed() -> void:
 	quitBox.visible = false
+
+func shop_pop_up():
+	get_tree().create_timer(3.0).timeout
+	shop.visible = true
+
+func shop_de_pop():
+	shop.visible = false

@@ -24,3 +24,7 @@ func _on_speed_component_speed_adjusted(speed: Variant) -> void:
 
 func set_animation_speed():
 	TrainAnim.speed_scale = current_speed
+
+func trigger_station_ui(area):
+	if area.name == "ShopTrigger":
+		MessageBus.trigger_shop.emit()
