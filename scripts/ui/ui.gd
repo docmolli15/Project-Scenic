@@ -4,6 +4,7 @@ extends Control
 @onready var speedGauge = %TextureProgressBar
 @onready var steam = %steam
 @onready var shop = %Tabs
+@onready var pop_up_timer = %Timer
 @onready var tunnelFired = false
 
 var tripOver = false
@@ -36,8 +37,10 @@ func _on_no_pressed() -> void:
 	quitBox.visible = false
 
 func shop_pop_up():
-	get_tree().create_timer(3.0).timeout
-	shop.visible = true
+	pop_up_timer.start()
 
 func shop_de_pop():
 	shop.visible = false
+
+func pop_up() -> void:
+	shop.visible = true

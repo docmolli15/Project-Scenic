@@ -22,6 +22,8 @@ boot_splash/use_filter=false
 MessageBus="*res://scripts/utility/message_bus.gd"
 Global="*res://scripts/utility/global.gd"
 ShopDatabase="*res://scripts/ui/shop_database.gd"
+ManifestDatabase="*res://scripts/ui/manifest_database.gd"
+RouteDatabase="*res://scripts/ui/route_database.gd"
 
 [display]
 
