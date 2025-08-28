@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bfaseixi3ntpy"]
+[gd_scene load_steps=25 format=3 uid="uid://bfaseixi3ntpy"]
 
 [ext_resource type="Texture2D" uid="uid://dxymscd7po4p3" path="res://art/UI/station UI/map border.png" id="1_w0t4q"]
 [ext_resource type="Texture2D" uid="uid://cx1464uuw0pan" path="res://art/UI/station UI/map.png" id="2_lfooq"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cvutcph770c6l" path="res://art/UI/station UI/blue_route.png" id="4_i8mpw"]
 [ext_resource type="Texture2D" uid="uid://cw0nn1ictp3fr" path="res://art/UI/station UI/green_route.png" id="5_lbcel"]
 [ext_resource type="Texture2D" uid="uid://dnuo4fyhnoe4l" path="res://art/UI/station UI/a_button1.png" id="6_hc3nr"]
+[ext_resource type="Script" uid="uid://c435rtd1nlqyf" path="res://scripts/ui/route_database_reciever.gd" id="6_jns88"]
 [ext_resource type="Texture2D" uid="uid://df3pqmu5x00th" path="res://art/UI/station UI/a_button2.png" id="7_jns88"]
 [ext_resource type="Texture2D" uid="uid://bkbvcss5wk3as" path="res://art/UI/station UI/a_button3.png" id="8_k6rj6"]
 [ext_resource type="Texture2D" uid="uid://ddo1dufaubvq3" path="res://art/UI/station UI/b_button1.png" id="9_cnrhl"]
@@ -53,6 +54,7 @@ anchors_preset = 0
 offset_left = -214.0
 offset_right = 213.0
 offset_bottom = 20.0
+script = ExtResource("6_jns88")
 
 [node name="A" type="TextureButton" parent="Destinations"]
 texture_filter = 1
