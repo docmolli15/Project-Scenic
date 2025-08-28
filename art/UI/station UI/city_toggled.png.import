@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://caw2cueo5vbwj"
-path="res://.godot/imported/f_button2.png-7570fc18cf005442b640d24c80b7da05.ctex"
+uid="uid://bx5ldotmfuqlg"
+path="res://.godot/imported/city_toggled.png-f50d27946a8d72c955d6cc4ef528cc38.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/UI/station UI/f_button2.png"
-dest_files=["res://.godot/imported/f_button2.png-7570fc18cf005442b640d24c80b7da05.ctex"]
+source_file="res://art/UI/station UI/city_toggled.png"
+dest_files=["res://.godot/imported/city_toggled.png-f50d27946a8d72c955d6cc4ef528cc38.ctex"]
 
 [params]
 

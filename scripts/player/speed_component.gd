@@ -69,7 +69,6 @@ func _transition():
 	__tween_adjustment(TUNNEL_TRANSITION_SPEED, TUNNEL_TRANSITION_TIME)
 
 func __tween_adjustment(target_speed: float, duration: float):
-	print('tween adjustment')
 	var tween = create_tween()
 	tween.tween_property(self, "current_speed", target_speed, duration)
 	if target_speed == STATION_DEPART_SPEED:

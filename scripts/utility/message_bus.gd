@@ -10,6 +10,7 @@ signal spent(amount)
 signal acquired(amount)
 signal trigger_shop
 signal finished_shopping
+signal update_buttons
 
 func _ready():
 	pass

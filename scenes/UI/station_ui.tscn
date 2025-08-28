@@ -98,6 +98,7 @@ texture_pressed = ExtResource("12_fh1ow")
 
 [node name="ConfirmPanel" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 texture_filter = 1
 position = Vector2(661, 894)
 texture = ExtResource("13_wnoit")

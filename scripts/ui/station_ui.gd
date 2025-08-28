@@ -16,6 +16,10 @@ func _ready():
 
 	_set_tab(route_button, route_manager)
 
+func show_and_reset():
+	_set_tab(route_button, route_manager)
+	self.visible = true
+
 func _on_tab_pressed(button):
 	if button == route_button:
 		_set_tab(route_button, route_manager)

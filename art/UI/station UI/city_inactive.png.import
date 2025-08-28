@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkbvcss5wk3as"
-path="res://.godot/imported/a_button3.png-748c206fb292f704fade0253182343ca.ctex"
+uid="uid://bfw8bw5l1i1gf"
+path="res://.godot/imported/city_inactive.png-b2e2e886f5af33dbf19f6b3ae4b5c6ad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/UI/station UI/a_button3.png"
-dest_files=["res://.godot/imported/a_button3.png-748c206fb292f704fade0253182343ca.ctex"]
+source_file="res://art/UI/station UI/city_inactive.png"
+dest_files=["res://.godot/imported/city_inactive.png-b2e2e886f5af33dbf19f6b3ae4b5c6ad.ctex"]
 
 [params]
 

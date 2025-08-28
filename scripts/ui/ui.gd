@@ -38,9 +38,10 @@ func _on_no_pressed() -> void:
 
 func shop_pop_up():
 	pop_up_timer.start()
+	MessageBus.update_buttons.emit()
 
 func shop_de_pop():
 	shop.visible = false
 
 func pop_up() -> void:
-	shop.visible = true
+	shop.show_and_reset()
