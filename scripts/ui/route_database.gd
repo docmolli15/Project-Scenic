@@ -10,60 +10,58 @@ const CONNECTIONS = {
 }
 
 const TRIP_DURATIONS = {
-	["A", "D"]: 1600, ["D", "A"]: 1600,
-	["B", "D"]: 1200, ["D", "B"]: 1200,
-	["C", "D"]: 800, ["D", "C"]: 800,
-	["E", "D"]: 500, ["D", "E"]: 500,
-	["F", "D"]: 500, ["D", "F"]: 500
+	"A-D": 1600, "D-A": 1600,
+	"B-D": 1200, "D-B": 1200,
+	"C-D": 800,  "D-C": 800,
+	"E-D": 500,  "D-E": 500,
+	"F-D": 500,  "D-F": 500,
 }
 
 const TUNNEL_TRIGGERS = {
-	["A", "D"]: {"at": [0.5, 0.9], "frame": [2, 1]}, ["D", "A"]: {"at": [0.1, 0.5], "frame": [2, 3]},
-	["B", "D"]: {"at": [0.5], "frame": [1]}, ["D", "B"]: {"at": [0.5], "frame": [3]},
-	["C", "D"]: {"at": [0.55, 0.9], "frame": [0, 1]}, ["D", "C"]: {"at": [0.1, 0.45], "frame": [0, 2]},
-	["E", "D"]: [], ["D", "E"]: [],
-	["F", "D"]: {"at": [0.1], "frame": [1]}, ["D", "F"]: {"at": [0.15], "frame": [0]}
+	"A-D": {"at": [0.5, 0.9], "frame": [2, 1]}, "D-A": {"at": [0.1, 0.5], "frame": [2, 3]},
+	"B-D": {"at": [0.5], "frame": [1]}, "D-B": {"at": [0.5], "frame": [3]},
+	"C-D": {"at": [0.55, 0.9], "frame": [0, 1]}, "D-C": {"at": [0.1, 0.45], "frame": [0, 2]},
+	"E-D": [], "D-E": [],
+	"F-D": {"at": [0.1], "frame": [1]}, "D-F": {"at": [0.15], "frame": [0]},
 }
 
 @onready var buttons = [%"A", %"B", %"C", %"D", %"E", %"F"]
+var destination_chosen: bool = false
 var you_are_here: TextureButton = null
 
+
 func _ready() -> void:
-	# Connect all buttons' pressed signals
-	for button in buttons:
-		button.pressed.connect(_on_button_pressed.bind(button))
-	
-	# Wait a frame before initializing (in case Global hasn't updated yet)
-	await get_tree().process_frame
-	update_buttons()
+	for node in get_tree().get_nodes_in_group("Cities"):
+		if node is TextureButton:
+			node.pressed.connect(select_destination.bind(node))
 
-func _on_button_pressed(button: TextureButton):
-	if button.disabled:
-		return
-	
-	you_are_here = button
-	# Update visuals to reflect selection
-	for b in buttons:
-		if b == you_are_here:
-			b.texture_normal = preload("res://art/UI/station UI/city_toggled.png")
-		elif not b.disabled:
-			b.texture_normal = preload("res://art/UI/station UI/city.png")
+	MessageBus.update_map_choices.connect(update_locations)
 
-func update_buttons():
-	var current_station = Global.route_info.get("Station", "")
-	if current_station == "":
-		return
-	
-	var valid_destinations = CONNECTIONS.get(current_station, [])
-
-	for button in buttons:
-		if button.name in valid_destinations:
-			button.disabled = false
-			button.texture_normal = preload("res://art/UI/station UI/city.png")
+func select_destination(button: TextureButton):
+	destination_chosen = true
+	Global.route_info['Station'] = button.name
+	var city_pair = "%s-%s" % [Global.current_station, button.name]
+	print("Looking for city pair:", city_pair)
+	print("Has duration?", TRIP_DURATIONS.has(city_pair))
+	print("Has tunnel triggers?", TUNNEL_TRIGGERS.has(city_pair))
+	if TRIP_DURATIONS.has(city_pair):
+			Global.route_info['Duration'] = TRIP_DURATIONS[city_pair]
+	if TUNNEL_TRIGGERS.has(city_pair):
+		var trigger_info = TUNNEL_TRIGGERS[city_pair]
+		if typeof(trigger_info) == TYPE_DICTIONARY:
+			Global.route_info['Tunnel Triggers'] = trigger_info.get("at", [])
+			Global.route_info['Frames'] = trigger_info.get("frame", [])
 		else:
-			button.disabled = true
-			button.texture_normal = preload("res://art/UI/station UI/city_inactive.png")
+			Global.route_info['Tunnel Triggers'] = []
+			Global.route_info['Frames'] = []
+	print(Global.route_info)
+
+func update_locations():
+	destination_chosen = false
+	var valid_connections = CONNECTIONS.get(Global.current_station, [])
+	for node in get_tree().get_nodes_in_group("Cities"):
+		if node.name in valid_connections:
+			node.visible = true
+		else:
+			node.visible = false
 	
-	# Clear selected if it's no longer valid
-	if you_are_here and (you_are_here.name not in valid_destinations):
-		you_are_here = null

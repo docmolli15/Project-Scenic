@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bfaseixi3ntpy"]
+[gd_scene load_steps=16 format=3 uid="uid://bfaseixi3ntpy"]
 
 [ext_resource type="Script" uid="uid://usaosyxdaqml" path="res://scripts/ui/route_database.gd" id="1_jns88"]
 [ext_resource type="Texture2D" uid="uid://dxymscd7po4p3" path="res://art/UI/station UI/map border.png" id="1_w0t4q"]
@@ -7,17 +7,14 @@
 [ext_resource type="Texture2D" uid="uid://cvutcph770c6l" path="res://art/UI/station UI/blue_route.png" id="4_i8mpw"]
 [ext_resource type="Texture2D" uid="uid://cw0nn1ictp3fr" path="res://art/UI/station UI/green_route.png" id="5_lbcel"]
 [ext_resource type="Texture2D" uid="uid://dnuo4fyhnoe4l" path="res://art/UI/station UI/a_button1.png" id="6_hc3nr"]
+[ext_resource type="Texture2D" uid="uid://brhtrfupmq200" path="res://art/UI/station UI/cities.png" id="7_01kq1"]
 [ext_resource type="Texture2D" uid="uid://ddo1dufaubvq3" path="res://art/UI/station UI/b_button1.png" id="9_cnrhl"]
 [ext_resource type="Texture2D" uid="uid://bff3qgm25xv7h" path="res://art/UI/station UI/c_button1.png" id="12_1kvw4"]
 [ext_resource type="Texture2D" uid="uid://fjnjaemj8l2k" path="res://art/UI/station UI/city.png" id="13_yyj4i"]
 [ext_resource type="Texture2D" uid="uid://bx5ldotmfuqlg" path="res://art/UI/station UI/city_toggled.png" id="14_01kq1"]
-[ext_resource type="Texture2D" uid="uid://bfw8bw5l1i1gf" path="res://art/UI/station UI/city_inactive.png" id="15_0nkxp"]
 [ext_resource type="Texture2D" uid="uid://c2dslx6j3c4sw" path="res://art/UI/station UI/d_button1.png" id="15_d8qrj"]
 [ext_resource type="Texture2D" uid="uid://qh0g1c1sm1pi" path="res://art/UI/station UI/e_button1.png" id="18_66drx"]
 [ext_resource type="Texture2D" uid="uid://b02mbkemky3rm" path="res://art/UI/station UI/f_button1.png" id="21_31k3s"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_epp0y"]
-load_path = "res://.godot/imported/a_button3.png-748c206fb292f704fade0253182343ca.ctex"
 
 [node name="Route Manager" type="Control"]
 layout_mode = 3
@@ -33,6 +30,7 @@ texture = ExtResource("1_w0t4q")
 
 [node name="Map" type="Sprite2D" parent="Map"]
 texture_filter = 1
+position = Vector2(0, 1)
 texture = ExtResource("2_lfooq")
 
 [node name="Pink" type="Sprite2D" parent="Map"]
@@ -47,142 +45,152 @@ texture = ExtResource("4_i8mpw")
 texture_filter = 1
 texture = ExtResource("5_lbcel")
 
+[node name="Cities" type="Sprite2D" parent="Map"]
+texture_filter = 1
+position = Vector2(0, -2.5)
+texture = ExtResource("7_01kq1")
+
 [node name="Letters" type="Node2D" parent="."]
 
-[node name="CityA" type="Sprite2D" parent="Letters"]
+[node name="A" type="Sprite2D" parent="Letters" groups=["Cities"]]
+visible = false
 texture_filter = 1
 position = Vector2(-189, -24)
 texture = ExtResource("6_hc3nr")
 
-[node name="CityB" type="Sprite2D" parent="Letters"]
+[node name="B" type="Sprite2D" parent="Letters" groups=["Cities"]]
+visible = false
 texture_filter = 1
 position = Vector2(-125, 41)
 texture = ExtResource("9_cnrhl")
 
-[node name="CityC" type="Sprite2D" parent="Letters"]
+[node name="C" type="Sprite2D" parent="Letters" groups=["Cities"]]
+visible = false
 texture_filter = 1
 position = Vector2(-13, -56)
 texture = ExtResource("12_1kvw4")
 
-[node name="CityD" type="Sprite2D" parent="Letters"]
+[node name="D" type="Sprite2D" parent="Letters" groups=["Cities"]]
+visible = false
 texture_filter = 1
 position = Vector2(68, -11)
 texture = ExtResource("15_d8qrj")
 
-[node name="CityE" type="Sprite2D" parent="Letters"]
+[node name="E" type="Sprite2D" parent="Letters" groups=["Cities"]]
+visible = false
 texture_filter = 1
 position = Vector2(78, 57)
 texture = ExtResource("18_66drx")
 
-[node name="CityF" type="Sprite2D" parent="Letters"]
+[node name="F" type="Sprite2D" parent="Letters" groups=["Cities"]]
+visible = false
 texture_filter = 1
 position = Vector2(167, 6)
 texture = ExtResource("21_31k3s")
 
-[node name="A" type="TextureButton" parent="."]
-unique_name_in_owner = true
-texture_filter = 1
-layout_mode = 2
-anchor_left = 0.037
-anchor_top = -1.7
-anchor_right = 0.08
-anchor_bottom = -0.7
-offset_left = -199.0
-offset_top = -14.0
-offset_right = -186.0
-offset_bottom = -1.0
-toggle_mode = true
-texture_normal = ExtResource("13_yyj4i")
-texture_pressed = ExtResource("14_01kq1")
-texture_hover = SubResource("CompressedTexture2D_epp0y")
-texture_disabled = ExtResource("15_0nkxp")
+[node name="Buttons" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="B" type="TextureButton" parent="."]
+[node name="A" type="TextureButton" parent="Buttons" groups=["Cities"]]
 unique_name_in_owner = true
+visible = false
 texture_filter = 1
 layout_mode = 2
 anchor_left = 0.037
 anchor_top = -1.7
 anchor_right = 0.08
 anchor_bottom = -0.7
-offset_left = -120.0
-offset_top = 47.0
-offset_right = -107.0
-offset_bottom = 60.0
-toggle_mode = true
+offset_left = -200.48
+offset_top = 54.0
+offset_right = -187.48
+offset_bottom = 67.0
 texture_normal = ExtResource("13_yyj4i")
 texture_pressed = ExtResource("14_01kq1")
-texture_hover = SubResource("CompressedTexture2D_epp0y")
-texture_disabled = ExtResource("15_0nkxp")
+texture_focused = ExtResource("14_01kq1")
 
-[node name="C" type="TextureButton" parent="."]
+[node name="B" type="TextureButton" parent="Buttons" groups=["Cities"]]
 unique_name_in_owner = true
+visible = false
 texture_filter = 1
 layout_mode = 2
 anchor_left = 0.037
 anchor_top = -1.7
 anchor_right = 0.08
 anchor_bottom = -0.7
-offset_left = -10.0
-offset_top = -48.0
-offset_right = 3.0
-offset_bottom = -35.0
-toggle_mode = true
+offset_left = -121.48
+offset_top = 115.0
+offset_right = -108.48
+offset_bottom = 128.0
 texture_normal = ExtResource("13_yyj4i")
 texture_pressed = ExtResource("14_01kq1")
-texture_hover = SubResource("CompressedTexture2D_epp0y")
-texture_disabled = ExtResource("15_0nkxp")
+texture_focused = ExtResource("14_01kq1")
 
-[node name="D" type="TextureButton" parent="."]
+[node name="C" type="TextureButton" parent="Buttons" groups=["Cities"]]
 unique_name_in_owner = true
+visible = false
 texture_filter = 1
 layout_mode = 2
 anchor_left = 0.037
 anchor_top = -1.7
 anchor_right = 0.08
 anchor_bottom = -0.7
-offset_left = 74.0
-offset_top = -2.0
-offset_right = 87.0
-offset_bottom = 11.0
-toggle_mode = true
+offset_left = -11.48
+offset_top = 20.0
+offset_right = 1.52
+offset_bottom = 33.0
 texture_normal = ExtResource("13_yyj4i")
 texture_pressed = ExtResource("14_01kq1")
-texture_hover = SubResource("CompressedTexture2D_epp0y")
-texture_disabled = ExtResource("15_0nkxp")
+texture_focused = ExtResource("14_01kq1")
 
-[node name="E" type="TextureButton" parent="."]
+[node name="D" type="TextureButton" parent="Buttons" groups=["Cities"]]
 unique_name_in_owner = true
+visible = false
 texture_filter = 1
 layout_mode = 2
 anchor_left = 0.037
 anchor_top = -1.7
 anchor_right = 0.08
 anchor_bottom = -0.7
-offset_left = 88.0
-offset_top = 63.0
-offset_right = 101.0
-offset_bottom = 76.0
-toggle_mode = true
+offset_left = 72.52
+offset_top = 66.0
+offset_right = 85.52
+offset_bottom = 79.0
 texture_normal = ExtResource("13_yyj4i")
 texture_pressed = ExtResource("14_01kq1")
-texture_hover = SubResource("CompressedTexture2D_epp0y")
-texture_disabled = ExtResource("15_0nkxp")
+texture_focused = ExtResource("14_01kq1")
 
-[node name="F" type="TextureButton" parent="."]
+[node name="E" type="TextureButton" parent="Buttons" groups=["Cities"]]
 unique_name_in_owner = true
+visible = false
 texture_filter = 1
 layout_mode = 2
 anchor_left = 0.037
 anchor_top = -1.7
 anchor_right = 0.08
 anchor_bottom = -0.7
-offset_left = 170.0
-offset_top = 16.0
-offset_right = 183.0
-offset_bottom = 29.0
-toggle_mode = true
+offset_left = 86.52
+offset_top = 130.0
+offset_right = 99.52
+offset_bottom = 143.0
 texture_normal = ExtResource("13_yyj4i")
 texture_pressed = ExtResource("14_01kq1")
-texture_hover = SubResource("CompressedTexture2D_epp0y")
-texture_disabled = ExtResource("15_0nkxp")
+texture_focused = ExtResource("14_01kq1")
+
+[node name="F" type="TextureButton" parent="Buttons" groups=["Cities"]]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+layout_mode = 2
+anchor_left = 0.037
+anchor_top = -1.7
+anchor_right = 0.08
+anchor_bottom = -0.7
+offset_left = 168.52
+offset_top = 84.0
+offset_right = 181.52
+offset_bottom = 97.0
+texture_normal = ExtResource("13_yyj4i")
+texture_pressed = ExtResource("14_01kq1")
+texture_focused = ExtResource("14_01kq1")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ux40hv8cirwh"]
+[gd_scene load_steps=3 format=3 uid="uid://ux40hv8cirwh"]
 
 [ext_resource type="Script" uid="uid://bai46isun2lyg" path="res://scripts/player/speed_component.gd" id="1_f88dc"]
+[ext_resource type="Script" uid="uid://cpc2jlocny2m3" path="res://scripts/player/trip_timer.gd" id="2_678ge"]
 
 [node name="SpeedComponent" type="Node2D"]
 script = ExtResource("1_f88dc")
@@ -17,6 +18,16 @@ wait_time = 0.2
 unique_name_in_owner = true
 wait_time = 30.0
 one_shot = true
+
+[node name="PlayerTravel" type="Node2D" parent="."]
+
+[node name="TripTimer" type="Node2D" parent="PlayerTravel"]
+unique_name_in_owner = true
+script = ExtResource("2_678ge")
+
+[node name="PlayerCatalog" type="Node2D" parent="."]
+
+[node name="PlayerManifest" type="Node2D" parent="."]
 
 [connection signal="timeout" from="UpdateTimer" to="." method="_update_speed"]
 [connection signal="timeout" from="CruiseTimer" to="." method="_cruise"]

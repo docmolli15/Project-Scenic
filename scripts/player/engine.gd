@@ -27,10 +27,9 @@ func set_animation_speed():
 
 func trigger_station_ui(area):
 	if area.name == "ShopTrigger":
-		MessageBus.trigger_shop.emit()
-		Global.route_info = {
-		"Station": "",
-		"Duration": 0, 
-		"Tunnel Triggers": [], 
-		"Frames": []
-		}
+		Global.current_station = Global.route_info["Station"]
+		open_shop()
+
+func open_shop():
+	MessageBus.trigger_shop.emit()
+	MessageBus.update_map_choices.emit()

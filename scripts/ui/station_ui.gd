@@ -8,6 +8,8 @@ extends Control
 @onready var manifest_button = %ManifestTab
 @onready var confirm_button = %ConfirmTab
 @onready var confirm_panel = %ConfirmPanel
+@onready var tooltip = %Tooltip
+@onready var tool_timer = %TooltipTimer
 
 func _ready():
 	for button in [route_button, shop_button, manifest_button, confirm_button]:
@@ -37,6 +39,13 @@ func _set_tab(active_button, visible_manager):
 		button.button_pressed = (button == active_button)
 
 func finished_shopping():
-	MessageBus.finished_shopping.emit()
-	MessageBus.departed_station.emit()
-	
+	if route_manager.destination_chosen == true:
+		MessageBus.finished_shopping.emit()
+		MessageBus.departed_station.emit()
+		route_manager.destination_chosen = false
+	else:
+		tooltip.visible = true
+		tool_timer.start()
+
+func depop_tooltip() -> void:
+	tooltip.visible = false

@@ -10,9 +10,10 @@ extends Node2D
 # Enum us PascalCase for name but CONSTANT_CASE for members 'MyEnum {FIRST, SECOND}'
 signal speed_adjusted(speed)
 
-@onready var UpdateTimer = %UpdateTimer
-@onready var CruiseTimer = %CruiseTimer
-@onready var TunnelTimer = %TunnelTimer
+@onready var update_timer = %UpdateTimer
+@onready var cruise_timer = %CruiseTimer
+@onready var tunnel_timer = %TunnelTimer
+@onready var trip_timer = %TripTimer
 
 @export var min_speed: float = 0.0
 @export var cruising_speed: float = 8.0
@@ -34,6 +35,7 @@ func _ready() -> void:
 	MessageBus.departed_station.connect(depart)
 	MessageBus.sped_up.connect(speed_up)
 	MessageBus.back_to_cruise.connect(finished_transition)
+	MessageBus.trip_timer_ends.connect(arrive)
 	switch_state(State.CRUISING)
 
 func _process(_delta: float) -> void:
@@ -50,13 +52,12 @@ func switch_state(state: State):
 			_depart()
 		State.TRANSITIONING:
 			_transition()
-			print('State Switched')
 
 func _cruise():
 	if current_train_state == State.CRUISING:
 		current_speed -= FRICTION_VALUE
 		current_speed = clamp(current_speed, cruising_speed, max_speed)
-		CruiseTimer.start()
+		cruise_timer.start()
 
 func _arrive():
 	__tween_adjustment(min_speed, START_STOP_TIME)
@@ -65,7 +66,6 @@ func _depart():
 	__tween_adjustment(STATION_DEPART_SPEED, START_STOP_TIME)
 	
 func _transition():
-	print('_transition')
 	__tween_adjustment(TUNNEL_TRANSITION_SPEED, TUNNEL_TRANSITION_TIME)
 
 func __tween_adjustment(target_speed: float, duration: float):
@@ -74,7 +74,7 @@ func __tween_adjustment(target_speed: float, duration: float):
 	if target_speed == STATION_DEPART_SPEED:
 		tween.finished.connect(departed, CONNECT_ONE_SHOT)
 	if target_speed == TUNNEL_TRANSITION_SPEED:
-		tween.finished.connect(TunnelTimer.start, CONNECT_ONE_SHOT)
+		tween.finished.connect(tunnel_timer.start, CONNECT_ONE_SHOT)
 
 func departed():
 	switch_state(State.CRUISING)
@@ -84,12 +84,11 @@ func transitioned() -> void:
 
 func finished_transition():
 	switch_state(State.CRUISING)
-	print(current_train_state)
 
 func _update_speed() -> void:
 	Global.current_speed = current_speed
 	speed_adjusted.emit(current_speed)
-	UpdateTimer.start()
+	update_timer.start()
 
 func speed_up() -> void:
 	if current_train_state == 0 and Global.funds > 0 and current_speed < (max_speed - 1.0):
@@ -102,6 +101,12 @@ func arrive() -> void:
 
 func depart() -> void:
 	switch_state(State.DEPARTING)
+	trip_timer.duration = Global.route_info['Duration']
+	trip_timer.start_timer(
+	Global.route_info["Duration"],
+	Global.route_info["Tunnel Triggers"],
+	Global.route_info["Frames"]
+)
 
 func transition(index) -> void:
 	switch_state(State.TRANSITIONING)
@@ -109,4 +114,4 @@ func transition(index) -> void:
 
 func add_funds() -> void:
 	MessageBus.acquired.emit(100000)
-	print("funds added")
+	print(Global.trip_progress)

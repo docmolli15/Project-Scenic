@@ -39,6 +39,10 @@ window/per_pixel_transparency/allowed=true
 
 project/assembly_name="DesktopPet"
 
+[global_group]
+
+Cities=""
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

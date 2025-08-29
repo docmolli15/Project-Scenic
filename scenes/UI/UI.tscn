@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://biaeo50jq4a"]
+[gd_scene load_steps=29 format=3 uid="uid://biaeo50jq4a"]
 
 [ext_resource type="Script" uid="uid://dah33oao3jg3j" path="res://scripts/ui/ui.gd" id="1_ro3t7"]
 [ext_resource type="Texture2D" uid="uid://nhomkbowas20" path="res://art/UI/ui_right_filigree.png" id="2_04ait"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://bmf6a8f3dibsg" path="res://art/UI/no_button2.png" id="13_04ait"]
 [ext_resource type="Texture2D" uid="uid://527tl15tcrqd" path="res://art/UI/yes_button2.png" id="14_jfcp0"]
 [ext_resource type="Texture2D" uid="uid://bcf8k38mli4om" path="res://art/UI/no_button3.png" id="14_ouxww"]
+[ext_resource type="Script" uid="uid://c1nx3fngpow7" path="res://scripts/ui/trip_meter.gd" id="14_q7onm"]
 [ext_resource type="Texture2D" uid="uid://mmkjjy05ioaa" path="res://art/UI/yes_button3.png" id="15_04ait"]
 [ext_resource type="PackedScene" uid="uid://bw8kueb0wjrk5" path="res://scenes/UI/station_ui.tscn" id="23_ppsko"]
 
@@ -40,6 +41,33 @@ anchors_preset = 0
 script = ExtResource("1_ro3t7")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Quit?" type="Sprite2D" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+top_level = true
+z_as_relative = false
+texture_filter = 1
+position = Vector2(924, 862)
+texture = ExtResource("3_75u2n")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Quit?"]
+offset_left = -73.0
+offset_top = -1.0
+offset_right = 95.0
+offset_bottom = 63.0
+
+[node name="Yes" type="TextureButton" parent="CanvasLayer/Quit?/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("14_jfcp0")
+texture_pressed = ExtResource("15_04ait")
+metadata/_edit_use_anchors_ = true
+
+[node name="No" type="TextureButton" parent="CanvasLayer/Quit?/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("13_04ait")
+texture_pressed = ExtResource("14_ouxww")
+metadata/_edit_use_anchors_ = true
 
 [node name="TripMeterContainer" type="Sprite2D" parent="CanvasLayer"]
 texture_filter = 1
@@ -91,6 +119,7 @@ curve = SubResource("Curve2D_jxfsc")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="CanvasLayer/TripMeterContainer/TripMeter/Path2D"]
 position = Vector2(-80, 0)
+script = ExtResource("14_q7onm")
 
 [node name="TrainTripIcon" type="Sprite2D" parent="CanvasLayer/TripMeterContainer/TripMeter/Path2D/PathFollow2D"]
 texture = ExtResource("9_jxfsc")
@@ -164,33 +193,6 @@ texture_filter = 1
 position = Vector2(1654, 941)
 texture = ExtResource("9_ukj8e")
 
-[node name="Quit?" type="Sprite2D" parent="CanvasLayer"]
-unique_name_in_owner = true
-visible = false
-top_level = true
-z_as_relative = false
-texture_filter = 1
-position = Vector2(924, 862)
-texture = ExtResource("3_75u2n")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Quit?"]
-offset_left = -73.0
-offset_top = -1.0
-offset_right = 95.0
-offset_bottom = 63.0
-
-[node name="Yes" type="TextureButton" parent="CanvasLayer/Quit?/HBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("14_jfcp0")
-texture_pressed = ExtResource("15_04ait")
-metadata/_edit_use_anchors_ = true
-
-[node name="No" type="TextureButton" parent="CanvasLayer/Quit?/HBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("13_04ait")
-texture_pressed = ExtResource("14_ouxww")
-metadata/_edit_use_anchors_ = true
-
 [node name="Tabs" parent="CanvasLayer" instance=ExtResource("23_ppsko")]
 unique_name_in_owner = true
 visible = false
@@ -200,8 +202,8 @@ unique_name_in_owner = true
 wait_time = 3.0
 one_shot = true
 
-[connection signal="pressed" from="CanvasLayer/TripMeterContainer/ShovelCoal" to="." method="_on_shovel_coal_pressed"]
-[connection signal="pressed" from="CanvasLayer/RCornerUI/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="CanvasLayer/Quit?/HBoxContainer/Yes" to="." method="_on_yes_pressed"]
 [connection signal="pressed" from="CanvasLayer/Quit?/HBoxContainer/No" to="." method="_on_no_pressed"]
+[connection signal="pressed" from="CanvasLayer/TripMeterContainer/ShovelCoal" to="." method="_on_shovel_coal_pressed"]
+[connection signal="pressed" from="CanvasLayer/RCornerUI/Quit" to="." method="_on_quit_pressed"]
 [connection signal="timeout" from="CanvasLayer/Tabs/Timer" to="." method="pop_up"]

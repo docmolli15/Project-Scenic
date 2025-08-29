@@ -183,16 +183,6 @@ texture = SubResource("GradientTexture2D_rvm6x")
 position = Vector2(0.6875, 504)
 shape = SubResource("RectangleShape2D_rvm6x")
 
-[node name="PlayerTravel" type="Node2D" parent="."]
-
-[node name="TripTimer" type="Timer" parent="PlayerTravel"]
-
-[node name="TunnelTimer" type="Timer" parent="PlayerTravel"]
-
-[node name="PlayerCatalog" type="Node2D" parent="."]
-
-[node name="PlayerManifest" type="Node2D" parent="."]
-
 [connection signal="speed_adjusted" from="SpeedComponent" to="." method="_on_speed_component_speed_adjusted"]
 [connection signal="pressed" from="HBoxContainer/Arrive" to="SpeedComponent" method="arrive"]
 [connection signal="pressed" from="HBoxContainer/Depart" to="SpeedComponent" method="depart"]

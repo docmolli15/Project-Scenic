@@ -136,8 +136,35 @@ offset_bottom = 63.0
 texture_normal = ExtResource("16_vrtc5")
 texture_pressed = ExtResource("17_ur2fa")
 
+[node name="Tooltip" type="Panel" parent="ConfirmPanel/Yes"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 86.0
+offset_top = -26.0
+offset_right = 246.0
+offset_bottom = 57.0
+
+[node name="TooltipTimer" type="Timer" parent="ConfirmPanel/Yes/Tooltip"]
+unique_name_in_owner = true
+wait_time = 3.0
+
+[node name="Label" type="Label" parent="ConfirmPanel/Yes/Tooltip"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 6.0
+offset_right = 150.0
+offset_bottom = 76.0
+theme_override_fonts/font = ExtResource("15_30nj2")
+theme_override_font_sizes/font_size = 13
+text = "Please select a destination from the Map tab"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
 [connection signal="pressed" from="RouteTab" to="." method="maps_pressed"]
 [connection signal="pressed" from="ShopTab" to="." method="shop_pressed"]
 [connection signal="pressed" from="ManifestTab" to="." method="manifest_pressed"]
 [connection signal="pressed" from="ConfirmTab" to="." method="manifest_pressed"]
 [connection signal="pressed" from="ConfirmPanel/Yes" to="." method="finished_shopping"]
+[connection signal="timeout" from="ConfirmPanel/Yes/Tooltip/TooltipTimer" to="." method="depop_tooltip"]
