@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cb1hd6m8b1j4u"]
+[gd_scene load_steps=6 format=3 uid="uid://cb1hd6m8b1j4u"]
 
 [ext_resource type="Script" uid="uid://6jqic8b8xfk" path="res://scripts/utility/TransparencyWindow.cs" id="1_twpsu"]
 [ext_resource type="Script" uid="uid://c0c8w3kir1hfs" path="res://scripts/utility/screen_borders.gd" id="2_lrqlo"]
 [ext_resource type="PackedScene" uid="uid://b1quvsltlp4xo" path="res://scenes/environment/world.tscn" id="3_lrqlo"]
-[ext_resource type="PackedScene" uid="uid://cq5fgu5au8cul" path="res://scenes/utility/test_widget.tscn" id="4_sqa0i"]
 [ext_resource type="PackedScene" uid="uid://biaeo50jq4a" path="res://scenes/UI/UI.tscn" id="5_jh1ax"]
 [ext_resource type="PackedScene" uid="uid://cgl0mqgmt2s56" path="res://scenes/player/engine.tscn" id="6_kycxp"]
 
@@ -16,8 +15,6 @@ script = ExtResource("2_lrqlo")
 [node name="World" parent="." instance=ExtResource("3_lrqlo")]
 
 [node name="PlayerUI" parent="." instance=ExtResource("5_jh1ax")]
-
-[node name="testWidget" parent="." instance=ExtResource("4_sqa0i")]
 
 [node name="TrainCar" parent="." instance=ExtResource("6_kycxp")]
 position = Vector2(960, 542)

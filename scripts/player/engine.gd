@@ -12,6 +12,17 @@ extends Node2D
 @onready var TrainAnim = %AnimatedSprite2D
 
 @export var current_speed: float
+var max_car_spaces: int = 12
+var cars = []
+
+const CAR_LOCATION_DATA= [
+	Vector2(-38, 507), Vector2(-83, 507), 
+	Vector2(-128, 507), Vector2(-173, 507), 
+	Vector2(-218, 507), Vector2(-263, 507), 
+	Vector2(-308, 507), Vector2(-353, 507),
+	Vector2(-398, 507), Vector2(-443, 507), 
+	Vector2(-488, 507), Vector2(-533, 507), 
+	]
 
 func _ready() -> void:
 	pass
@@ -33,3 +44,12 @@ func trigger_station_ui(area):
 func open_shop():
 	MessageBus.trigger_shop.emit()
 	MessageBus.update_map_choices.emit()
+
+func spawn_train_car(choice: String):
+	if cars.size() >= max_car_spaces:
+		print("Train is full. Cannot spawn more cars.")
+	else:
+		var train_car_scene: PackedScene = preload("res://scenes/player/train_car.tscn")
+		var train_car: TrainCar = train_car_scene.instantiate()
+		train_car.car_type = choice
+		add_child(train_car)

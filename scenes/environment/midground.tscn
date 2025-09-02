@@ -1,32 +1,32 @@
 [gd_scene load_steps=8 format=3 uid="uid://c225if7w7nopx"]
 
-[ext_resource type="Texture2D" uid="uid://dobwtago2hq6q" path="res://art/landscapes/background.png" id="1_pvoeo"]
+[ext_resource type="Texture2D" uid="uid://8iof8eucy5yo" path="res://art/landscapes/midground.png" id="2_euk2m"]
 [ext_resource type="Script" uid="uid://bis7st4bs5q6y" path="res://scripts/environment/scroll_speed_manager.gd" id="2_xiqn3"]
 [ext_resource type="Script" uid="uid://coqal3f8uwdy2" path="res://scripts/environment/change_frame.gd" id="3_euk2m"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xo05s"]
-atlas = ExtResource("1_pvoeo")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppvd8"]
+atlas = ExtResource("2_euk2m")
 region = Rect2(0, 0, 1920, 1080)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dss4m"]
-atlas = ExtResource("1_pvoeo")
+[sub_resource type="AtlasTexture" id="AtlasTexture_4klgo"]
+atlas = ExtResource("2_euk2m")
 region = Rect2(0, 1080, 1920, 1080)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7t5mc"]
-atlas = ExtResource("1_pvoeo")
+[sub_resource type="AtlasTexture" id="AtlasTexture_lujw3"]
+atlas = ExtResource("2_euk2m")
 region = Rect2(0, 2160, 1920, 1080)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w0b0u"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xo05s")
+"texture": SubResource("AtlasTexture_ppvd8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dss4m")
+"texture": SubResource("AtlasTexture_4klgo")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7t5mc")
+"texture": SubResource("AtlasTexture_lujw3")
 }],
 "loop": true,
 "name": &"default",
@@ -36,14 +36,13 @@ animations = [{
 [node name="Midground" type="Node2D"]
 script = ExtResource("2_xiqn3")
 
-[node name="Background" type="Parallax2D" parent="."]
-scroll_offset = Vector2(4667, 362)
+[node name="Midground" type="Parallax2D" parent="."]
 repeat_size = Vector2(1920, 0)
 autoscroll = Vector2(-2, 0)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Midground"]
 texture_filter = 1
-position = Vector2(1092, 717)
+position = Vector2(-1, 1079)
 sprite_frames = SubResource("SpriteFrames_w0b0u")
 offset = Vector2(961, -539)
 script = ExtResource("3_euk2m")

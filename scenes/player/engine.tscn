@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://cgl0mqgmt2s56"]
+[gd_scene load_steps=24 format=3 uid="uid://cgl0mqgmt2s56"]
 
 [ext_resource type="Script" uid="uid://bkbfmqmaj4ogf" path="res://scripts/player/engine.gd" id="1_8vtrv"]
 [ext_resource type="Texture2D" uid="uid://bp3cqg2gkru7c" path="res://art/player/smokeSprite.png" id="2_7xwl4"]
 [ext_resource type="PackedScene" uid="uid://ux40hv8cirwh" path="res://scenes/utility/speed_component.tscn" id="2_rvm6x"]
 [ext_resource type="Texture2D" uid="uid://oicxgv2ekuku" path="res://art/player/engine.png" id="3_7yq1s"]
 [ext_resource type="Script" uid="uid://benmtupuslq5n" path="res://scripts/player/smoke_stack.gd" id="3_jt7g1"]
+[ext_resource type="PackedScene" uid="uid://d03hbr46pbue2" path="res://scenes/player/train_car.tscn" id="4_7yq1s"]
 [ext_resource type="Script" uid="uid://by75ysmkqqu41" path="res://scripts/environment/switch_light.gd" id="6_rvm6x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
@@ -113,21 +114,24 @@ sprite_frames = SubResource("SpriteFrames_fjrip")
 autoplay = "default"
 frame_progress = 0.640851
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_left = 8.0
-offset_top = 401.0
-offset_right = 132.0
-offset_bottom = 441.0
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 1.0
+offset_top = 361.0
+offset_right = 282.0
+offset_bottom = 401.0
 
-[node name="Arrive" type="Button" parent="HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Arrive" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "arrive"
 
-[node name="Depart" type="Button" parent="HBoxContainer"]
+[node name="Depart" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "depart"
 
-[node name="Landscape" type="OptionButton" parent="HBoxContainer"]
+[node name="Landscape" type="OptionButton" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 item_count = 7
 popup/item_0/text = "Desert"
@@ -145,9 +149,32 @@ popup/item_5/id = 5
 popup/item_6/text = "7"
 popup/item_6/id = 6
 
-[node name="Add Funds" type="Button" parent="HBoxContainer"]
+[node name="Add Funds" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Add $10"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="coal" type="Button" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "coal"
+
+[node name="box" type="Button" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "box"
+
+[node name="luxury" type="Button" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "luxury"
+
+[node name="caboose" type="Button" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "caboose"
+
+[node name="passenger" type="Button" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "passenger"
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
@@ -183,11 +210,14 @@ texture = SubResource("GradientTexture2D_rvm6x")
 position = Vector2(0.6875, 504)
 shape = SubResource("RectangleShape2D_rvm6x")
 
+[node name="TrainCar" parent="." instance=ExtResource("4_7yq1s")]
+position = Vector2(-38, 507)
+
 [connection signal="speed_adjusted" from="SpeedComponent" to="." method="_on_speed_component_speed_adjusted"]
-[connection signal="pressed" from="HBoxContainer/Arrive" to="SpeedComponent" method="arrive"]
-[connection signal="pressed" from="HBoxContainer/Depart" to="SpeedComponent" method="depart"]
-[connection signal="item_selected" from="HBoxContainer/Landscape" to="SpeedComponent" method="transition"]
-[connection signal="pressed" from="HBoxContainer/Add Funds" to="SpeedComponent" method="add_funds"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Arrive" to="SpeedComponent" method="arrive"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Depart" to="SpeedComponent" method="depart"]
+[connection signal="item_selected" from="VBoxContainer/HBoxContainer/Landscape" to="SpeedComponent" method="transition"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Add Funds" to="SpeedComponent" method="add_funds"]
 [connection signal="area_entered" from="Light" to="Light" method="_turn_off"]
 [connection signal="area_exited" from="Light" to="Light" method="_turn_on"]
 [connection signal="area_entered" from="ShopDetector" to="." method="trigger_station_ui"]
