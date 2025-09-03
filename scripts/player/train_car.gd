@@ -16,6 +16,7 @@ var employees := []
 var multiplier: float
 var upsells: int
 var stoker: bool
+var array_position: int
 
 const SEATS = "seats"
 const CUBBIES = "cubbies"
@@ -43,12 +44,20 @@ const CAR_STATS = {
 }
 
 func _ready() -> void:
-	pass
+	await get_tree().process_frame
+	set_train_animation()
+	var engine = get_tree().get_first_node_in_group("Engine")
+	if engine:
+		engine.animation_frame_synced.connect(_on_sync_frame)
+
+func _on_sync_frame(frame: int) -> void:
+	train_anim.frame = frame
 
 func set_train_animation():
 	var available_animations = train_anim.sprite_frames.get_animation_names()
 	if car_type in available_animations:
 		train_anim.animation = car_type
+		train_anim.play()
 	else:
 		push_warning("No animation found")
 		print(car_type)

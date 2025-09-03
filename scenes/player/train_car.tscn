@@ -195,6 +195,11 @@ animations = [{
 "name": &"coal",
 "speed": 5.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hnxqg")
@@ -243,14 +248,14 @@ animations = [{
 }]
 
 [node name="TrainCar" type="Node2D"]
+position = Vector2(0, 508)
 script = ExtResource("1_ffewg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 texture_filter = 1
-position = Vector2(0, -0.5)
+position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_3aefm")
-animation = &"passenger"
-autoplay = "passenger"
-frame_progress = 0.576046
+animation = &"empty"
+autoplay = "empty"
 script = ExtResource("3_arr26")

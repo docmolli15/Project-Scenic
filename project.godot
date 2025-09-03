@@ -42,6 +42,7 @@ project/assembly_name="DesktopPet"
 [global_group]
 
 Cities=""
+Engine=""
 
 [rendering]
 
