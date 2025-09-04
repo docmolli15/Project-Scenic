@@ -13,6 +13,7 @@ signal finished_shopping
 signal update_buttons
 signal update_map_choices
 signal trip_timer_ends
+signal update_shop
 
 func _ready():
 	pass

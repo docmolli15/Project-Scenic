@@ -47,6 +47,7 @@ func trigger_station_ui(area):
 func open_shop():
 	MessageBus.trigger_shop.emit()
 	MessageBus.update_map_choices.emit()
+	MessageBus.update_shop.emit()
 
 func spawn_train_car(choice: String):
 	var is_caboose := choice == "caboose"

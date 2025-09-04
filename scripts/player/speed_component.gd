@@ -80,7 +80,7 @@ func departed():
 	switch_state(State.CRUISING)
 
 func transitioned() -> void:
-	switch_state(State.CRUISING)
+	switch_state(State.TRANSITIONING)
 
 func finished_transition():
 	switch_state(State.CRUISING)

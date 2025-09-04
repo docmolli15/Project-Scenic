@@ -1,6 +1,7 @@
-[gd_scene load_steps=51 format=3 uid="uid://dn0pxwh7upmlt"]
+[gd_scene load_steps=52 format=3 uid="uid://dn0pxwh7upmlt"]
 
 [ext_resource type="Texture2D" uid="uid://d5ycdd5eqee2" path="res://art/UI/station UI/shop_panel.png" id="1_ttefy"]
+[ext_resource type="Script" uid="uid://jj8817aobelp" path="res://scripts/ui/shop_manager.gd" id="1_wexb4"]
 [ext_resource type="Texture2D" uid="uid://13feosvrpyfx" path="res://art/UI/station UI/traincar_container.png" id="2_l3div"]
 [ext_resource type="Texture2D" uid="uid://dpwkt10pbvo7l" path="res://art/UI/station UI/shop_icons.png" id="3_l3div"]
 [ext_resource type="Texture2D" uid="uid://dtybka4r6i8sg" path="res://art/UI/station UI/focus_container.png" id="4_hcybb"]
@@ -153,7 +154,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jtg15")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 5.0
 }]
@@ -306,6 +307,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_wexb4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -326,17 +328,17 @@ patch_margin_bottom = 9
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
+[node name="Car1" type="AnimatedSprite2D" parent="Car"]
+unique_name_in_owner = true
+position = Vector2(50, 23)
+sprite_frames = SubResource("SpriteFrames_j1fxx")
+
 [node name="Car Button" type="TextureButton" parent="Car"]
 layout_mode = 0
 offset_left = 28.0
 offset_top = 9.0
 offset_right = 73.0
 offset_bottom = 37.0
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Car"]
-position = Vector2(50, 23)
-sprite_frames = SubResource("SpriteFrames_j1fxx")
-frame = 1
 
 [node name="Car2" type="NinePatchRect" parent="."]
 texture_filter = 1
@@ -353,18 +355,18 @@ patch_margin_bottom = 9
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
+[node name="Car2" type="AnimatedSprite2D" parent="Car2"]
+unique_name_in_owner = true
+position = Vector2(50, 23)
+sprite_frames = SubResource("SpriteFrames_7dm12")
+animation = &"inventory"
+
 [node name="Car Button 2" type="TextureButton" parent="Car2"]
 layout_mode = 0
 offset_left = 28.0
 offset_top = 9.0
 offset_right = 73.0
 offset_bottom = 37.0
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Car2"]
-position = Vector2(50, 23)
-sprite_frames = SubResource("SpriteFrames_7dm12")
-animation = &"inventory"
-frame = 5
 
 [node name="Car3" type="NinePatchRect" parent="."]
 texture_filter = 1
@@ -381,18 +383,18 @@ patch_margin_bottom = 9
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
+[node name="Car3" type="AnimatedSprite2D" parent="Car3"]
+unique_name_in_owner = true
+position = Vector2(50, 23)
+sprite_frames = SubResource("SpriteFrames_7dm12")
+animation = &"inventory"
+
 [node name="Car Button 3" type="TextureButton" parent="Car3"]
 layout_mode = 0
 offset_left = 28.0
 offset_top = 9.0
 offset_right = 73.0
 offset_bottom = 37.0
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Car3"]
-position = Vector2(50, 23)
-sprite_frames = SubResource("SpriteFrames_7dm12")
-animation = &"inventory"
-frame = 3
 
 [node name="Upgrade" type="NinePatchRect" parent="."]
 texture_filter = 1
@@ -491,7 +493,7 @@ patch_margin_top = 12
 patch_margin_right = 11
 patch_margin_bottom = 12
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Focus"]
+[node name="Focus" type="AnimatedSprite2D" parent="Focus"]
 position = Vector2(58, 38)
 scale = Vector2(1.66667, 1.66667)
 sprite_frames = SubResource("SpriteFrames_7dm12")
@@ -569,3 +571,7 @@ texture_filter = 1
 position = Vector2(117, 1.19209e-07)
 scale = Vector2(0.884616, 0.863636)
 texture = ExtResource("9_2y127")
+
+[connection signal="pressed" from="Car/Car Button" to="." method="_car_one_pressed"]
+[connection signal="pressed" from="Car2/Car Button 2" to="." method="_car_two_pressed"]
+[connection signal="pressed" from="Car3/Car Button 3" to="." method="_car_three_pressed"]
