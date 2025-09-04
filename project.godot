@@ -23,6 +23,9 @@ MessageBus="*res://scripts/utility/message_bus.gd"
 Global="*res://scripts/utility/global.gd"
 ShopDatabase="*res://scripts/ui/shop_database.gd"
 ManifestDatabase="*res://scripts/ui/manifest_database.gd"
+player_data_1="*res://scripts/utility/player_data_1.gd"
+player_data_2="*res://scripts/utility/player_data_2.gd"
+player_data_3="*res://scripts/utility/player_data_3.gd"
 
 [display]
 

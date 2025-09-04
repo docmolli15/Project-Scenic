@@ -8,7 +8,8 @@ const ITEMS := {
 		"frame": 0,
 		"description": "Sorry, all out of stock. We'll have some more by your next visit.",
 		"effect": "none",
-		"tier": "none"
+		"tier": "none",
+		"unique": false
 	},
 	"boxcar": {
 		"name": "Boxcar",
@@ -17,7 +18,8 @@ const ITEMS := {
 		"frame": 1,
 		"description": "A large train car for moving freight. Carrying capacity for packages increased.",
 		"effect": "func(): pass",
-		"tier": 1
+		"tier": 1,
+		"unique": false
 	},
 	"caboose": {
 		"name": "Caboose",
@@ -26,7 +28,8 @@ const ITEMS := {
 		"frame": 2,
 		"description": "The employee car. Determines how many crew can work on your train.",
 		"effect": "func(): pass",
-		"tier": 1
+		"tier": 1,
+		"unique": true
 	},
 	"luxury_car": {
 		"name": "Luxury Car",
@@ -35,7 +38,8 @@ const ITEMS := {
 		"frame": 3,
 		"description": "A fancy car that hosts entertainment and cozy seating. Dramatically increase the money earned from trasnporting passengers.",
 		"effect": "func(): pass",
-		"tier": 1
+		"tier": 1,
+		"unique": false
 	},
 	"passenger_car": {
 		"name": "Passenger Car",
@@ -44,7 +48,8 @@ const ITEMS := {
 		"frame": 4,
 		"description": "A basic car with rooms. Increases the number of passengers you can take.",
 		"effect": "func(): pass",
-		"tier": 1
+		"tier": 1,
+		"unique": false
 	},
 	"coal_car": {
 		"name": "Coal Car",
@@ -53,7 +58,8 @@ const ITEMS := {
 		"frame": 5,
 		"description": "Allows the hiring of a Stoker, shoveling the coal for you once every 30 seconds.",
 		"effect": "func(): pass",
-		"tier": 1
+		"tier": 1,
+		"unique": false
 	},
 	"coffee_bar": {
 		"name": "Coffee Bar",
@@ -62,7 +68,8 @@ const ITEMS := {
 		"frame": 6,
 		"description": "A classy refreshment bar that increases the effect of the luxury cars on money earned from passengers. The white chocolate mocha is divine.",
 		"effect": "func(): pass",
-		"tier": 1
+		"tier": 1,
+		"unique": true
 	},
 	"dining_service": {
 		"name": "Dining Services",
@@ -71,7 +78,8 @@ const ITEMS := {
 		"frame": 7,
 		"description": "Food services for passengers. Periodically adding funds from food purchased, earning more money across longer trips. Best item on the menu is the mac and cheese.",
 		"effect": "func(): pass",
-		"tier": 1
+		"tier": 1,
+		"unique": true
 	},
 	"delicate_item_storage": {
 		"name": "Delicate Item Storage",
@@ -80,7 +88,8 @@ const ITEMS := {
 		"frame": 8,
 		"description": "Equipment for boxcars to transport items normally too delicate for traveling on trains. Increases the variety of items that can be tranposrted.",
 		"effect": "func(): pass",
-		"tier": 1
+		"tier": 1,
+		"unique": true
 	},
 	"employee_capacity": {
 		"name": "Increased Caboose Capacity",
@@ -89,7 +98,8 @@ const ITEMS := {
 		"frame": 9,
 		"description": "The caboose can hold a much higher amount of employees, allowing for more cars to operate at maximum efficiency.",
 		"effect": "func(): pass",
-		"tier": 1
+		"tier": 1,
+		"unique": true
 	},
 	"engine_upgrade_1": {
 		"name": "Engine Upgrade I",
@@ -98,7 +108,8 @@ const ITEMS := {
 		"frame": 10,
 		"description": "A much needed upgrade for your engine, making it burn coal more efficiently. Price of shoveling coal reduced to $2.",
 		"effect": "func(): pass",
-		"tier": 1
+		"tier": 1,
+		"unique": true
 	},
 	"engine_upgrade_2": {
 		"name": "Engine Upgrade II",
@@ -107,7 +118,8 @@ const ITEMS := {
 		"frame": 11,
 		"description": "Speed from shoveled coal will drop slower, making the most out of the speed increase.",
 		"effect": "func(): pass",
-		"tier": 2
+		"tier": 2,
+		"unique": true
 	},
 	"engine_upgrade_3": {
 		"name": "Engine Upgrade III",
@@ -116,7 +128,8 @@ const ITEMS := {
 		"frame": 12,
 		"description": "Maximum speed achievable by your engine is significantly increased.",
 		"effect": "func(): pass",
-		"tier": 3
+		"tier": 3,
+		"unique": true
 	},
 	"engine_upgrade_4": {
 		"name": "Engine Upgrade IV",
@@ -125,7 +138,8 @@ const ITEMS := {
 		"frame": 13,
 		"description": "Maximum speed is increased again, speed drops even slower, and the cost of shoveling reduced to $1. This is what peak efficiency looks like.",
 		"effect": "func(): pass",
-		"tier": 4
+		"tier": 4,
+		"unique": true
 	},
 	"passenger_car_upgrade": {
 		"name": "Passenger Car Refit",
@@ -134,7 +148,8 @@ const ITEMS := {
 		"frame": 14,
 		"description": "Carry more passengers and earn slightly more money from them.",
 		"effect": "func(): pass",
-		"tier": 1
+		"tier": 1,
+		"unique": true
 	},
 	"coal_car_upgrade": {
 		"name": "name",
@@ -143,7 +158,8 @@ const ITEMS := {
 		"frame": 15,
 		"description": "Hire two Stokers per coal car. They have the need for speed.",
 		"effect": "func(): pass",
-		"tier": 1
+		"tier": 1,
+		"unique": true
 	},
 	"luxury_car_upgrade": {
 		"name": "name",
@@ -152,7 +168,8 @@ const ITEMS := {
 		"frame": 16,
 		"description": "An even classier experience, increasing money earned per passenger.",
 		"effect": "func(): pass",
-		"tier": 1
+		"tier": 1,
+		"unique": true
 	},
 	"caboose_upgrade": {
 		"name": "name",
@@ -161,7 +178,8 @@ const ITEMS := {
 		"frame": 17,
 		"description": "Better facilities lead to reduced cost per employee. Don't worry, their wages aren't negatively affected.",
 		"effect": "func(): pass",
-		"tier": 1
+		"tier": 1,
+		"unique": true
 	},
 	"boxcar_upgrade": {
 		"name": "name",
@@ -170,6 +188,29 @@ const ITEMS := {
 		"frame": 18,
 		"description": "Doubles the capacity of freight that can be transported.",
 		"effect": "func(): pass",
-		"tier": 1
+		"tier": 1,
+		"unique": true
 	},
 }
+
+func _ready() -> void:
+	pass
+
+func get_items_by_filter(type_filter: String, tier_filter: Variant = null, exclude_keys: Array = []) -> Array:
+	var result := []
+	for key in ITEMS:
+		if key == "none":
+			continue
+		if key in exclude_keys:
+			continue
+		var item = ITEMS[key]
+		if item["type"] != type_filter:
+			continue
+		if tier_filter != null and item.get("tier", null) != tier_filter:
+			continue
+		result.append(item)
+
+	if result.is_empty():
+		result.append(ITEMS["none"])
+
+	return result

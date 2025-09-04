@@ -313,7 +313,7 @@ script = ExtResource("1_wexb4")
 texture_filter = 1
 texture = ExtResource("1_ttefy")
 
-[node name="Car" type="NinePatchRect" parent="."]
+[node name="Car1" type="NinePatchRect" parent="."]
 texture_filter = 1
 layout_mode = 0
 offset_left = -194.0
@@ -328,17 +328,17 @@ patch_margin_bottom = 9
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[node name="Car1" type="AnimatedSprite2D" parent="Car"]
+[node name="Car1" type="AnimatedSprite2D" parent="Car1"]
 unique_name_in_owner = true
 position = Vector2(50, 23)
 sprite_frames = SubResource("SpriteFrames_j1fxx")
 
-[node name="Car Button" type="TextureButton" parent="Car"]
+[node name="Car Button" type="TextureButton" parent="Car1"]
 layout_mode = 0
-offset_left = 28.0
-offset_top = 9.0
-offset_right = 73.0
-offset_bottom = 37.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 98.0
+offset_bottom = 42.0
 
 [node name="Car2" type="NinePatchRect" parent="."]
 texture_filter = 1
@@ -363,10 +363,10 @@ animation = &"inventory"
 
 [node name="Car Button 2" type="TextureButton" parent="Car2"]
 layout_mode = 0
-offset_left = 28.0
-offset_top = 9.0
-offset_right = 73.0
-offset_bottom = 37.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 98.0
+offset_bottom = 42.0
 
 [node name="Car3" type="NinePatchRect" parent="."]
 texture_filter = 1
@@ -391,10 +391,10 @@ animation = &"inventory"
 
 [node name="Car Button 3" type="TextureButton" parent="Car3"]
 layout_mode = 0
-offset_left = 28.0
-offset_top = 9.0
-offset_right = 73.0
-offset_bottom = 37.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 98.0
+offset_bottom = 42.0
 
 [node name="Upgrade" type="NinePatchRect" parent="."]
 texture_filter = 1
@@ -411,18 +411,18 @@ patch_margin_bottom = 9
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[node name="Upgrade Button" type="TextureButton" parent="Upgrade"]
-layout_mode = 0
-offset_left = 13.0
-offset_top = 9.0
-offset_right = 41.0
-offset_bottom = 36.0
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Upgrade"]
+[node name="UpgradeOne" type="AnimatedSprite2D" parent="Upgrade"]
+unique_name_in_owner = true
 position = Vector2(27, 22)
 sprite_frames = SubResource("SpriteFrames_7dm12")
 animation = &"inventory"
-frame = 6
+
+[node name="Upgrade Button" type="TextureButton" parent="Upgrade"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 50.0
+offset_bottom = 42.0
 
 [node name="Upgrade2" type="NinePatchRect" parent="."]
 texture_filter = 1
@@ -439,18 +439,18 @@ patch_margin_bottom = 9
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[node name="Upgrade Button 2" type="TextureButton" parent="Upgrade2"]
-layout_mode = 0
-offset_left = 13.0
-offset_top = 9.0
-offset_right = 41.0
-offset_bottom = 36.0
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Upgrade2"]
+[node name="UpgradeTwo" type="AnimatedSprite2D" parent="Upgrade2"]
+unique_name_in_owner = true
 position = Vector2(27, 22)
 sprite_frames = SubResource("SpriteFrames_7dm12")
 animation = &"inventory"
-frame = 8
+
+[node name="Upgrade Button 2" type="TextureButton" parent="Upgrade2"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 50.0
+offset_bottom = 42.0
 
 [node name="Upgrade3" type="NinePatchRect" parent="."]
 texture_filter = 1
@@ -467,18 +467,18 @@ patch_margin_bottom = 9
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[node name="Upgrade Button 3" type="TextureButton" parent="Upgrade3"]
-layout_mode = 0
-offset_left = 13.0
-offset_top = 9.0
-offset_right = 41.0
-offset_bottom = 36.0
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Upgrade3"]
+[node name="UpgradeThree" type="AnimatedSprite2D" parent="Upgrade3"]
+unique_name_in_owner = true
 position = Vector2(27, 22)
 sprite_frames = SubResource("SpriteFrames_7dm12")
 animation = &"inventory"
-frame = 10
+
+[node name="Upgrade Button 3" type="TextureButton" parent="Upgrade3"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 50.0
+offset_bottom = 42.0
 
 [node name="Focus" type="NinePatchRect" parent="."]
 texture_filter = 1
@@ -493,13 +493,15 @@ patch_margin_top = 12
 patch_margin_right = 11
 patch_margin_bottom = 12
 
-[node name="Focus" type="AnimatedSprite2D" parent="Focus"]
-position = Vector2(58, 38)
-scale = Vector2(1.66667, 1.66667)
+[node name="FocusFrame" type="AnimatedSprite2D" parent="Focus"]
+unique_name_in_owner = true
+position = Vector2(59, 38)
+scale = Vector2(2.26087, 1.66667)
 sprite_frames = SubResource("SpriteFrames_7dm12")
 animation = &"inventory"
 
-[node name="Label3" type="Label" parent="Focus"]
+[node name="ItemName" type="Label" parent="Focus"]
+unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 0
 offset_left = 9.0
@@ -510,14 +512,15 @@ theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/font = ExtResource("5_2y127")
 theme_override_font_sizes/font_size = 11
 horizontal_alignment = 1
+autowrap_mode = 2
 
-[node name="Description" type="NinePatchRect" parent="."]
+[node name="Paper" type="NinePatchRect" parent="Focus"]
 texture_filter = 1
 layout_mode = 0
-offset_left = -5.0
-offset_top = 13.0
-offset_right = 189.0
-offset_bottom = 72.0
+offset_left = 5.0
+offset_top = 87.0
+offset_right = 199.0
+offset_bottom = 146.0
 texture = ExtResource("5_qbf44")
 patch_margin_left = 17
 patch_margin_top = 17
@@ -526,34 +529,36 @@ patch_margin_bottom = 17
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 1
 
-[node name="Label" type="Label" parent="Description"]
+[node name="Description" type="Label" parent="Focus"]
+unique_name_in_owner = true
 layout_mode = 0
-offset_left = 11.0
-offset_top = 9.0
-offset_right = 183.0
-offset_bottom = 51.0
+offset_left = 16.0
+offset_top = 96.0
+offset_right = 188.0
+offset_bottom = 138.0
 theme_override_colors/font_color = Color(0.15437, 0.105638, 0.0194927, 1)
 theme_override_font_sizes/font_size = 8
 text = "This is a really long sentence to test how much can fit in this label. If you can see all of this in the box then we are good."
 autowrap_mode = 2
 
-[node name="Buy" type="TextureButton" parent="."]
+[node name="Buy" type="TextureButton" parent="Focus"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 111.0
-offset_top = -77.0
-offset_right = 193.0
-offset_bottom = -13.0
+offset_left = 121.0
+offset_top = -3.0
+offset_right = 203.0
+offset_bottom = 61.0
 texture_normal = ExtResource("6_hcybb")
 texture_pressed = ExtResource("7_qbf44")
 
-[node name="Price" type="Label" parent="."]
+[node name="Price" type="Label" parent="Focus"]
+unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 0
-offset_left = 125.0
-offset_top = -11.0
-offset_right = 196.0
-offset_bottom = 12.0
+offset_left = 135.0
+offset_top = 63.0
+offset_right = 206.0
+offset_bottom = 86.0
 theme_override_colors/font_color = Color(0.246873, 1, 0.0897869, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(9.14484e-07, 0.887663, 0, 1)
@@ -566,12 +571,15 @@ theme_override_font_sizes/font_size = 11
 text = "0"
 vertical_alignment = 1
 
-[node name="$" type="Sprite2D" parent="."]
+[node name="$" type="Sprite2D" parent="Focus"]
 texture_filter = 1
-position = Vector2(117, 1.19209e-07)
+position = Vector2(127, 74)
 scale = Vector2(0.884616, 0.863636)
 texture = ExtResource("9_2y127")
 
-[connection signal="pressed" from="Car/Car Button" to="." method="_car_one_pressed"]
+[connection signal="pressed" from="Car1/Car Button" to="." method="_car_one_pressed"]
 [connection signal="pressed" from="Car2/Car Button 2" to="." method="_car_two_pressed"]
 [connection signal="pressed" from="Car3/Car Button 3" to="." method="_car_three_pressed"]
+[connection signal="pressed" from="Upgrade/Upgrade Button" to="." method="_upgrade_one_pressed"]
+[connection signal="pressed" from="Upgrade2/Upgrade Button 2" to="." method="_upgrade_two_pressed"]
+[connection signal="pressed" from="Upgrade3/Upgrade Button 3" to="." method="_upgrade_three_pressed"]
