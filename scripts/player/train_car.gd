@@ -30,25 +30,51 @@ const CAR_STATS = {
 		SEATS: 0, CUBBIES: 0, JOBS: 1, MULTIPLIER: 0.0, UPSELLS: 0, UNLOCK: true
 	},
 	"box": {
-		SEATS: 0, CUBBIES: 4, JOBS: 3, MULTIPLIER: 0.0, UPSELLS: 0, UNLOCK: 0
+		SEATS: 0, CUBBIES: 2, JOBS: 2, MULTIPLIER: 0.0, UPSELLS: 0, UNLOCK: 0
 	},
 	"luxury": {
-		SEATS: 0, CUBBIES: 0, JOBS: 3, MULTIPLIER: 0.5, UPSELLS: 4, UNLOCK: 0
+		SEATS: 0, CUBBIES: 0, JOBS: 2, MULTIPLIER: 0.5, UPSELLS: 3, UNLOCK: 0
 	},
 	"caboose": {
 		SEATS: 0, CUBBIES: 0, JOBS: 0, MULTIPLIER: 0.0, UPSELLS: 0, UNLOCK: true
 	},
 	"passenger": {
-		SEATS: 4, CUBBIES: 0, JOBS: 0, MULTIPLIER: 0.0, UPSELLS: 0, UNLOCK: 0
+		SEATS: 2, CUBBIES: 0, JOBS: 2, MULTIPLIER: 0.0, UPSELLS: 0, UNLOCK: 0
 	}
 }
 
-func _ready() -> void:
+func _ready():
 	await get_tree().process_frame
+	initialize_from_type()
+	apply_upgrades()
 	set_train_animation()
 	var engine = get_tree().get_first_node_in_group("Engine")
 	if engine:
 		engine.animation_frame_synced.connect(_on_sync_frame)
+
+func apply_upgrades():
+	var player_data = Global.get_active_player_data()
+	var upgrades = player_data.dynamic_player_stats
+	
+	if car_type == "passenger_car":
+		seats += upgrades.get("seats", 0)
+	if car_type == "coal_car":
+		seats += upgrades.get()
+	if car_type == "luxury_car":
+		seats += upgrades.get()
+	if car_type == "boxcar":
+		seats += upgrades.get()
+	if car_type == "caboose":
+		seats += upgrades.get()
+
+func initialize_from_type():
+	var base = CAR_STATS.get(car_type, {})
+	seats = base.get(SEATS, 0)
+	cubbies = base.get(CUBBIES, 0)
+	jobs = base.get(JOBS, 0)
+	multiplier = base.get(MULTIPLIER, 0.0)
+	upsells = base.get(UPSELLS, 0)
+	stoker = false
 
 func _on_sync_frame(frame: int) -> void:
 	train_anim.frame = frame

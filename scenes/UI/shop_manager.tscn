@@ -542,6 +542,7 @@ text = "This is a really long sentence to test how much can fit in this label. I
 autowrap_mode = 2
 
 [node name="Buy" type="TextureButton" parent="Focus"]
+unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 0
 offset_left = 121.0
@@ -583,3 +584,4 @@ texture = ExtResource("9_2y127")
 [connection signal="pressed" from="Upgrade/Upgrade Button" to="." method="_upgrade_one_pressed"]
 [connection signal="pressed" from="Upgrade2/Upgrade Button 2" to="." method="_upgrade_two_pressed"]
 [connection signal="pressed" from="Upgrade3/Upgrade Button 3" to="." method="_upgrade_three_pressed"]
+[connection signal="pressed" from="Focus/Buy" to="." method="_purchase"]

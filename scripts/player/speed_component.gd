@@ -54,8 +54,9 @@ func switch_state(state: State):
 			_transition()
 
 func _cruise():
+	var friction_reducer = Global.get_active_player_data().dynamic_player_stats.get("friction reducer", 0.0)
 	if current_train_state == State.CRUISING:
-		current_speed -= FRICTION_VALUE
+		current_speed -= (FRICTION_VALUE + friction_reducer)
 		current_speed = clamp(current_speed, cruising_speed, max_speed)
 		cruise_timer.start()
 

@@ -14,6 +14,7 @@ signal update_buttons
 signal update_map_choices
 signal trip_timer_ends
 signal update_shop
+signal stats_updated
 
 func _ready():
 	pass

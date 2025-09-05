@@ -16,3 +16,7 @@ var purchased_items: Dictionary = {
 	"caboose_upgrade": false,
 	"boxcar_upgrade": false
 }
+
+var dynamic_player_stats: Dictionary = {
+	"cars": 0, "seats": 0, "cubbies": 0, "jobs": 0, "upsells": 0, "money mult": 0.0, "friction reducer": -0.00
+}

@@ -150,7 +150,7 @@ popup/item_6/id = 6
 
 [node name="Add Funds" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "Add $10"
+text = "Add $"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2

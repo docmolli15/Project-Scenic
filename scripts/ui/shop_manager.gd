@@ -10,6 +10,7 @@ extends Control
 @onready var focused_name = %ItemName
 @onready var focused_description = %Description
 @onready var focused_price = %Price
+@onready var buy_button = %Buy
 var first_car = {}
 var second_car = {}
 var third_car = {}
@@ -19,7 +20,6 @@ var third_upgrade = {}
 var focused_item = {}
 
 func _ready():
-	
 	MessageBus.update_shop.connect(populate_shelves)
 
 func populate_shelves():
@@ -71,3 +71,63 @@ func focus_item(item: Dictionary):
 	focused_name.text = item["name"]
 	focused_description.text = item["description"]
 	focused_price.text = str(item["price"])
+
+func _purchase() -> void:
+	buy_focused_item()
+	MessageBus.stats_updated.emit()
+
+func buy_focused_item():
+	if focused_item.is_empty():
+		return
+
+	var price = focused_item.get("price", 0)
+	if Global.funds < price:
+		return
+
+	var item_id = get_item_id(focused_item)
+	if item_id == "":
+		return
+
+	Global.get_active_player_data().purchased_items[item_id] = true
+	MessageBus.spent.emit(price)
+	
+	if focused_item.has("effect") and typeof(focused_item.effect) == TYPE_CALLABLE:
+		focused_item.effect.call()
+
+	replace_focused_item_with_none()
+	clear_focus()
+
+func get_item_id(item: Dictionary) -> String:
+	for key in ShopDatabase.ITEMS:
+		if ShopDatabase.ITEMS[key] == item:
+			return key
+	return ""
+
+func clear_focus():
+	focused_item = {}
+	focused_pic.frame = -1
+	focused_name.text = ""
+	focused_description.text = ""
+	focused_price.text = ""
+
+func replace_focused_item_with_none():
+	var none_item = ShopDatabase.ITEMS["none"]
+
+	if focused_item == first_car:
+		first_car = none_item
+		car1.frame = none_item["frame"]
+	elif focused_item == second_car:
+		second_car = none_item
+		car2.frame = none_item["frame"]
+	elif focused_item == third_car:
+		third_car = none_item
+		car3.frame = none_item["frame"]
+	elif focused_item == first_upgrade:
+		first_upgrade = none_item
+		upgrade1.frame = none_item["frame"]
+	elif focused_item == second_upgrade:
+		second_upgrade = none_item
+		upgrade2.frame = none_item["frame"]
+	elif focused_item == third_upgrade:
+		third_upgrade = none_item
+		upgrade3.frame = none_item["frame"]
