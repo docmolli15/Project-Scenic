@@ -32,13 +32,13 @@ func populate_shelves():
 	var upgrade_items = ShopDatabase.get_items_by_filter("upgrade", 1, exclude_keys)
 	train_items.shuffle()
 	upgrade_items.shuffle()
-	first_car = train_items[0] if train_items.size() > 0 else ShopDatabase.ITEMS["none"]
-	second_car = train_items[1] if train_items.size() > 1 else ShopDatabase.ITEMS["none"]
-	third_car = train_items[2] if train_items.size() > 2 else ShopDatabase.ITEMS["none"]
+	first_car = train_items[0] if train_items.size() > 0 else ShopDatabase.items["none"]
+	second_car = train_items[1] if train_items.size() > 1 else ShopDatabase.items["none"]
+	third_car = train_items[2] if train_items.size() > 2 else ShopDatabase.items["none"]
 
-	first_upgrade = upgrade_items[0] if upgrade_items.size() > 0 else ShopDatabase.ITEMS["none"]
-	second_upgrade = upgrade_items[1] if upgrade_items.size() > 1 else ShopDatabase.ITEMS["none"]
-	third_upgrade = upgrade_items[2] if upgrade_items.size() > 2 else ShopDatabase.ITEMS["none"]
+	first_upgrade = upgrade_items[0] if upgrade_items.size() > 0 else ShopDatabase.items["none"]
+	second_upgrade = upgrade_items[1] if upgrade_items.size() > 1 else ShopDatabase.items["none"]
+	third_upgrade = upgrade_items[2] if upgrade_items.size() > 2 else ShopDatabase.items["none"]
 	car1.frame = first_car["frame"]
 	car2.frame = second_car["frame"]
 	car3.frame = third_car["frame"]
@@ -74,7 +74,7 @@ func focus_item(item: Dictionary):
 
 func _purchase() -> void:
 	buy_focused_item()
-	MessageBus.stats_updated.emit()
+	MessageBus.stats_updated.emit() 
 
 func buy_focused_item():
 	if focused_item.is_empty():
@@ -90,16 +90,19 @@ func buy_focused_item():
 
 	Global.get_active_player_data().purchased_items[item_id] = true
 	MessageBus.spent.emit(price)
-	
+
 	if focused_item.has("effect") and typeof(focused_item.effect) == TYPE_CALLABLE:
 		focused_item.effect.call()
+
+	if focused_item.get("type", "") == "train":
+		MessageBus.train_purchased.emit(item_id)
 
 	replace_focused_item_with_none()
 	clear_focus()
 
 func get_item_id(item: Dictionary) -> String:
-	for key in ShopDatabase.ITEMS:
-		if ShopDatabase.ITEMS[key] == item:
+	for key in ShopDatabase.items:
+		if ShopDatabase.items[key] == item:
 			return key
 	return ""
 
@@ -111,7 +114,7 @@ func clear_focus():
 	focused_price.text = ""
 
 func replace_focused_item_with_none():
-	var none_item = ShopDatabase.ITEMS["none"]
+	var none_item = ShopDatabase.items["none"]
 
 	if focused_item == first_car:
 		first_car = none_item

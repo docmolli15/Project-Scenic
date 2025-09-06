@@ -56,16 +56,8 @@ func apply_upgrades():
 	var player_data = Global.get_active_player_data()
 	var upgrades = player_data.dynamic_player_stats
 	
-	if car_type == "passenger_car":
+	if car_type in ["passenger", "coal", "luxury", "box", "caboose"]:
 		seats += upgrades.get("seats", 0)
-	if car_type == "coal_car":
-		seats += upgrades.get()
-	if car_type == "luxury_car":
-		seats += upgrades.get()
-	if car_type == "boxcar":
-		seats += upgrades.get()
-	if car_type == "caboose":
-		seats += upgrades.get()
 
 func initialize_from_type():
 	var base = CAR_STATS.get(car_type, {})

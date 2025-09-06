@@ -36,6 +36,7 @@ func _ready() -> void:
 	MessageBus.sped_up.connect(speed_up)
 	MessageBus.back_to_cruise.connect(finished_transition)
 	MessageBus.trip_timer_ends.connect(arrive)
+	MessageBus.tunnelled_through.connect(transition)
 	switch_state(State.CRUISING)
 
 func _process(_delta: float) -> void:
@@ -78,12 +79,11 @@ func __tween_adjustment(target_speed: float, duration: float):
 		tween.finished.connect(tunnel_timer.start, CONNECT_ONE_SHOT)
 
 func departed():
+	print('departed')
 	switch_state(State.CRUISING)
 
-func transitioned() -> void:
-	switch_state(State.TRANSITIONING)
-
 func finished_transition():
+	print('finished transition')
 	switch_state(State.CRUISING)
 
 func _update_speed() -> void:
@@ -111,7 +111,6 @@ func depart() -> void:
 
 func transition(index) -> void:
 	switch_state(State.TRANSITIONING)
-	MessageBus.tunnelled_through.emit(index)
 
 func add_funds() -> void:
 	MessageBus.acquired.emit(100000)

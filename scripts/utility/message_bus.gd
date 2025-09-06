@@ -15,6 +15,8 @@ signal update_map_choices
 signal trip_timer_ends
 signal update_shop
 signal stats_updated
+signal train_purchased(train_type)
+
 
 func _ready():
 	pass

@@ -11,7 +11,7 @@ var items := {
 		"tier": "none",
 		"unique": false
 	},
-	"boxcar": {
+	"box": {
 		"name": "Boxcar",
 		"type": "train",
 		"price": 500,
@@ -31,7 +31,7 @@ var items := {
 		"tier": 1,
 		"unique": true
 	},
-	"luxury_car": {
+	"luxury": {
 		"name": "Luxury Car",
 		"type": "train",
 		"price": 5000,
@@ -41,7 +41,7 @@ var items := {
 		"tier": 1,
 		"unique": false
 	},
-	"passenger_car": {
+	"passenger": {
 		"name": "Passenger Car",
 		"type": "train",
 		"price": 1000,
@@ -51,7 +51,7 @@ var items := {
 		"tier": 1,
 		"unique": false
 	},
-	"coal_car": {
+	"coal": {
 		"name": "Coal Car",
 		"type": "train",
 		"price": 1000,

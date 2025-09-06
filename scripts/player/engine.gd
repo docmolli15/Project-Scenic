@@ -18,16 +18,16 @@ var cars = []
 var last_sent_speed: float = -1.0
 
 const CAR_LOCATION_DATA= [
-	Vector2(-38, 507), Vector2(-83, 507), 
-	Vector2(-128, 507), Vector2(-173, 507), 
-	Vector2(-218, 507), Vector2(-263, 507), 
-	Vector2(-308, 507), Vector2(-353, 507),
-	Vector2(-398, 507), Vector2(-443, 507), 
-	Vector2(-488, 507), Vector2(-533, 507), 
+	Vector2(-38, 510), Vector2(-83, 510), 
+	Vector2(-128, 510), Vector2(-173, 510), 
+	Vector2(-218, 510), Vector2(-263, 510), 
+	Vector2(-308, 510), Vector2(-353, 510),
+	Vector2(-398, 510), Vector2(-443, 510), 
+	Vector2(-488, 510), Vector2(-533, 510), 
 	]
 
 func _ready() -> void:
-	pass
+	MessageBus.train_purchased.connect(spawn_train_car)
 
 func _process(_delta: float) -> void:
 	set_animation_speed()
@@ -49,10 +49,13 @@ func open_shop():
 	MessageBus.update_map_choices.emit()
 	MessageBus.update_shop.emit()
 
-func spawn_train_car(choice: String):
-	var is_caboose := choice == "caboose"
+func spawn_train_car(item_id: String):
+	var item_data = ShopDatabase.items.get(item_id, null)
+	if item_data == null:
+		push_error("Train item ID not found: " + item_id)
+		return
 
-	if is_caboose:
+	if item_id == "caboose":
 		for car in cars:
 			if car.car_type == "caboose":
 				return
@@ -62,9 +65,9 @@ func spawn_train_car(choice: String):
 
 	var train_car_scene: PackedScene = preload("res://scenes/player/train_car.tscn")
 	var train_car: TrainCar = train_car_scene.instantiate()
-	train_car.car_type = choice
+	train_car.car_type = item_id
 
-	if is_caboose:
+	if item_id == "caboose":
 		cars.append(train_car)
 	else:
 		var caboose_index := -1
