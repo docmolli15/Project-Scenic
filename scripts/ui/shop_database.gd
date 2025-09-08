@@ -203,14 +203,15 @@ func get_items_by_filter(type_filter: String, tier_filter: Variant = null, exclu
 			continue
 		if key in exclude_keys:
 			continue
+
 		var item = items[key]
+
 		if item["type"] != type_filter:
 			continue
+
 		if tier_filter != null and item.get("tier", null) != tier_filter:
 			continue
-		result.append(item)
 
-	if result.is_empty():
-		result.append(items["none"])
+		result.append(item)
 
 	return result

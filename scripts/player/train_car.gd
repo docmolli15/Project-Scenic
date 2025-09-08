@@ -76,6 +76,3 @@ func set_train_animation():
 	if car_type in available_animations:
 		train_anim.animation = car_type
 		train_anim.play()
-	else:
-		push_warning("No animation found")
-		print(car_type)

@@ -24,21 +24,42 @@ func _ready():
 
 func populate_shelves():
 	var data = Global.get_active_player_data()
-	var exclude_keys: Array = []
-	for key in data.purchased_items:
-		if data.purchased_items[key]:
-			exclude_keys.append(key)
-	var train_items = ShopDatabase.get_items_by_filter("train", null, exclude_keys) 
-	var upgrade_items = ShopDatabase.get_items_by_filter("upgrade", 1, exclude_keys)
+
+	var train_items = []
+	var upgrade_items = []
+
+	for key in ShopDatabase.items:
+		var item = ShopDatabase.items[key]
+
+		if key == "none":
+			continue
+
+		if item["type"] == "train":
+			var already_bought = data.purchased_items.get(key, false)
+			var is_unique = item.get("unique", false)
+
+			if is_unique and already_bought:
+				continue
+
+			train_items.append(item)
+
+		elif item["type"] == "upgrade":
+			var already_bought = data.purchased_items.get(key, false)
+			if already_bought:
+				continue
+			upgrade_items.append(item)
+
 	train_items.shuffle()
 	upgrade_items.shuffle()
-	first_car = train_items[0] if train_items.size() > 0 else ShopDatabase.items["none"]
-	second_car = train_items[1] if train_items.size() > 1 else ShopDatabase.items["none"]
-	third_car = train_items[2] if train_items.size() > 2 else ShopDatabase.items["none"]
 
-	first_upgrade = upgrade_items[0] if upgrade_items.size() > 0 else ShopDatabase.items["none"]
-	second_upgrade = upgrade_items[1] if upgrade_items.size() > 1 else ShopDatabase.items["none"]
-	third_upgrade = upgrade_items[2] if upgrade_items.size() > 2 else ShopDatabase.items["none"]
+	first_car = train_items.pop_front() if train_items.size() > 0 else ShopDatabase.items["none"]
+	second_car = train_items.pop_front() if train_items.size() > 0 else ShopDatabase.items["none"]
+	third_car = train_items.pop_front() if train_items.size() > 0 else ShopDatabase.items["none"]
+
+	first_upgrade = upgrade_items.pop_front() if upgrade_items.size() > 0 else ShopDatabase.items["none"]
+	second_upgrade = upgrade_items.pop_front() if upgrade_items.size() > 0 else ShopDatabase.items["none"]
+	third_upgrade = upgrade_items.pop_front() if upgrade_items.size() > 0 else ShopDatabase.items["none"]
+
 	car1.frame = first_car["frame"]
 	car2.frame = second_car["frame"]
 	car3.frame = third_car["frame"]

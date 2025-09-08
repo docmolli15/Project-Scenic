@@ -67,44 +67,50 @@ func spawn_train_car(item_id: String):
 	var train_car: TrainCar = train_car_scene.instantiate()
 	train_car.car_type = item_id
 
+	var insert_index := cars.size()
+
+	if item_id == "coal":
+		insert_index = 0
+	elif item_id != "caboose":
+
+		insert_index = 0
+		for i in cars.size():
+			var car_type = cars[i].car_type
+			if car_type != "coal":
+				if car_type == "caboose":
+					break
+				insert_index = i + 1
+
 	if item_id == "caboose":
 		cars.append(train_car)
 	else:
-		var caboose_index := -1
-		for i in cars.size():
-			if cars[i].car_type == "caboose":
-				caboose_index = i
-				break
-		if caboose_index != -1:
-			cars.insert(caboose_index, train_car)
-		else:
-			cars.append(train_car)
+		cars.insert(insert_index, train_car)
 
 	add_child(train_car)
 	recalculate_car_positions()
 
 func recalculate_car_positions():
-	var caboose: TrainCar = null
+	var ordered_cars: Array = []
+
+	for car in cars:
+		if car.car_type == "coal":
+			ordered_cars.append(car)
+
+	for car in cars:
+		if car.car_type != "coal" and car.car_type != "caboose":
+			ordered_cars.append(car)
+
 	for car in cars:
 		if car.car_type == "caboose":
-			caboose = car
+			ordered_cars.append(car)
 			break
 
-	if caboose != null:
-		cars.erase(caboose)
-
-	for i in cars.size():
-		var car = cars[i]
+	for i in ordered_cars.size():
+		var car = ordered_cars[i]
 		car.array_position = i
 		var tween = create_tween()
 		tween.tween_property(car, "position", CAR_LOCATION_DATA[i], 0.5).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
 
-	if caboose != null:
-		var index := cars.size()
-		caboose.array_position = index
-		var tween = create_tween()
-		tween.tween_property(caboose, "position", CAR_LOCATION_DATA[index], 0.5).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
-		cars.append(caboose)
 
 func _on_coal_pressed() -> void:
 	spawn_train_car("coal")
