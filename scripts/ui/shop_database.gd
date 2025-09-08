@@ -27,7 +27,7 @@ var items := {
 		"price": 1200,
 		"frame": 2,
 		"description": "No train is complete without a caboose. More employees per car.",
-		"effect": "func(): pass",
+		"effect":  func(): pass,
 		"tier": 1,
 		"unique": true
 	},
@@ -37,7 +37,7 @@ var items := {
 		"price": 5000,
 		"frame": 3,
 		"description": "A fancy car that hosts entertainment and cozy seating. Dramatically increase the money earned from trasnporting passengers.",
-		"effect": "func(): pass",
+		"effect":  func(): pass,
 		"tier": 1,
 		"unique": false
 	},
@@ -47,7 +47,7 @@ var items := {
 		"price": 1000,
 		"frame": 4,
 		"description": "A basic car with rooms. Increase passenger capacity by 2.",
-		"effect": "func(): pass",
+		"effect":  func(): pass,
 		"tier": 1,
 		"unique": false
 	},
@@ -57,7 +57,7 @@ var items := {
 		"price": 1000,
 		"frame": 5,
 		"description": "Comes with a Stoker. No more shoveling your own coal.",
-		"effect": "func(): pass",
+		"effect":  func(): pass,
 		"tier": 1,
 		"unique": false
 	},
@@ -67,7 +67,7 @@ var items := {
 		"price": 25000,
 		"frame": 6,
 		"description": "A classy refreshment bar that improves the luxury car, doubling money earned.",
-		"effect": "func(): pass",
+		"effect":  func(): pass,
 		"tier": 1,
 		"unique": true
 	},
@@ -77,7 +77,7 @@ var items := {
 		"price": 15000,
 		"frame": 7,
 		"description": "Food services, periodically adding funds from passenger purchases.",
-		"effect": "func(): pass",
+		"effect":  func(): pass,
 		"tier": 1,
 		"unique": true
 	},
@@ -87,7 +87,7 @@ var items := {
 		"price": 25000,
 		"frame": 8,
 		"description": "Equipment for boxcars to transport items normally too delicate for traveling on trains.",
-		"effect": "func(): pass",
+		"effect":  func(): pass,
 		"tier": 1,
 		"unique": true
 	},
@@ -97,7 +97,7 @@ var items := {
 		"price": 75000,
 		"frame": 9,
 		"description": "The caboose can hold double the employees, allowing for more cars to operate at maximum efficiency.",
-		"effect": "func(): pass",
+		"effect":  func(): pass,
 		"tier": 1,
 		"unique": true
 	},
@@ -107,7 +107,7 @@ var items := {
 		"price": 10000,
 		"frame": 10,
 		"description": "A much needed upgrade for your engine, making it burn coal more efficiently. Price of shoveling coal reduced to $2.",
-		"effect": "func(): pass",
+		"effect":  func(): pass,
 		"tier": 1,
 		"unique": true
 	},
@@ -117,7 +117,7 @@ var items := {
 		"price": 25000,
 		"frame": 11,
 		"description": "Speed from shoveled coal will drop slower, making the most out of the speed increase.",
-		"effect": "func(): pass",
+		"effect":  func(): pass,
 		"tier": 2,
 		"unique": true
 	},
@@ -127,7 +127,7 @@ var items := {
 		"price": 100000,
 		"frame": 12,
 		"description": "Maximum speed achievable by your engine is significantly increased.",
-		"effect": "func(): pass",
+		"effect":  func(): pass,
 		"tier": 3,
 		"unique": true
 	},
@@ -137,7 +137,7 @@ var items := {
 		"price": 250000,
 		"frame": 13,
 		"description": "Maximum speed increased, speed drops even slower, and cost of shoveling reduced to $1. What peak efficiency looks like.",
-		"effect": "func(): pass",
+		"effect":  func(): pass,
 		"tier": 4,
 		"unique": true
 	},
@@ -147,7 +147,7 @@ var items := {
 		"price": 75000,
 		"frame": 14,
 		"description": "Carry more passengers and earn slightly more money from them.",
-		"effect": "func(): pass",
+		"effect":  func(): pass,
 		"tier": 1,
 		"unique": true
 	},
@@ -157,7 +157,7 @@ var items := {
 		"price": 75000,
 		"frame": 15,
 		"description": "Hire two Stokers per coal car. Satisfy your need for speed.",
-		"effect": "func(): pass",
+		"effect":  func(): pass,
 		"tier": 1,
 		"unique": true
 	},
@@ -167,7 +167,7 @@ var items := {
 		"price": 150000,
 		"frame": 16,
 		"description": "An even classier experience, increasing money earned per passenger.",
-		"effect": "func(): pass",
+		"effect":  func(): pass,
 		"tier": 1,
 		"unique": true
 	},
@@ -177,7 +177,7 @@ var items := {
 		"price": 250000,
 		"frame": 17,
 		"description": "Better facilities lead to reduced cost per employee. Don't worry, wages aren't negatively affected.",
-		"effect": "func(): pass",
+		"effect":  func(): pass,
 		"tier": 1,
 		"unique": true
 	},
@@ -187,7 +187,7 @@ var items := {
 		"price": 75000,
 		"frame": 18,
 		"description": "Doubles the capacity of freight that can be transported.",
-		"effect": "func(): pass",
+		"effect":  func(): pass,
 		"tier": 1,
 		"unique": true
 	},
