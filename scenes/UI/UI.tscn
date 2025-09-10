@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://biaeo50jq4a"]
+[gd_scene load_steps=40 format=3 uid="uid://biaeo50jq4a"]
 
 [ext_resource type="Script" uid="uid://dah33oao3jg3j" path="res://scripts/ui/ui.gd" id="1_ro3t7"]
 [ext_resource type="Texture2D" uid="uid://nhomkbowas20" path="res://art/UI/ui_right_filigree.png" id="2_04ait"]
@@ -26,6 +26,17 @@
 [ext_resource type="Script" uid="uid://c1nx3fngpow7" path="res://scripts/ui/trip_meter.gd" id="14_q7onm"]
 [ext_resource type="Texture2D" uid="uid://mmkjjy05ioaa" path="res://art/UI/yes_button3.png" id="15_04ait"]
 [ext_resource type="PackedScene" uid="uid://bw8kueb0wjrk5" path="res://scenes/UI/station_ui.tscn" id="23_ppsko"]
+[ext_resource type="Texture2D" uid="uid://cmyixcexfyno" path="res://art/UI/stat_container.png" id="24_hf4xv"]
+[ext_resource type="Texture2D" uid="uid://dnffa3t8dih2q" path="res://art/UI/icons1.png" id="25_7nycj"]
+[ext_resource type="Texture2D" uid="uid://df6vt3c5lq0tp" path="res://art/UI/icons2.png" id="26_as1d2"]
+[ext_resource type="Texture2D" uid="uid://dnxrwjvs3qvnn" path="res://art/UI/icons3.png" id="27_1ra7p"]
+[ext_resource type="Texture2D" uid="uid://ccq2i8rbfmqxf" path="res://art/UI/icons4.png" id="28_3ie5p"]
+[ext_resource type="Texture2D" uid="uid://bcq8rbrfxug5a" path="res://art/UI/icons5.png" id="29_14ro7"]
+[ext_resource type="Texture2D" uid="uid://5h5w0xi84wp0" path="res://art/UI/icons6.png" id="30_h86w1"]
+[ext_resource type="Texture2D" uid="uid://b3gpcro503xcm" path="res://art/UI/arrow_keys3.png" id="32_ra560"]
+[ext_resource type="Texture2D" uid="uid://dh85nm2yabs4j" path="res://art/UI/arrow_keys4.png" id="33_n8xku"]
+[ext_resource type="Texture2D" uid="uid://bln62fatnkjvh" path="res://art/UI/arrow_keys1.png" id="34_co01f"]
+[ext_resource type="Texture2D" uid="uid://b54yy4msc0udm" path="res://art/UI/arrow_keys2.png" id="35_cqyjr"]
 
 [sub_resource type="Curve2D" id="Curve2D_jxfsc"]
 _data = {
@@ -71,12 +82,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="TripMeterContainer" type="Sprite2D" parent="CanvasLayer"]
 texture_filter = 1
-position = Vector2(1551, 1043)
+position = Vector2(143, 1043)
 texture = ExtResource("2_ok71f")
-
-[node name="$" type="Sprite2D" parent="CanvasLayer/TripMeterContainer"]
-position = Vector2(-126, -51)
-texture = ExtResource("5_mrqhp")
 
 [node name="ShovelCoal" type="TextureButton" parent="CanvasLayer/TripMeterContainer"]
 texture_filter = 1
@@ -92,22 +99,6 @@ offset_bottom = -35.968
 texture_normal = ExtResource("5_jxfsc")
 texture_pressed = ExtResource("6_q7onm")
 metadata/_edit_use_anchors_ = true
-
-[node name="Funds" type="Label" parent="CanvasLayer/TripMeterContainer"]
-offset_left = -116.0
-offset_top = -62.0
-offset_right = -76.0
-offset_bottom = -39.0
-theme_override_colors/font_color = Color(0.246873, 1, 0.0897869, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(9.14484e-07, 0.887663, 0, 1)
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/outline_size = 1
-theme_override_constants/shadow_outline_size = 2
-theme_override_fonts/font = ExtResource("6_ppsko")
-text = "0"
-script = ExtResource("7_y5wdm")
 
 [node name="TripMeter" type="Sprite2D" parent="CanvasLayer/TripMeterContainer"]
 texture_filter = 1
@@ -168,9 +159,9 @@ unique_name_in_owner = true
 top_level = true
 texture_filter = 1
 layout_mode = 0
-offset_left = 1675.0
+offset_left = 258.0
 offset_top = 952.0
-offset_right = 1754.0
+offset_right = 337.0
 offset_bottom = 1080.0
 max_value = 17.0
 step = 0.01
@@ -183,7 +174,7 @@ texture_progress = ExtResource("8_w7enk")
 [node name="cone" type="Sprite2D" parent="CanvasLayer/SpeedGauge"]
 top_level = true
 texture_filter = 1
-position = Vector2(1714, 935)
+position = Vector2(297, 935)
 texture = ExtResource("9_w7enk")
 
 [node name="steam" type="Sprite2D" parent="CanvasLayer/SpeedGauge"]
@@ -201,6 +192,226 @@ visible = false
 unique_name_in_owner = true
 wait_time = 3.0
 one_shot = true
+
+[node name="Stats" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Sprite2D" parent="CanvasLayer/Stats"]
+texture_filter = 1
+position = Vector2(536, 1048)
+texture = ExtResource("24_hf4xv")
+
+[node name="Icon1" type="Sprite2D" parent="CanvasLayer/Stats"]
+texture_filter = 1
+position = Vector2(510.5, 1036)
+texture = ExtResource("25_7nycj")
+
+[node name="Icon2" type="Sprite2D" parent="CanvasLayer/Stats"]
+texture_filter = 1
+position = Vector2(565, 1035)
+texture = ExtResource("26_as1d2")
+
+[node name="Icon3" type="Sprite2D" parent="CanvasLayer/Stats"]
+texture_filter = 1
+position = Vector2(386, 1049)
+texture = ExtResource("27_1ra7p")
+
+[node name="Icon4" type="Sprite2D" parent="CanvasLayer/Stats"]
+texture_filter = 1
+position = Vector2(455.5, 1036)
+texture = ExtResource("28_3ie5p")
+
+[node name="Icon5" type="Sprite2D" parent="CanvasLayer/Stats"]
+texture_filter = 1
+position = Vector2(618, 1036)
+texture = ExtResource("29_14ro7")
+
+[node name="Icon6" type="Sprite2D" parent="CanvasLayer/Stats"]
+texture_filter = 1
+position = Vector2(326, 1047)
+texture = ExtResource("30_h86w1")
+
+[node name="Icon7" type="Sprite2D" parent="CanvasLayer/Stats"]
+texture_filter = 1
+position = Vector2(677.5, 1036)
+texture = ExtResource("29_14ro7")
+
+[node name="Multiplier" type="Label" parent="CanvasLayer/Stats"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 10.3875
+anchor_top = 1.15
+anchor_right = 10.3875
+anchor_bottom = 1.15
+offset_left = 53.0
+offset_top = 981.0
+offset_right = 93.0
+offset_bottom = 1004.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("6_ppsko")
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="Passengers" type="Label" parent="CanvasLayer/Stats"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 11.725
+anchor_top = 1.15
+anchor_right = 11.725
+anchor_bottom = 1.15
+offset_left = 53.0
+offset_top = 981.0
+offset_right = 93.0
+offset_bottom = 1004.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("6_ppsko")
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="Packages" type="Label" parent="CanvasLayer/Stats"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 13.05
+anchor_top = 1.15
+anchor_right = 13.05
+anchor_bottom = 1.15
+offset_left = 53.0
+offset_top = 981.0
+offset_right = 93.0
+offset_bottom = 1004.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("6_ppsko")
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="Staff" type="Label" parent="CanvasLayer/Stats"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 14.45
+anchor_top = 1.15
+anchor_right = 14.45
+anchor_bottom = 1.15
+offset_left = 53.0
+offset_top = 981.0
+offset_right = 93.0
+offset_bottom = 1004.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("6_ppsko")
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="Cars" type="Label" parent="CanvasLayer/Stats"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 15.9375
+anchor_top = 1.15
+anchor_right = 15.9375
+anchor_bottom = 1.15
+offset_left = 53.0
+offset_top = 981.0
+offset_right = 93.0
+offset_bottom = 1004.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("6_ppsko")
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="UpArrow1" type="TextureButton" parent="CanvasLayer/Stats"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 338.0
+offset_top = 1024.0
+offset_right = 355.0
+offset_bottom = 1039.0
+texture_normal = ExtResource("32_ra560")
+texture_pressed = ExtResource("33_n8xku")
+
+[node name="UpArrow2" type="TextureButton" parent="CanvasLayer/Stats"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 405.0
+offset_top = 1024.0
+offset_right = 422.0
+offset_bottom = 1039.0
+texture_normal = ExtResource("32_ra560")
+texture_pressed = ExtResource("33_n8xku")
+
+[node name="DownArrow1" type="TextureButton" parent="CanvasLayer/Stats"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 337.0
+offset_top = 1056.0
+offset_right = 354.0
+offset_bottom = 1071.0
+texture_normal = ExtResource("34_co01f")
+texture_pressed = ExtResource("35_cqyjr")
+
+[node name="DownArrow2" type="TextureButton" parent="CanvasLayer/Stats"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 405.0
+offset_top = 1056.0
+offset_right = 422.0
+offset_bottom = 1071.0
+texture_normal = ExtResource("34_co01f")
+texture_pressed = ExtResource("35_cqyjr")
+
+[node name="$" type="Sprite2D" parent="CanvasLayer/Stats"]
+texture_filter = 1
+position = Vector2(453, 1058)
+texture = ExtResource("5_mrqhp")
+
+[node name="Funds" type="Label" parent="CanvasLayer/Stats"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 10.3875
+anchor_top = 1.65
+anchor_right = 10.3875
+anchor_bottom = 1.65
+offset_left = 53.0
+offset_top = 981.0
+offset_right = 93.0
+offset_bottom = 1004.0
+theme_override_colors/font_color = Color(0.246873, 1, 0.0897869, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(9.14484e-07, 0.887663, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("6_ppsko")
+text = "0"
+script = ExtResource("7_y5wdm")
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="CanvasLayer/Quit?/HBoxContainer/Yes" to="." method="_on_yes_pressed"]
 [connection signal="pressed" from="CanvasLayer/Quit?/HBoxContainer/No" to="." method="_on_no_pressed"]
