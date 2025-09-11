@@ -50,8 +50,233 @@ point_count = 2
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_ro3t7")
+metadata/_edit_horizontal_guides_ = [1044.0, 1064.0]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Stats" type="Control" parent="CanvasLayer"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -310.0
+offset_top = -14.0
+offset_right = -270.0
+offset_bottom = 26.0
+
+[node name="Panel" type="Sprite2D" parent="CanvasLayer/Stats"]
+texture_filter = 1
+position = Vector2(453, 1051)
+texture = ExtResource("24_hf4xv")
+
+[node name="PassengersIcon" type="Sprite2D" parent="CanvasLayer/Stats"]
+texture_filter = 1
+position = Vector2(456.5, 1044)
+texture = ExtResource("25_7nycj")
+
+[node name="PackagesIcon" type="Sprite2D" parent="CanvasLayer/Stats"]
+texture_filter = 1
+position = Vector2(513, 1043)
+texture = ExtResource("26_as1d2")
+
+[node name="DiningServicesIcon" type="Sprite2D" parent="CanvasLayer/Stats"]
+texture_filter = 1
+position = Vector2(513, 1064)
+texture = ExtResource("27_1ra7p")
+
+[node name="MultiplierIcon" type="Sprite2D" parent="CanvasLayer/Stats"]
+texture_filter = 1
+position = Vector2(399.5, 1044)
+texture = ExtResource("28_3ie5p")
+
+[node name="StaffIcon" type="Sprite2D" parent="CanvasLayer/Stats"]
+texture_filter = 1
+position = Vector2(399.5, 1063.5)
+texture = ExtResource("29_14ro7")
+
+[node name="StokerIcon" type="Sprite2D" parent="CanvasLayer/Stats"]
+texture_filter = 1
+position = Vector2(336, 1054)
+texture = ExtResource("30_h86w1")
+
+[node name="Icon7" type="Sprite2D" parent="CanvasLayer/Stats"]
+texture_filter = 1
+position = Vector2(457, 1063.5)
+texture = ExtResource("29_14ro7")
+
+[node name="Multiplier" type="Label" parent="CanvasLayer/Stats"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 8.7375
+anchor_top = 1.175
+anchor_right = 8.7375
+anchor_bottom = 1.175
+offset_left = 63.0
+offset_top = 988.0
+offset_right = 103.0
+offset_bottom = 1011.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("6_ppsko")
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="Passengers" type="Label" parent="CanvasLayer/Stats"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 10.125
+anchor_top = 1.175
+anchor_right = 10.125
+anchor_bottom = 1.175
+offset_left = 63.0
+offset_top = 988.0
+offset_right = 103.0
+offset_bottom = 1011.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("6_ppsko")
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="Packages" type="Label" parent="CanvasLayer/Stats"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 11.5125
+anchor_top = 1.175
+anchor_right = 11.5125
+anchor_bottom = 1.175
+offset_left = 63.0
+offset_top = 988.0
+offset_right = 103.0
+offset_bottom = 1011.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("6_ppsko")
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="Staff" type="Label" parent="CanvasLayer/Stats"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 8.7375
+anchor_top = 1.6625
+anchor_right = 8.7375
+anchor_bottom = 1.6625
+offset_left = 63.0
+offset_top = 988.0
+offset_right = 103.0
+offset_bottom = 1011.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("6_ppsko")
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="Cars" type="Label" parent="CanvasLayer/Stats"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 10.125
+anchor_top = 1.675
+anchor_right = 10.125
+anchor_bottom = 1.675
+offset_left = 63.0
+offset_top = 988.0
+offset_right = 103.0
+offset_bottom = 1011.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("6_ppsko")
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="DiningServices" type="Label" parent="CanvasLayer/Stats"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 11.525
+anchor_top = 1.675
+anchor_right = 11.525
+anchor_bottom = 1.675
+offset_left = 63.0
+offset_top = 988.0
+offset_right = 103.0
+offset_bottom = 1011.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("6_ppsko")
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="UpArrow1" type="TextureButton" parent="CanvasLayer/Stats"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 348.0
+offset_top = 1031.0
+offset_right = 365.0
+offset_bottom = 1046.0
+texture_normal = ExtResource("32_ra560")
+texture_pressed = ExtResource("33_n8xku")
+
+[node name="DownArrow1" type="TextureButton" parent="CanvasLayer/Stats"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 347.0
+offset_top = 1063.0
+offset_right = 364.0
+offset_bottom = 1078.0
+texture_normal = ExtResource("34_co01f")
+texture_pressed = ExtResource("35_cqyjr")
+
+[node name="$" type="Sprite2D" parent="CanvasLayer/Stats"]
+texture_filter = 1
+position = Vector2(342.5, 1008)
+texture = ExtResource("5_mrqhp")
+
+[node name="Funds" type="Label" parent="CanvasLayer/Stats"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 7.25
+anchor_top = 0.25
+anchor_right = 7.25
+anchor_bottom = 0.25
+offset_left = 63.0
+offset_top = 988.0
+offset_right = 103.0
+offset_bottom = 1011.0
+theme_override_colors/font_color = Color(0.246873, 1, 0.0897869, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(9.14484e-07, 0.887663, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("6_ppsko")
+text = "0"
+script = ExtResource("7_y5wdm")
+metadata/_edit_use_anchors_ = true
 
 [node name="Quit?" type="Sprite2D" parent="CanvasLayer"]
 unique_name_in_owner = true
@@ -153,15 +378,17 @@ texture_pressed = ExtResource("10_ok71f")
 [node name="SpeedGauge" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
+offset_left = -4.0
+offset_right = -4.0
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/SpeedGauge"]
 unique_name_in_owner = true
 top_level = true
 texture_filter = 1
 layout_mode = 0
-offset_left = 258.0
+offset_left = 277.0
 offset_top = 952.0
-offset_right = 337.0
+offset_right = 356.0
 offset_bottom = 1080.0
 max_value = 17.0
 step = 0.01
@@ -174,14 +401,13 @@ texture_progress = ExtResource("8_w7enk")
 [node name="cone" type="Sprite2D" parent="CanvasLayer/SpeedGauge"]
 top_level = true
 texture_filter = 1
-position = Vector2(297, 935)
+position = Vector2(316, 935)
 texture = ExtResource("9_w7enk")
 
 [node name="steam" type="Sprite2D" parent="CanvasLayer/SpeedGauge"]
 unique_name_in_owner = true
-visible = false
 texture_filter = 1
-position = Vector2(1654, 941)
+position = Vector2(379, 940)
 texture = ExtResource("9_ukj8e")
 
 [node name="Tabs" parent="CanvasLayer" instance=ExtResource("23_ppsko")]
@@ -193,228 +419,20 @@ unique_name_in_owner = true
 wait_time = 3.0
 one_shot = true
 
-[node name="Stats" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Panel" type="Sprite2D" parent="CanvasLayer/Stats"]
+[node name="CollapseButton" type="TextureButton" parent="CanvasLayer"]
+unique_name_in_owner = true
 texture_filter = 1
-position = Vector2(536, 1048)
-texture = ExtResource("24_hf4xv")
-
-[node name="Icon1" type="Sprite2D" parent="CanvasLayer/Stats"]
-texture_filter = 1
-position = Vector2(510.5, 1036)
-texture = ExtResource("25_7nycj")
-
-[node name="Icon2" type="Sprite2D" parent="CanvasLayer/Stats"]
-texture_filter = 1
-position = Vector2(565, 1035)
-texture = ExtResource("26_as1d2")
-
-[node name="Icon3" type="Sprite2D" parent="CanvasLayer/Stats"]
-texture_filter = 1
-position = Vector2(386, 1049)
-texture = ExtResource("27_1ra7p")
-
-[node name="Icon4" type="Sprite2D" parent="CanvasLayer/Stats"]
-texture_filter = 1
-position = Vector2(455.5, 1036)
-texture = ExtResource("28_3ie5p")
-
-[node name="Icon5" type="Sprite2D" parent="CanvasLayer/Stats"]
-texture_filter = 1
-position = Vector2(618, 1036)
-texture = ExtResource("29_14ro7")
-
-[node name="Icon6" type="Sprite2D" parent="CanvasLayer/Stats"]
-texture_filter = 1
-position = Vector2(326, 1047)
-texture = ExtResource("30_h86w1")
-
-[node name="Icon7" type="Sprite2D" parent="CanvasLayer/Stats"]
-texture_filter = 1
-position = Vector2(677.5, 1036)
-texture = ExtResource("29_14ro7")
-
-[node name="Multiplier" type="Label" parent="CanvasLayer/Stats"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 10.3875
-anchor_top = 1.15
-anchor_right = 10.3875
-anchor_bottom = 1.15
-offset_left = 53.0
-offset_top = 981.0
-offset_right = 93.0
-offset_bottom = 1004.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/outline_size = 1
-theme_override_constants/shadow_outline_size = 2
-theme_override_fonts/font = ExtResource("6_ppsko")
-text = "0"
-metadata/_edit_use_anchors_ = true
-
-[node name="Passengers" type="Label" parent="CanvasLayer/Stats"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 11.725
-anchor_top = 1.15
-anchor_right = 11.725
-anchor_bottom = 1.15
-offset_left = 53.0
-offset_top = 981.0
-offset_right = 93.0
-offset_bottom = 1004.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/outline_size = 1
-theme_override_constants/shadow_outline_size = 2
-theme_override_fonts/font = ExtResource("6_ppsko")
-text = "0"
-metadata/_edit_use_anchors_ = true
-
-[node name="Packages" type="Label" parent="CanvasLayer/Stats"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 13.05
-anchor_top = 1.15
-anchor_right = 13.05
-anchor_bottom = 1.15
-offset_left = 53.0
-offset_top = 981.0
-offset_right = 93.0
-offset_bottom = 1004.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/outline_size = 1
-theme_override_constants/shadow_outline_size = 2
-theme_override_fonts/font = ExtResource("6_ppsko")
-text = "0"
-metadata/_edit_use_anchors_ = true
-
-[node name="Staff" type="Label" parent="CanvasLayer/Stats"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 14.45
-anchor_top = 1.15
-anchor_right = 14.45
-anchor_bottom = 1.15
-offset_left = 53.0
-offset_top = 981.0
-offset_right = 93.0
-offset_bottom = 1004.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/outline_size = 1
-theme_override_constants/shadow_outline_size = 2
-theme_override_fonts/font = ExtResource("6_ppsko")
-text = "0"
-metadata/_edit_use_anchors_ = true
-
-[node name="Cars" type="Label" parent="CanvasLayer/Stats"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 15.9375
-anchor_top = 1.15
-anchor_right = 15.9375
-anchor_bottom = 1.15
-offset_left = 53.0
-offset_top = 981.0
-offset_right = 93.0
-offset_bottom = 1004.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/outline_size = 1
-theme_override_constants/shadow_outline_size = 2
-theme_override_fonts/font = ExtResource("6_ppsko")
-text = "0"
-metadata/_edit_use_anchors_ = true
-
-[node name="UpArrow1" type="TextureButton" parent="CanvasLayer/Stats"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 338.0
-offset_top = 1024.0
-offset_right = 355.0
-offset_bottom = 1039.0
+offset_left = 254.0
+offset_top = 1034.0
+offset_right = 271.0
+offset_bottom = 1049.0
+toggle_mode = true
 texture_normal = ExtResource("32_ra560")
-texture_pressed = ExtResource("33_n8xku")
-
-[node name="UpArrow2" type="TextureButton" parent="CanvasLayer/Stats"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 405.0
-offset_top = 1024.0
-offset_right = 422.0
-offset_bottom = 1039.0
-texture_normal = ExtResource("32_ra560")
-texture_pressed = ExtResource("33_n8xku")
-
-[node name="DownArrow1" type="TextureButton" parent="CanvasLayer/Stats"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 337.0
-offset_top = 1056.0
-offset_right = 354.0
-offset_bottom = 1071.0
-texture_normal = ExtResource("34_co01f")
-texture_pressed = ExtResource("35_cqyjr")
-
-[node name="DownArrow2" type="TextureButton" parent="CanvasLayer/Stats"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 405.0
-offset_top = 1056.0
-offset_right = 422.0
-offset_bottom = 1071.0
-texture_normal = ExtResource("34_co01f")
-texture_pressed = ExtResource("35_cqyjr")
-
-[node name="$" type="Sprite2D" parent="CanvasLayer/Stats"]
-texture_filter = 1
-position = Vector2(453, 1058)
-texture = ExtResource("5_mrqhp")
-
-[node name="Funds" type="Label" parent="CanvasLayer/Stats"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 10.3875
-anchor_top = 1.65
-anchor_right = 10.3875
-anchor_bottom = 1.65
-offset_left = 53.0
-offset_top = 981.0
-offset_right = 93.0
-offset_bottom = 1004.0
-theme_override_colors/font_color = Color(0.246873, 1, 0.0897869, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(9.14484e-07, 0.887663, 0, 1)
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/outline_size = 1
-theme_override_constants/shadow_outline_size = 2
-theme_override_fonts/font = ExtResource("6_ppsko")
-text = "0"
-script = ExtResource("7_y5wdm")
-metadata/_edit_use_anchors_ = true
+texture_pressed = ExtResource("34_co01f")
 
 [connection signal="pressed" from="CanvasLayer/Quit?/HBoxContainer/Yes" to="." method="_on_yes_pressed"]
 [connection signal="pressed" from="CanvasLayer/Quit?/HBoxContainer/No" to="." method="_on_no_pressed"]
 [connection signal="pressed" from="CanvasLayer/TripMeterContainer/ShovelCoal" to="." method="_on_shovel_coal_pressed"]
 [connection signal="pressed" from="CanvasLayer/RCornerUI/Quit" to="." method="_on_quit_pressed"]
 [connection signal="timeout" from="CanvasLayer/Tabs/Timer" to="." method="pop_up"]
+[connection signal="pressed" from="CanvasLayer/CollapseButton" to="." method="collapse_menu"]
