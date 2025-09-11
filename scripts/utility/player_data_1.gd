@@ -17,8 +17,12 @@ var purchased_items: Dictionary = {
 	"boxcar_upgrade": false
 }
 
+var current_station = ""
 var dynamic_player_stats: Dictionary = {
-	"max cars": 0, "seats": 0, "cubbies": 0, "jobs": 0, "upsells": 0, 
+	"max cars": 6, "seats": 1, "cubbies": 2, "jobs": 0, "upsells": 0, 
 	"money mult": 0.0, "friction reducer": -0.00, "delicate cubbies": 0,
-	
+	"stokers_employed": 0
 }
+var car_data = []
+var passenger_data = []
+var package_data = []

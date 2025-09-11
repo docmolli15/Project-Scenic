@@ -13,7 +13,7 @@ signal animation_frame_synced(frame: int)
 @onready var TrainAnim = %AnimatedSprite2D
 
 @export var current_speed: float
-var max_car_spaces: int = 12
+var max_car_spaces: int
 var cars = []
 var last_sent_speed: float = -1.0
 
@@ -25,13 +25,36 @@ const CAR_LOCATION_DATA= [
 	Vector2(-398, 510), Vector2(-443, 510), 
 	Vector2(-488, 510), Vector2(-533, 510), 
 	]
+var purchased_items: Dictionary
+var current_station = ""
+var dynamic_player_stats: Dictionary = {
+	"max cars": 6, "seats": 1, "cubbies": 2, "jobs": 0, "upsells": 0, 
+	"money mult": 0.0, "friction reducer": -0.00, "delicate cubbies": 0,
+	"stokers_employed": 0
+}
+var car_data = []
+var passenger_data = []
+var package_data = []
 
 func _ready() -> void:
 	MessageBus.train_purchased.connect(spawn_train_car)
+	load_save_data()
 
 func _process(_delta: float) -> void:
 	set_animation_speed()
 	animation_frame_synced.emit(TrainAnim.frame)
+
+func load_save_data():
+	var save_data = Global.get_active_player_data()
+	purchased_items = save_data.purchased_items
+	current_station = save_data.current_station
+	dynamic_player_stats = save_data.dynamic_player_stats
+	car_data = save_data.car_data
+	passenger_data = save_data.passenger_data
+	package_data = save_data.package_data
+
+func push_save_data():
+	pass
 
 func _on_speed_component_speed_adjusted(speed: Variant) -> void:
 	current_speed = speed
